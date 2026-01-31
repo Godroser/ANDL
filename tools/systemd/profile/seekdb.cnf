@@ -1,0 +1,13 @@
+# These parameters are permanently valid
+base-dir=/var/lib/oceanbase
+data-dir=/var/lib/oceanbase/store
+redo-dir=/var/lib/oceanbase/store/redo
+
+# These parameters are valid only during initialization
+port=2881
+datafile_size=2G
+datafile_next=2G
+datafile_maxsize=50G
+cpu_count=4
+memory_limit=2G
+log_disk_size=2G
