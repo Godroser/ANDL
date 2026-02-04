@@ -1,3 +1,6 @@
+workload/tpch0.1/
+Exqutor/
+
 ############# root #############
 *.a
 *.bak
