@@ -1,9 +1,14 @@
-workload/tpch0.1/
 Exqutor/
+workload/tmp
+workload/tpch0.1/
+workload/tpch0.1_export
+workload/tpch10
+workload/tpch100
 
 ############# root #############
 *.a
 *.bak
+*.csv
 *.gcda
 *.gcno
 *.gcov
@@ -21,6 +26,7 @@ Exqutor/
 *.run.*
 *.swn
 *.swp
+*.tbl
 *.temp.*
 *.tmp
 *my

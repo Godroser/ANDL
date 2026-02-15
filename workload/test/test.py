@@ -14,12 +14,12 @@ CONFIG = {
     'db_host': '127.0.0.1',
     'db_port': 10200,
     'db_user': 'root',
-    'db_name': 'tpch',
+    'db_name': 'tpch01',
     'vector_file': '/data/dzh/seekdb/Exqutor/Vector-augmented_SQL_analytics/WIKI/queries.fbin',
     'sql_file': '/data/dzh/seekdb/workload/tpch_queries.sql',
     'vector_limit': 10,    # 测试多少个向量
     'result_limit': 10,
-    'output_file': 'split_latency_report.json'
+    'output_file': None#'split_latency_report.json'
 }
 
 # 预设一个纯向量查询的模板，用于测量底层向量检索延时
@@ -106,7 +106,9 @@ def run_benchmark():
         user=CONFIG['db_user'], database=CONFIG['db_name'],
         autocommit=True,
         allow_local_infile=True,
-        sql_mode=''  # 允许更宽松的SQL模式
+        sql_mode='',  # 允许更宽松的SQL模式
+        charset='utf8mb4',
+        use_unicode=True
     )
     cursor = conn.cursor()
 
@@ -263,11 +265,11 @@ def run_benchmark():
                 "test_count": 0,
                 "error": "No successful tests"
             }
-    
-    with open(CONFIG['output_file'], 'w') as f:
-        json.dump(final_output, f, indent=4)
-    
-    console.print(f"\n[bold green]结果已保存到: {CONFIG['output_file']}[/bold green]")
+    if CONFIG['output_file'] is not None:
+        with open(CONFIG['output_file'], 'w') as f:
+            json.dump(final_output, f, indent=4)
+        
+        console.print(f"\n[bold green]结果已保存到: {CONFIG['output_file']}[/bold green]")
     
     cursor.close()
     conn.close()

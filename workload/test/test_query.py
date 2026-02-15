@@ -24,7 +24,7 @@ CONFIG = {
     'db_host': '127.0.0.1',
     'db_port': 10200,
     'db_user': 'root',
-    'db_name': 'tpch',
+    'db_name': 'tpch01',
     'vector_file': '/data/dzh/seekdb/Exqutor/Vector-augmented_SQL_analytics/WIKI/queries.fbin',
     'sql_file': '/data/dzh/seekdb/workload/tpch_queries.sql',
     'num_runs': 10,
@@ -115,22 +115,59 @@ class QueryExecutor:
     
     def execute_query(self, query: str, show_plan: bool = False, show_results: bool = False) -> Tuple[List, float]:
         """Execute a query and return results with execution time."""
+        # Clear any unread results from previous queries to avoid "Commands out of sync" error
+        try:
+            while self.cur.nextset():
+                self.cur.fetchall()
+        except:
+            pass
+        
         # Remove EXPLAIN for actual execution
         query_exec = query.replace('EXPLAIN', '').strip()
         
         # Show plan if requested
         if show_plan:
-            self.cur.execute(query)
-            plan = self.cur.fetchall()
-            console.print("[cyan]Query Plan:[/cyan]")
-            for row in plan[:10]:  # Limit plan output
-                console.print(f"  {row[0] if isinstance(row, (list, tuple)) and len(row) > 0 else row}")
-            console.print()
+            try:
+                self.cur.execute(query)
+                plan = self.cur.fetchall()
+                # Consume all result sets from EXPLAIN query
+                while self.cur.nextset():
+                    self.cur.fetchall()
+                console.print("[cyan]Query Plan:[/cyan]")
+                for row in plan[:10]:  # Limit plan output
+                    console.print(f"  {row[0] if isinstance(row, (list, tuple)) and len(row) > 0 else row}")
+                console.print()
+            except Exception as e:
+                console.print(f"[yellow]Warning: Could not show plan: {e}[/yellow]")
+                # Clear any partial results
+                try:
+                    while self.cur.nextset():
+                        self.cur.fetchall()
+                except:
+                    pass
         
         # Execute and measure time
         start_time = time.time()
-        self.cur.execute(query_exec)
-        results = self.cur.fetchall()
+        try:
+            self.cur.execute(query_exec)
+            results = self.cur.fetchall()
+            
+            # Consume all remaining result sets (important for multi-statement queries)
+            while self.cur.nextset():
+                additional_results = self.cur.fetchall()
+                # For multi-statement queries, we typically only care about the last SELECT result
+                # But we still need to consume all intermediate results
+                if additional_results:
+                    results = additional_results
+        except Exception as e:
+            # Clear any partial results on error
+            try:
+                while self.cur.nextset():
+                    self.cur.fetchall()
+            except:
+                pass
+            raise
+        
         end_time = time.time()
         exec_time_ms = (end_time - start_time) * 1000
         
@@ -211,6 +248,7 @@ class QueryExecutor:
                     VectorReader.vector_to_string(vector),
                     limit
                 )
+                # print(query)
                 results, exec_time = self.execute_query(
                     query,
                     show_plan=(show_plan and i == 0),
