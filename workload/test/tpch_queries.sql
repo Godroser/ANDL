@@ -18,7 +18,7 @@ FROM
     lineitem
 WHERE
     -- 修改点：使用 DATE_SUB 或更通用的 INTERVAL 语法
-    l_shipdate <= DATE '1998-12-01' - INTERVAL 90 DAY
+    l_shipdate <= DATE '1994-12-01' - INTERVAL 90 DAY
 GROUP BY
     l_returnflag,
     l_linestatus
@@ -468,7 +468,6 @@ WHERE
 
 -- Query Q18: Large Volume Customer
 --Q18
-EXPLAIN
 SELECT
     c_name,
     c_custkey,

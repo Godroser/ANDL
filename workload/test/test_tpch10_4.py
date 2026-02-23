@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+"""
+TPC-H 测试脚本 - tpch10_4 数据库
+- 纯向量查询: 使用 part_vector 和 partsupp_vector
+- 其他查询: 使用非 vector 表 (part, partsupp)
+- tpch10_4 schema: part_vector(text_embedding), partsupp_vector(ps_image_embedding, ps_text_embedding)
+"""
 import os
 import re
 import time
@@ -14,17 +20,20 @@ CONFIG = {
     'db_host': '127.0.0.1',
     'db_port': 10200,
     'db_user': 'root',
-    'db_name': 'tpch01',
+    'db_name': 'tpch10_4',
     'vector_file': '/data/dzh/seekdb/Exqutor/Vector-augmented_SQL_analytics/WIKI/queries.fbin',
-    'sql_file': '/data/dzh/seekdb/workload/tpch_queries.sql',
-    'vector_limit': 10,    # 测试多少个向量
+    'sql_file': '/data/dzh/seekdb/workload/test/tpch_queries_tpch10_4.sql',
+    'vector_limit': 2,    # 测试多少个向量
     'result_limit': 10,
-    'output_file': None#'split_latency_report.json'
+    'output_file': None  # 例如: 'tpch10_4_latency_report.json'
 }
 
-# 预设一个纯向量查询的模板，用于测量底层向量检索延时
-# 请根据你数据库真实的表名修改 'your_vector_table'
-VECTOR_ONLY_TEMPLATE = "SELECT ps_partkey FROM partsupp ORDER BY l2_distance(ps_text_embedding,'{VECTOR}') APPROXIMATE LIMIT {LIMIT};"
+# 纯向量查询模板 - tpch10_4 使用 part_vector 和 partsupp_vector
+# partsupp_vector 有 ps_text_embedding(768) 和 ps_image_embedding(96)
+VECTOR_ONLY_TEMPLATES = [
+    ("partsupp_vector", "SELECT ps_partkey FROM partsupp_vector ORDER BY l2_distance(ps_text_embedding,'{VECTOR}') APPROXIMATE LIMIT {LIMIT};"),
+    ("part_vector", "SELECT p_partkey FROM part_vector ORDER BY l2_distance(text_embedding,'{VECTOR}') APPROXIMATE LIMIT {LIMIT};"),
+]
 
 console = Console()
 
@@ -92,14 +101,13 @@ class DataLoader:
             queries[f"Q{q_id}"] = q_sql.strip()
         return queries
 
-# ... [前面的 DataLoader 类和配置保持不变] ...
-
 def run_benchmark():
     # 读取向量和SQL查询
     vectors = DataLoader.read_vectors(CONFIG['vector_file'], CONFIG['vector_limit'])
     queries = DataLoader.load_queries(CONFIG['sql_file'])
     
-    console.print(f"[bold green]已加载 {len(vectors)} 个向量和 {len(queries)} 条SQL查询[/bold green]\n")
+    console.print(f"[bold green]已加载 {len(vectors)} 个向量和 {len(queries)} 条SQL查询[/bold green]")
+    console.print(f"[bold green]数据库: {CONFIG['db_name']} | 纯向量表: part_vector, partsupp_vector[/bold green]\n")
     
     conn = mysql.connector.connect(
         host=CONFIG['db_host'], port=CONFIG['db_port'],
@@ -112,11 +120,22 @@ def run_benchmark():
     )
     cursor = conn.cursor()
 
-    report = {}
-    all_vec_latencies = []  # 用于存储所有纯向量查询的样本
+    # 禁用动态采样，避免 optimizer 在复杂查询（含向量）上触发 dynamic sampling timeout (4016)
+    try:
+        cursor.execute("SET SESSION optimizer_dynamic_sampling = 0")
+    except Exception as e:
+        console.print(f"[yellow]警告: 无法禁用动态采样: {e}[/yellow]")
 
-    # 开始测试所有22条查询
-    for q_name, q_template in sorted(queries.items()):  # 按Q1-Q22顺序测试
+    report = {}
+    all_vec_latencies = []  # 用于存储所有纯向量查询的样本（part_vector + partsupp_vector）
+
+    # 按 Q1, Q2, ..., Q22 数字顺序测试
+    def _query_sort_key(item):
+        name = item[0] if isinstance(item, tuple) else item
+        return int(name[1:]) if name.startswith('Q') and name[1:].isdigit() else 0
+    sorted_queries = sorted(queries.items(), key=_query_sort_key)
+    
+    for q_name, q_template in sorted_queries:
         console.print(f"[*] 正在测试 {q_name}...")
         report[q_name] = {"sql_times": [], "has_vector": False}
         
@@ -130,22 +149,22 @@ def run_benchmark():
             for i, vec in enumerate(vectors):
                 vec_str = "[" + ",".join(map(str, vec)) + "]"
                 
-                # --- 测试 1: 纯向量查询 (用于测量底层向量检索延时) ---
-                vec_sql = VECTOR_ONLY_TEMPLATE.replace('{VECTOR}', vec_str).replace('{LIMIT}', str(CONFIG['result_limit']))
-                start_v = time.perf_counter()
-                success, error = safe_execute_query(cursor, vec_sql, "纯向量查询")
-                if success:
-                    all_vec_latencies.append((time.perf_counter() - start_v) * 1000)
-                else:
-                    console.print(f"  [yellow]纯向量查询警告: {error}[/yellow]")
-                # 确保清空结果
-                try:
-                    while cursor.nextset():
-                        cursor.fetchall()
-                except:
-                    pass
+                # --- 测试 1: 纯向量查询 (part_vector 和 partsupp_vector) ---
+                for table_name, vec_template in VECTOR_ONLY_TEMPLATES:
+                    vec_sql = vec_template.replace('{VECTOR}', vec_str).replace('{LIMIT}', str(CONFIG['result_limit']))
+                    start_v = time.perf_counter()
+                    success, error = safe_execute_query(cursor, vec_sql, f"纯向量查询({table_name})")
+                    if success:
+                        all_vec_latencies.append((time.perf_counter() - start_v) * 1000)
+                    else:
+                        console.print(f"  [yellow]纯向量查询({table_name})警告: {error}[/yellow]")
+                    try:
+                        while cursor.nextset():
+                            cursor.fetchall()
+                    except:
+                        pass
 
-                # --- 测试 2: 综合业务 SQL (包含向量) ---
+                # --- 测试 2: 综合业务 SQL (包含向量，使用 partsupp_vector/part_vector) ---
                 full_sql = q_template.replace('{VECTOR}', vec_str)
                 if has_limit_placeholder:
                     full_sql = full_sql.replace('{LIMIT}', str(CONFIG['result_limit']))
@@ -155,15 +174,13 @@ def run_benchmark():
                     report[q_name]["sql_times"].append((time.perf_counter() - start_s) * 1000)
                 else:
                     console.print(f"  [red]SQL 业务查询出错: {error}[/red]")
-                # 确保清空结果
                 try:
                     while cursor.nextset():
                         cursor.fetchall()
                 except:
                     pass
         else:
-            # 对于不包含向量的查询，直接执行（不进行向量替换）
-            # 只执行一次，因为这些查询不依赖向量
+            # 对于不包含向量的查询，直接执行（走非 vector 表）
             full_sql = q_template
             if has_limit_placeholder:
                 full_sql = full_sql.replace('{LIMIT}', str(CONFIG['result_limit']))
@@ -173,7 +190,6 @@ def run_benchmark():
                 report[q_name]["sql_times"].append((time.perf_counter() - start_s) * 1000)
             else:
                 console.print(f"  [red]SQL 查询出错: {error}[/red]")
-            # 确保清空结果
             try:
                 while cursor.nextset():
                     cursor.fetchall()
@@ -185,13 +201,13 @@ def run_benchmark():
     
     console.print(f"\n[bold blue]基础指标:[/bold blue]")
     if all_vec_latencies:
-        console.print(f"  [green]纯向量检索平均耗时 (Base Latency): {global_avg_vec:.2f} ms[/green]")
+        console.print(f"  [green]纯向量检索平均耗时 (Base Latency, part_vector + partsupp_vector): {global_avg_vec:.2f} ms[/green]")
         console.print(f"  [green]纯向量检索样本数: {len(all_vec_latencies)}[/green]\n")
     else:
         console.print(f"  [yellow]未执行纯向量查询测试[/yellow]\n")
 
     # 输出所有查询的平均延时表格
-    table = Table(title=f"TPC-H 22条查询性能测试结果 (共测试 {len(queries)} 条查询)")
+    table = Table(title=f"TPC-H 22条查询性能测试结果 - tpch10_4 (共测试 {len(queries)} 条查询)")
     table.add_column("Query ID", style="cyan")
     table.add_column("是否包含向量", style="yellow", justify="center")
     table.add_column("测试次数", style="blue", justify="right")
@@ -200,7 +216,7 @@ def run_benchmark():
     table.add_column("最大延时 (ms)", style="red", justify="right")
 
     total_avg = []
-    for q_name in sorted(report.keys()):  # 按Q1-Q22顺序输出
+    for q_name in sorted(report.keys(), key=_query_sort_key):
         data = report[q_name]
         if data["sql_times"]:
             avg_sql = np.mean(data["sql_times"])
@@ -238,18 +254,19 @@ def run_benchmark():
     # 保存结果
     final_output = {
         "config": {
+            "db_name": CONFIG['db_name'],
             "vector_limit": CONFIG['vector_limit'],
             "result_limit": CONFIG['result_limit'],
             "total_queries": len(queries),
-            "total_vectors_tested": len(vectors)
+            "total_vectors_tested": len(vectors),
+            "vector_tables": ["part_vector", "partsupp_vector"]
         },
         "global_vector_base_ms": global_avg_vec,
         "overall_avg_latency_ms": np.mean(total_avg) if total_avg else 0,
         "queries": {}
     }
     
-    # 为每条查询保存详细统计
-    for q_name, data in sorted(report.items()):
+    for q_name, data in sorted(report.items(), key=lambda x: _query_sort_key(x[0])):
         if data["sql_times"]:
             final_output["queries"][q_name] = {
                 "has_vector": data["has_vector"],

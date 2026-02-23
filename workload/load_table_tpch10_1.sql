@@ -50,69 +50,69 @@ DROP PROCEDURE load_part_chunks;
 
 COMMIT;
 
--- BEGIN;
+BEGIN;
 
--- CREATE TABLE REGION  ( R_REGIONKEY  INTEGER NOT NULL,
---                             R_NAME       CHAR(25) NOT NULL,
---                             R_COMMENT    VARCHAR(152));
+CREATE TABLE REGION  ( R_REGIONKEY  INTEGER NOT NULL,
+                            R_NAME       CHAR(25) NOT NULL,
+                            R_COMMENT    VARCHAR(152));
 
---   LOAD DATA INFILE '/data/dzh/seekdb/workload/tpch10/region.csv'
---   INTO TABLE region
---   FIELDS TERMINATED BY '|'
---   LINES TERMINATED BY '\n';
+  LOAD DATA INFILE '/data/dzh/seekdb/workload/tpch10/region.csv'
+  INTO TABLE region
+  FIELDS TERMINATED BY '|'
+  LINES TERMINATED BY '\n';
 
--- COMMIT;
+COMMIT;
 
--- BEGIN;
+BEGIN;
 
--- CREATE TABLE NATION  ( N_NATIONKEY  INTEGER NOT NULL,
---                             N_NAME       CHAR(25) NOT NULL,
---                             N_REGIONKEY  INTEGER NOT NULL,
---                             N_COMMENT    VARCHAR(152));
+CREATE TABLE NATION  ( N_NATIONKEY  INTEGER NOT NULL,
+                            N_NAME       CHAR(25) NOT NULL,
+                            N_REGIONKEY  INTEGER NOT NULL,
+                            N_COMMENT    VARCHAR(152));
 
---   LOAD DATA INFILE '/data/dzh/seekdb/workload/tpch10/nation.csv'
---   INTO TABLE nation
---   FIELDS TERMINATED BY '|'
---   LINES TERMINATED BY '\n';
+  LOAD DATA INFILE '/data/dzh/seekdb/workload/tpch10/nation.csv'
+  INTO TABLE nation
+  FIELDS TERMINATED BY '|'
+  LINES TERMINATED BY '\n';
 
--- COMMIT;
+COMMIT;
 
--- BEGIN;
+BEGIN;
 
--- CREATE TABLE SUPPLIER ( S_SUPPKEY     INTEGER NOT NULL,
---                              S_NAME        CHAR(25) NOT NULL,
---                              S_ADDRESS     VARCHAR(40) NOT NULL,
---                              S_NATIONKEY   INTEGER NOT NULL,
---                              S_PHONE       CHAR(15) NOT NULL,
---                              S_ACCTBAL     DECIMAL(15,2) NOT NULL,
---                              S_COMMENT     VARCHAR(101) NOT NULL);
+CREATE TABLE SUPPLIER ( S_SUPPKEY     INTEGER NOT NULL,
+                             S_NAME        CHAR(25) NOT NULL,
+                             S_ADDRESS     VARCHAR(40) NOT NULL,
+                             S_NATIONKEY   INTEGER NOT NULL,
+                             S_PHONE       CHAR(15) NOT NULL,
+                             S_ACCTBAL     DECIMAL(15,2) NOT NULL,
+                             S_COMMENT     VARCHAR(101) NOT NULL);
 
---   LOAD DATA INFILE '/data/dzh/seekdb/workload/tpch10/supplier.csv'
---   INTO TABLE supplier
---   FIELDS TERMINATED BY '|'
---   LINES TERMINATED BY '\n';
-
-
--- COMMIT;
-
--- BEGIN;
-
--- CREATE TABLE CUSTOMER ( C_CUSTKEY     INTEGER NOT NULL,
---                              C_NAME        VARCHAR(25) NOT NULL,
---                              C_ADDRESS     VARCHAR(40) NOT NULL,
---                              C_NATIONKEY   INTEGER NOT NULL,
---                              C_PHONE       CHAR(15) NOT NULL,
---                              C_ACCTBAL     DECIMAL(15,2)   NOT NULL,
---                              C_MKTSEGMENT  CHAR(10) NOT NULL,
---                              C_COMMENT     VARCHAR(117) NOT NULL);
-
---   LOAD DATA INFILE '/data/dzh/seekdb/workload/tpch10/customer.csv'
---   INTO TABLE customer
---   FIELDS TERMINATED BY '|'
---   LINES TERMINATED BY '\n';
+  LOAD DATA INFILE '/data/dzh/seekdb/workload/tpch10/supplier.csv'
+  INTO TABLE supplier
+  FIELDS TERMINATED BY '|'
+  LINES TERMINATED BY '\n';
 
 
--- COMMIT;
+COMMIT;
+
+BEGIN;
+
+CREATE TABLE CUSTOMER ( C_CUSTKEY     INTEGER NOT NULL,
+                             C_NAME        VARCHAR(25) NOT NULL,
+                             C_ADDRESS     VARCHAR(40) NOT NULL,
+                             C_NATIONKEY   INTEGER NOT NULL,
+                             C_PHONE       CHAR(15) NOT NULL,
+                             C_ACCTBAL     DECIMAL(15,2)   NOT NULL,
+                             C_MKTSEGMENT  CHAR(10) NOT NULL,
+                             C_COMMENT     VARCHAR(117) NOT NULL);
+
+  LOAD DATA INFILE '/data/dzh/seekdb/workload/tpch10/customer.csv'
+  INTO TABLE customer
+  FIELDS TERMINATED BY '|'
+  LINES TERMINATED BY '\n';
+
+
+COMMIT;
 
 BEGIN;
 
