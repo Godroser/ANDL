@@ -9,7 +9,7 @@ set -e  # 遇到错误立即退出
 DB_HOST="127.0.0.1"
 DB_PORT="10200"
 DB_USER="root"
-DB_NAME="tpch10_4"
+DB_NAME="tpch10_6"
 
 echo "=========================================="
 echo "开始数据导入流程"
@@ -44,7 +44,7 @@ echo ""
 
 # 3. 执行 SQL 脚本导入其他表
 echo "步骤 3: 执行 load_table.sql 导入其他表..."
-mysql -uroot -h127.0.0.1 -P10200 ${DB_NAME} < /data/dzh/seekdb/workload/tmp-ddl.sql
+mysql -uroot -h127.0.0.1 -P10200 ${DB_NAME} < /data/dzh/seekdb/workload/load_table_tpch10_6.sql
 
 if [ $? -ne 0 ]; then
     echo "错误: load_table.sql 执行失败"

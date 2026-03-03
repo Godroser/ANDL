@@ -48,7 +48,7 @@ LIMIT 100;
 
 -- Query Q3: Customer Order Priority
 --Q3
-EXPLAIN
+
 SELECT
     l_orderkey,
     o_orderdate,
@@ -98,7 +98,7 @@ ORDER BY
 
 -- Query Q5: Supplier Revenue
 --Q5
-EXPLAIN
+
 SELECT
     n_name
 FROM
@@ -182,7 +182,7 @@ ORDER BY
 
 -- Query Q8: Market Share
 --Q8
-EXPLAIN
+
 SELECT
     o_year,
     SUM(CASE
@@ -231,7 +231,7 @@ LIMIT 1
 
 -- Query Q9: Product Type Profit Measure
 --Q9
-EXPLAIN
+
 SELECT
     nation,
     o_year,
@@ -269,7 +269,7 @@ LIMIT 1
 
 -- Query Q10: Customer Return
 --Q10
-EXPLAIN
+
 SELECT
     c_custkey,
     c_name,
@@ -300,7 +300,7 @@ LIMIT {LIMIT}
 
 -- Query Q11: Supplier Parts
 --Q11
-EXPLAIN
+
 SELECT
     ps_partkey
 FROM
@@ -318,7 +318,7 @@ LIMIT {LIMIT}
 
 -- Query Q12: Shipping Modes
 --Q12
-EXPLAIN
+
 SELECT
     l_shipmode
 FROM
@@ -543,7 +543,7 @@ WHERE
 
 -- Query Q20: Supplier Parts Availability
 --Q20
-EXPLAIN
+
 SELECT
     s_name,
     s_address,

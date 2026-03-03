@@ -51,7 +51,7 @@ LIMIT 100;
 
 -- Query Q3: Customer Order Priority (使用 partsupp_vector 做向量检索，JOIN 非 vector 表)
 --Q3
-EXPLAIN
+
 SELECT
     l_orderkey,
     o_orderdate,
@@ -102,7 +102,7 @@ ORDER BY
 
 -- Query Q5: Supplier Revenue (使用 partsupp_vector)
 --Q5
-EXPLAIN
+
 SELECT
     n_name
 FROM
@@ -187,7 +187,7 @@ ORDER BY
 
 -- Query Q8: Market Share (使用 partsupp_vector)
 --Q8
-EXPLAIN
+
 SELECT
     o_year,
     SUM(CASE
@@ -239,7 +239,7 @@ LIMIT 1
 
 -- Query Q9: Product Type Profit Measure (使用 partsupp_vector)
 --Q9
-EXPLAIN
+
 SELECT
     nation,
     o_year,
@@ -280,7 +280,7 @@ LIMIT 1
 
 -- Query Q10: Customer Return (使用 partsupp_vector)
 --Q10
-EXPLAIN
+
 SELECT
     c_custkey,
     c_name,
@@ -314,7 +314,7 @@ LIMIT {LIMIT}
 
 -- Query Q11: Supplier Parts (使用 partsupp_vector，纯向量相关)
 --Q11
-EXPLAIN
+
 SELECT
     psv.ps_partkey
 FROM
@@ -332,7 +332,7 @@ LIMIT {LIMIT}
 
 -- Query Q12: Shipping Modes (使用 partsupp_vector)
 --Q12
-EXPLAIN
+
 SELECT
     l_shipmode
 FROM
@@ -559,7 +559,7 @@ WHERE
 
 -- Query Q20: Supplier Parts Availability (使用 partsupp_vector)
 --Q20
-EXPLAIN
+
 SELECT
     s_name,
     s_address,

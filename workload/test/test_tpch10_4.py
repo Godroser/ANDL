@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 TPC-H 测试脚本 - tpch10_4 数据库
-- 纯向量查询: 使用 part_vector 和 partsupp_vector
+- 纯向量测试: 仅在 part_vector 表
 - 其他查询: 使用非 vector 表 (part, partsupp)
 - tpch10_4 schema: part_vector(text_embedding), partsupp_vector(ps_image_embedding, ps_text_embedding)
 """
@@ -28,10 +28,8 @@ CONFIG = {
     'output_file': None  # 例如: 'tpch10_4_latency_report.json'
 }
 
-# 纯向量查询模板 - tpch10_4 使用 part_vector 和 partsupp_vector
-# partsupp_vector 有 ps_text_embedding(768) 和 ps_image_embedding(96)
+# 纯向量查询模板 - 仅在 part_vector 表进行测试
 VECTOR_ONLY_TEMPLATES = [
-    ("partsupp_vector", "SELECT ps_partkey FROM partsupp_vector ORDER BY l2_distance(ps_text_embedding,'{VECTOR}') APPROXIMATE LIMIT {LIMIT};"),
     ("part_vector", "SELECT p_partkey FROM part_vector ORDER BY l2_distance(text_embedding,'{VECTOR}') APPROXIMATE LIMIT {LIMIT};"),
 ]
 
@@ -107,7 +105,7 @@ def run_benchmark():
     queries = DataLoader.load_queries(CONFIG['sql_file'])
     
     console.print(f"[bold green]已加载 {len(vectors)} 个向量和 {len(queries)} 条SQL查询[/bold green]")
-    console.print(f"[bold green]数据库: {CONFIG['db_name']} | 纯向量表: part_vector, partsupp_vector[/bold green]\n")
+    console.print(f"[bold green]数据库: {CONFIG['db_name']} | 纯向量测试表: part_vector[/bold green]\n")
     
     conn = mysql.connector.connect(
         host=CONFIG['db_host'], port=CONFIG['db_port'],
@@ -127,7 +125,7 @@ def run_benchmark():
         console.print(f"[yellow]警告: 无法禁用动态采样: {e}[/yellow]")
 
     report = {}
-    all_vec_latencies = []  # 用于存储所有纯向量查询的样本（part_vector + partsupp_vector）
+    all_vec_latencies = []  # 用于存储纯向量查询样本（仅 part_vector）
 
     # 按 Q1, Q2, ..., Q22 数字顺序测试
     def _query_sort_key(item):
@@ -149,7 +147,7 @@ def run_benchmark():
             for i, vec in enumerate(vectors):
                 vec_str = "[" + ",".join(map(str, vec)) + "]"
                 
-                # --- 测试 1: 纯向量查询 (part_vector 和 partsupp_vector) ---
+                # --- 测试 1: 纯向量查询 (仅 part_vector) ---
                 for table_name, vec_template in VECTOR_ONLY_TEMPLATES:
                     vec_sql = vec_template.replace('{VECTOR}', vec_str).replace('{LIMIT}', str(CONFIG['result_limit']))
                     start_v = time.perf_counter()
@@ -201,7 +199,7 @@ def run_benchmark():
     
     console.print(f"\n[bold blue]基础指标:[/bold blue]")
     if all_vec_latencies:
-        console.print(f"  [green]纯向量检索平均耗时 (Base Latency, part_vector + partsupp_vector): {global_avg_vec:.2f} ms[/green]")
+        console.print(f"  [green]纯向量检索平均耗时 (Base Latency, part_vector): {global_avg_vec:.2f} ms[/green]")
         console.print(f"  [green]纯向量检索样本数: {len(all_vec_latencies)}[/green]\n")
     else:
         console.print(f"  [yellow]未执行纯向量查询测试[/yellow]\n")
@@ -259,7 +257,7 @@ def run_benchmark():
             "result_limit": CONFIG['result_limit'],
             "total_queries": len(queries),
             "total_vectors_tested": len(vectors),
-            "vector_tables": ["part_vector", "partsupp_vector"]
+            "vector_tables": ["part_vector"]
         },
         "global_vector_base_ms": global_avg_vec,
         "overall_avg_latency_ms": np.mean(total_avg) if total_avg else 0,

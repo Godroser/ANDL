@@ -16,15 +16,15 @@ CONFIG = {
     'db_user': 'root',
     'db_name': 'tpch10_1',
     'vector_file': '/data/dzh/seekdb/Exqutor/Vector-augmented_SQL_analytics/WIKI/queries.fbin',
-    'sql_file': '/data/dzh/seekdb/workload/tpch_queries.sql',
-    'vector_limit': 5,    # 测试多少个向量
+    'sql_file': '/data/dzh/seekdb/workload/test/tpch_queries.sql',
+    'vector_limit': 2,    # 测试多少个向量
     'result_limit': 10,
     'output_file': None#'split_latency_report.json'
 }
 
 # 预设一个纯向量查询的模板，用于测量底层向量检索延时
 # 请根据你数据库真实的表名修改 'your_vector_table'
-VECTOR_ONLY_TEMPLATE = "SELECT ps_partkey FROM partsupp ORDER BY l2_distance(ps_text_embedding,'{VECTOR}') APPROXIMATE LIMIT {LIMIT};"
+VECTOR_ONLY_TEMPLATE = "SELECT p_partkey FROM part ORDER BY l2_distance(text_embedding,'{VECTOR}') APPROXIMATE LIMIT {LIMIT};"
 
 console = Console()
 
