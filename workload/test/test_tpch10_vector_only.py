@@ -14,7 +14,7 @@ CONFIG = {
     'db_host': '127.0.0.1',
     'db_port': 10200,
     'db_user': 'root',
-    'db_name': 'tpch10_5',
+    'db_name': 'tpch10_1',
     'vector_file': '/data/dzh/seekdb/Exqutor/Vector-augmented_SQL_analytics/WIKI/queries.fbin',
     'vector_count': 2,    # 测试 3 个向量
     'result_limit': 10,

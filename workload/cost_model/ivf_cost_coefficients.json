@@ -1,0 +1,1643 @@
+{
+  "formula": {
+    "io": "nprobe × 16384 × Cost_seq_read",
+    "cost_coarse": "1024 × 784 × CPU_dist_factor",
+    "cost_fine": "(nprobe × (N_total / 1024)) × 784 × CPU_dist_factor"
+  },
+  "given_params": {
+    "avg_bucket_size": 16384,
+    "nlist": 1024,
+    "dim": 784
+  },
+  "coefficients": {
+    "Cost_seq_read": 0.0,
+    "CPU_dist_factor": 0.00100050849651508
+  },
+  "metrics": {
+    "rmse_ms": 182026.97354029454,
+    "r2": 0.08581607485261755,
+    "n_samples": 180
+  },
+  "samples": [
+    {
+      "query_id": "partsupp_vector_nprobe32_v4",
+      "table": "partsupp_vector",
+      "nprobe": 32,
+      "n_total": 8000000,
+      "latency_ms": 420011.61888521165,
+      "x1_io": 524288,
+      "x2_cpu": 196802816.0
+    },
+    {
+      "query_id": "part_nprobe4_v5",
+      "table": "part",
+      "nprobe": 4,
+      "n_total": 2000000,
+      "latency_ms": 935.5430081486702,
+      "x1_io": 65536,
+      "x2_cpu": 6927816.0
+    },
+    {
+      "query_id": "part_vector_nprobe128_v4",
+      "table": "part_vector",
+      "nprobe": 128,
+      "n_total": 2000000,
+      "latency_ms": 105883.25332757086,
+      "x1_io": 2097152,
+      "x2_cpu": 196802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe4_v3",
+      "table": "part_vector",
+      "nprobe": 4,
+      "n_total": 2000000,
+      "latency_ms": 3019.274577498436,
+      "x1_io": 65536,
+      "x2_cpu": 6927816.0
+    },
+    {
+      "query_id": "part_nprobe32_v7",
+      "table": "part",
+      "nprobe": 32,
+      "n_total": 2000000,
+      "latency_ms": 4684.405080042779,
+      "x1_io": 524288,
+      "x2_cpu": 49802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe16_v4",
+      "table": "partsupp_vector",
+      "nprobe": 16,
+      "n_total": 8000000,
+      "latency_ms": 422715.02212714404,
+      "x1_io": 262144,
+      "x2_cpu": 98802816.0
+    },
+    {
+      "query_id": "part_nprobe128_v5",
+      "table": "part",
+      "nprobe": 128,
+      "n_total": 2000000,
+      "latency_ms": 16035.580170340836,
+      "x1_io": 2097152,
+      "x2_cpu": 196802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe16_v0",
+      "table": "part_vector",
+      "nprobe": 16,
+      "n_total": 2000000,
+      "latency_ms": 104660.47179698944,
+      "x1_io": 262144,
+      "x2_cpu": 25302816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe128_v5",
+      "table": "partsupp_vector",
+      "nprobe": 128,
+      "n_total": 8000000,
+      "latency_ms": 451207.48657360673,
+      "x1_io": 2097152,
+      "x2_cpu": 784802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe32_v9",
+      "table": "part_vector",
+      "nprobe": 32,
+      "n_total": 2000000,
+      "latency_ms": 107915.94956349581,
+      "x1_io": 524288,
+      "x2_cpu": 49802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe4_v1",
+      "table": "partsupp_vector",
+      "nprobe": 4,
+      "n_total": 8000000,
+      "latency_ms": 434050.15092808753,
+      "x1_io": 65536,
+      "x2_cpu": 25302816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe128_v4",
+      "table": "partsupp_vector",
+      "nprobe": 128,
+      "n_total": 8000000,
+      "latency_ms": 420579.36177775264,
+      "x1_io": 2097152,
+      "x2_cpu": 784802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe16_v6",
+      "table": "partsupp_vector",
+      "nprobe": 16,
+      "n_total": 8000000,
+      "latency_ms": 442987.14005202055,
+      "x1_io": 262144,
+      "x2_cpu": 98802816.0
+    },
+    {
+      "query_id": "part_nprobe16_v6",
+      "table": "part",
+      "nprobe": 16,
+      "n_total": 2000000,
+      "latency_ms": 2363.4986747056246,
+      "x1_io": 262144,
+      "x2_cpu": 25302816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe8_v8",
+      "table": "partsupp_vector",
+      "nprobe": 8,
+      "n_total": 8000000,
+      "latency_ms": 421059.39423665404,
+      "x1_io": 131072,
+      "x2_cpu": 49802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe64_v4",
+      "table": "partsupp_vector",
+      "nprobe": 64,
+      "n_total": 8000000,
+      "latency_ms": 425385.65344177186,
+      "x1_io": 1048576,
+      "x2_cpu": 392802816.0
+    },
+    {
+      "query_id": "part_nprobe8_v1",
+      "table": "part",
+      "nprobe": 8,
+      "n_total": 2000000,
+      "latency_ms": 1446.2356697767973,
+      "x1_io": 131072,
+      "x2_cpu": 13052816.0
+    },
+    {
+      "query_id": "part_vector_nprobe16_v8",
+      "table": "part_vector",
+      "nprobe": 16,
+      "n_total": 2000000,
+      "latency_ms": 107858.09869132936,
+      "x1_io": 262144,
+      "x2_cpu": 25302816.0
+    },
+    {
+      "query_id": "part_vector_nprobe128_v2",
+      "table": "part_vector",
+      "nprobe": 128,
+      "n_total": 2000000,
+      "latency_ms": 3012.62582372874,
+      "x1_io": 2097152,
+      "x2_cpu": 196802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe16_v2",
+      "table": "part_vector",
+      "nprobe": 16,
+      "n_total": 2000000,
+      "latency_ms": 2965.5793122947216,
+      "x1_io": 262144,
+      "x2_cpu": 25302816.0
+    },
+    {
+      "query_id": "part_vector_nprobe16_v9",
+      "table": "part_vector",
+      "nprobe": 16,
+      "n_total": 2000000,
+      "latency_ms": 2964.87008407712,
+      "x1_io": 262144,
+      "x2_cpu": 25302816.0
+    },
+    {
+      "query_id": "part_vector_nprobe128_v6",
+      "table": "part_vector",
+      "nprobe": 128,
+      "n_total": 2000000,
+      "latency_ms": 2970.836780965328,
+      "x1_io": 2097152,
+      "x2_cpu": 196802816.0
+    },
+    {
+      "query_id": "part_nprobe32_v3",
+      "table": "part",
+      "nprobe": 32,
+      "n_total": 2000000,
+      "latency_ms": 4153.00661418587,
+      "x1_io": 524288,
+      "x2_cpu": 49802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe64_v3",
+      "table": "partsupp_vector",
+      "nprobe": 64,
+      "n_total": 8000000,
+      "latency_ms": 420838.53201102465,
+      "x1_io": 1048576,
+      "x2_cpu": 392802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe4_v4",
+      "table": "part_vector",
+      "nprobe": 4,
+      "n_total": 2000000,
+      "latency_ms": 105506.2873410061,
+      "x1_io": 65536,
+      "x2_cpu": 6927816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe8_v0",
+      "table": "partsupp_vector",
+      "nprobe": 8,
+      "n_total": 8000000,
+      "latency_ms": 423634.053372778,
+      "x1_io": 131072,
+      "x2_cpu": 49802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe4_v4",
+      "table": "partsupp_vector",
+      "nprobe": 4,
+      "n_total": 8000000,
+      "latency_ms": 420953.3288711682,
+      "x1_io": 65536,
+      "x2_cpu": 25302816.0
+    },
+    {
+      "query_id": "part_vector_nprobe32_v5",
+      "table": "part_vector",
+      "nprobe": 32,
+      "n_total": 2000000,
+      "latency_ms": 107067.60313455015,
+      "x1_io": 524288,
+      "x2_cpu": 49802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe64_v4",
+      "table": "part_vector",
+      "nprobe": 64,
+      "n_total": 2000000,
+      "latency_ms": 3003.4723775461316,
+      "x1_io": 1048576,
+      "x2_cpu": 98802816.0
+    },
+    {
+      "query_id": "part_nprobe4_v1",
+      "table": "part",
+      "nprobe": 4,
+      "n_total": 2000000,
+      "latency_ms": 707.1647774428129,
+      "x1_io": 65536,
+      "x2_cpu": 6927816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe4_v7",
+      "table": "partsupp_vector",
+      "nprobe": 4,
+      "n_total": 8000000,
+      "latency_ms": 463296.209666878,
+      "x1_io": 65536,
+      "x2_cpu": 25302816.0
+    },
+    {
+      "query_id": "part_nprobe64_v2",
+      "table": "part",
+      "nprobe": 64,
+      "n_total": 2000000,
+      "latency_ms": 9654.999978840351,
+      "x1_io": 1048576,
+      "x2_cpu": 98802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe16_v1",
+      "table": "partsupp_vector",
+      "nprobe": 16,
+      "n_total": 8000000,
+      "latency_ms": 423168.6019478366,
+      "x1_io": 262144,
+      "x2_cpu": 98802816.0
+    },
+    {
+      "query_id": "part_nprobe64_v4",
+      "table": "part",
+      "nprobe": 64,
+      "n_total": 2000000,
+      "latency_ms": 8810.569424182177,
+      "x1_io": 1048576,
+      "x2_cpu": 98802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe8_v6",
+      "table": "part_vector",
+      "nprobe": 8,
+      "n_total": 2000000,
+      "latency_ms": 104958.29891227186,
+      "x1_io": 131072,
+      "x2_cpu": 13052816.0
+    },
+    {
+      "query_id": "part_vector_nprobe128_v5",
+      "table": "part_vector",
+      "nprobe": 128,
+      "n_total": 2000000,
+      "latency_ms": 3003.142253495753,
+      "x1_io": 2097152,
+      "x2_cpu": 196802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe128_v8",
+      "table": "partsupp_vector",
+      "nprobe": 128,
+      "n_total": 8000000,
+      "latency_ms": 420533.13400782645,
+      "x1_io": 2097152,
+      "x2_cpu": 784802816.0
+    },
+    {
+      "query_id": "part_nprobe64_v5",
+      "table": "part",
+      "nprobe": 64,
+      "n_total": 2000000,
+      "latency_ms": 8843.768446706235,
+      "x1_io": 1048576,
+      "x2_cpu": 98802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe4_v1",
+      "table": "part_vector",
+      "nprobe": 4,
+      "n_total": 2000000,
+      "latency_ms": 104638.13064992428,
+      "x1_io": 65536,
+      "x2_cpu": 6927816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe64_v0",
+      "table": "partsupp_vector",
+      "nprobe": 64,
+      "n_total": 8000000,
+      "latency_ms": 421420.82934081554,
+      "x1_io": 1048576,
+      "x2_cpu": 392802816.0
+    },
+    {
+      "query_id": "part_nprobe8_v8",
+      "table": "part",
+      "nprobe": 8,
+      "n_total": 2000000,
+      "latency_ms": 1156.0485158115625,
+      "x1_io": 131072,
+      "x2_cpu": 13052816.0
+    },
+    {
+      "query_id": "part_vector_nprobe64_v9",
+      "table": "part_vector",
+      "nprobe": 64,
+      "n_total": 2000000,
+      "latency_ms": 108048.28575160354,
+      "x1_io": 1048576,
+      "x2_cpu": 98802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe4_v5",
+      "table": "partsupp_vector",
+      "nprobe": 4,
+      "n_total": 8000000,
+      "latency_ms": 421788.9533760026,
+      "x1_io": 65536,
+      "x2_cpu": 25302816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe32_v9",
+      "table": "partsupp_vector",
+      "nprobe": 32,
+      "n_total": 8000000,
+      "latency_ms": 423995.2276227996,
+      "x1_io": 524288,
+      "x2_cpu": 196802816.0
+    },
+    {
+      "query_id": "part_nprobe128_v3",
+      "table": "part",
+      "nprobe": 128,
+      "n_total": 2000000,
+      "latency_ms": 16799.485026858747,
+      "x1_io": 2097152,
+      "x2_cpu": 196802816.0
+    },
+    {
+      "query_id": "part_nprobe8_v5",
+      "table": "part",
+      "nprobe": 8,
+      "n_total": 2000000,
+      "latency_ms": 845.2869337052107,
+      "x1_io": 131072,
+      "x2_cpu": 13052816.0
+    },
+    {
+      "query_id": "part_vector_nprobe64_v5",
+      "table": "part_vector",
+      "nprobe": 64,
+      "n_total": 2000000,
+      "latency_ms": 125766.74928888679,
+      "x1_io": 1048576,
+      "x2_cpu": 98802816.0
+    },
+    {
+      "query_id": "part_nprobe128_v9",
+      "table": "part",
+      "nprobe": 128,
+      "n_total": 2000000,
+      "latency_ms": 9293.435498140752,
+      "x1_io": 2097152,
+      "x2_cpu": 196802816.0
+    },
+    {
+      "query_id": "part_nprobe128_v4",
+      "table": "part",
+      "nprobe": 128,
+      "n_total": 2000000,
+      "latency_ms": 9869.26597636193,
+      "x1_io": 2097152,
+      "x2_cpu": 196802816.0
+    },
+    {
+      "query_id": "part_nprobe32_v2",
+      "table": "part",
+      "nprobe": 32,
+      "n_total": 2000000,
+      "latency_ms": 1524.0685632452369,
+      "x1_io": 524288,
+      "x2_cpu": 49802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe8_v9",
+      "table": "part_vector",
+      "nprobe": 8,
+      "n_total": 2000000,
+      "latency_ms": 3050.6974095478654,
+      "x1_io": 131072,
+      "x2_cpu": 13052816.0
+    },
+    {
+      "query_id": "part_vector_nprobe4_v5",
+      "table": "part_vector",
+      "nprobe": 4,
+      "n_total": 2000000,
+      "latency_ms": 3000.497099943459,
+      "x1_io": 65536,
+      "x2_cpu": 6927816.0
+    },
+    {
+      "query_id": "part_nprobe64_v1",
+      "table": "part",
+      "nprobe": 64,
+      "n_total": 2000000,
+      "latency_ms": 4750.432330183685,
+      "x1_io": 1048576,
+      "x2_cpu": 98802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe16_v7",
+      "table": "part_vector",
+      "nprobe": 16,
+      "n_total": 2000000,
+      "latency_ms": 3012.012247927487,
+      "x1_io": 262144,
+      "x2_cpu": 25302816.0
+    },
+    {
+      "query_id": "part_nprobe16_v0",
+      "table": "part",
+      "nprobe": 16,
+      "n_total": 2000000,
+      "latency_ms": 197.42455519735813,
+      "x1_io": 262144,
+      "x2_cpu": 25302816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe4_v8",
+      "table": "partsupp_vector",
+      "nprobe": 4,
+      "n_total": 8000000,
+      "latency_ms": 423554.8046892509,
+      "x1_io": 65536,
+      "x2_cpu": 25302816.0
+    },
+    {
+      "query_id": "part_vector_nprobe4_v2",
+      "table": "part_vector",
+      "nprobe": 4,
+      "n_total": 2000000,
+      "latency_ms": 105105.79103883356,
+      "x1_io": 65536,
+      "x2_cpu": 6927816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe128_v3",
+      "table": "partsupp_vector",
+      "nprobe": 128,
+      "n_total": 8000000,
+      "latency_ms": 469376.15724559873,
+      "x1_io": 2097152,
+      "x2_cpu": 784802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe32_v7",
+      "table": "part_vector",
+      "nprobe": 32,
+      "n_total": 2000000,
+      "latency_ms": 106930.24834804237,
+      "x1_io": 524288,
+      "x2_cpu": 49802816.0
+    },
+    {
+      "query_id": "part_nprobe4_v3",
+      "table": "part",
+      "nprobe": 4,
+      "n_total": 2000000,
+      "latency_ms": 878.3312570303679,
+      "x1_io": 65536,
+      "x2_cpu": 6927816.0
+    },
+    {
+      "query_id": "part_nprobe4_v6",
+      "table": "part",
+      "nprobe": 4,
+      "n_total": 2000000,
+      "latency_ms": 585.7570571824908,
+      "x1_io": 65536,
+      "x2_cpu": 6927816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe32_v8",
+      "table": "partsupp_vector",
+      "nprobe": 32,
+      "n_total": 8000000,
+      "latency_ms": 423767.8144937381,
+      "x1_io": 524288,
+      "x2_cpu": 196802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe64_v0",
+      "table": "part_vector",
+      "nprobe": 64,
+      "n_total": 2000000,
+      "latency_ms": 105856.60970769823,
+      "x1_io": 1048576,
+      "x2_cpu": 98802816.0
+    },
+    {
+      "query_id": "part_nprobe8_v6",
+      "table": "part",
+      "nprobe": 8,
+      "n_total": 2000000,
+      "latency_ms": 1118.2078151032329,
+      "x1_io": 131072,
+      "x2_cpu": 13052816.0
+    },
+    {
+      "query_id": "part_vector_nprobe4_v8",
+      "table": "part_vector",
+      "nprobe": 4,
+      "n_total": 2000000,
+      "latency_ms": 2935.9065033495426,
+      "x1_io": 65536,
+      "x2_cpu": 6927816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe16_v7",
+      "table": "partsupp_vector",
+      "nprobe": 16,
+      "n_total": 8000000,
+      "latency_ms": 419152.549454011,
+      "x1_io": 262144,
+      "x2_cpu": 98802816.0
+    },
+    {
+      "query_id": "part_nprobe64_v9",
+      "table": "part",
+      "nprobe": 64,
+      "n_total": 2000000,
+      "latency_ms": 6725.609955377877,
+      "x1_io": 1048576,
+      "x2_cpu": 98802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe128_v0",
+      "table": "partsupp_vector",
+      "nprobe": 128,
+      "n_total": 8000000,
+      "latency_ms": 421381.433930248,
+      "x1_io": 2097152,
+      "x2_cpu": 784802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe64_v6",
+      "table": "part_vector",
+      "nprobe": 64,
+      "n_total": 2000000,
+      "latency_ms": 108097.25668188184,
+      "x1_io": 1048576,
+      "x2_cpu": 98802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe4_v0",
+      "table": "part_vector",
+      "nprobe": 4,
+      "n_total": 2000000,
+      "latency_ms": 3029.141752049327,
+      "x1_io": 65536,
+      "x2_cpu": 6927816.0
+    },
+    {
+      "query_id": "part_nprobe32_v5",
+      "table": "part",
+      "nprobe": 32,
+      "n_total": 2000000,
+      "latency_ms": 3565.181211568415,
+      "x1_io": 524288,
+      "x2_cpu": 49802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe32_v5",
+      "table": "partsupp_vector",
+      "nprobe": 32,
+      "n_total": 8000000,
+      "latency_ms": 420738.1385015324,
+      "x1_io": 524288,
+      "x2_cpu": 196802816.0
+    },
+    {
+      "query_id": "part_nprobe64_v8",
+      "table": "part",
+      "nprobe": 64,
+      "n_total": 2000000,
+      "latency_ms": 6741.747898980975,
+      "x1_io": 1048576,
+      "x2_cpu": 98802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe8_v6",
+      "table": "partsupp_vector",
+      "nprobe": 8,
+      "n_total": 8000000,
+      "latency_ms": 421199.7223459184,
+      "x1_io": 131072,
+      "x2_cpu": 49802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe64_v8",
+      "table": "part_vector",
+      "nprobe": 64,
+      "n_total": 2000000,
+      "latency_ms": 104860.79233326018,
+      "x1_io": 1048576,
+      "x2_cpu": 98802816.0
+    },
+    {
+      "query_id": "part_nprobe128_v6",
+      "table": "part",
+      "nprobe": 128,
+      "n_total": 2000000,
+      "latency_ms": 15606.731460429728,
+      "x1_io": 2097152,
+      "x2_cpu": 196802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe8_v1",
+      "table": "partsupp_vector",
+      "nprobe": 8,
+      "n_total": 8000000,
+      "latency_ms": 457101.8006345257,
+      "x1_io": 131072,
+      "x2_cpu": 49802816.0
+    },
+    {
+      "query_id": "part_nprobe4_v9",
+      "table": "part",
+      "nprobe": 4,
+      "n_total": 2000000,
+      "latency_ms": 631.2134740874171,
+      "x1_io": 65536,
+      "x2_cpu": 6927816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe128_v7",
+      "table": "partsupp_vector",
+      "nprobe": 128,
+      "n_total": 8000000,
+      "latency_ms": 468676.4310505241,
+      "x1_io": 2097152,
+      "x2_cpu": 784802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe16_v5",
+      "table": "partsupp_vector",
+      "nprobe": 16,
+      "n_total": 8000000,
+      "latency_ms": 421361.6137104109,
+      "x1_io": 262144,
+      "x2_cpu": 98802816.0
+    },
+    {
+      "query_id": "part_nprobe32_v0",
+      "table": "part",
+      "nprobe": 32,
+      "n_total": 2000000,
+      "latency_ms": 4582.699419930577,
+      "x1_io": 524288,
+      "x2_cpu": 49802816.0
+    },
+    {
+      "query_id": "part_nprobe16_v5",
+      "table": "part",
+      "nprobe": 16,
+      "n_total": 2000000,
+      "latency_ms": 2125.6443057209253,
+      "x1_io": 262144,
+      "x2_cpu": 25302816.0
+    },
+    {
+      "query_id": "part_nprobe4_v4",
+      "table": "part",
+      "nprobe": 4,
+      "n_total": 2000000,
+      "latency_ms": 567.844508215785,
+      "x1_io": 65536,
+      "x2_cpu": 6927816.0
+    },
+    {
+      "query_id": "part_vector_nprobe16_v3",
+      "table": "part_vector",
+      "nprobe": 16,
+      "n_total": 2000000,
+      "latency_ms": 126932.04619549215,
+      "x1_io": 262144,
+      "x2_cpu": 25302816.0
+    },
+    {
+      "query_id": "part_vector_nprobe4_v6",
+      "table": "part_vector",
+      "nprobe": 4,
+      "n_total": 2000000,
+      "latency_ms": 2878.497282974422,
+      "x1_io": 65536,
+      "x2_cpu": 6927816.0
+    },
+    {
+      "query_id": "part_nprobe4_v2",
+      "table": "part",
+      "nprobe": 4,
+      "n_total": 2000000,
+      "latency_ms": 559.9455144256353,
+      "x1_io": 65536,
+      "x2_cpu": 6927816.0
+    },
+    {
+      "query_id": "part_vector_nprobe64_v7",
+      "table": "part_vector",
+      "nprobe": 64,
+      "n_total": 2000000,
+      "latency_ms": 2897.6441714912653,
+      "x1_io": 1048576,
+      "x2_cpu": 98802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe32_v3",
+      "table": "part_vector",
+      "nprobe": 32,
+      "n_total": 2000000,
+      "latency_ms": 2886.443603783846,
+      "x1_io": 524288,
+      "x2_cpu": 49802816.0
+    },
+    {
+      "query_id": "part_nprobe128_v1",
+      "table": "part",
+      "nprobe": 128,
+      "n_total": 2000000,
+      "latency_ms": 13990.28201494366,
+      "x1_io": 2097152,
+      "x2_cpu": 196802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe128_v1",
+      "table": "partsupp_vector",
+      "nprobe": 128,
+      "n_total": 8000000,
+      "latency_ms": 417686.85327190906,
+      "x1_io": 2097152,
+      "x2_cpu": 784802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe128_v1",
+      "table": "part_vector",
+      "nprobe": 128,
+      "n_total": 2000000,
+      "latency_ms": 102425.96236616373,
+      "x1_io": 2097152,
+      "x2_cpu": 196802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe32_v1",
+      "table": "partsupp_vector",
+      "nprobe": 32,
+      "n_total": 8000000,
+      "latency_ms": 422690.8013978973,
+      "x1_io": 524288,
+      "x2_cpu": 196802816.0
+    },
+    {
+      "query_id": "part_nprobe4_v0",
+      "table": "part",
+      "nprobe": 4,
+      "n_total": 2000000,
+      "latency_ms": 799.3155801668763,
+      "x1_io": 65536,
+      "x2_cpu": 6927816.0
+    },
+    {
+      "query_id": "part_vector_nprobe8_v3",
+      "table": "part_vector",
+      "nprobe": 8,
+      "n_total": 2000000,
+      "latency_ms": 102618.68751514703,
+      "x1_io": 131072,
+      "x2_cpu": 13052816.0
+    },
+    {
+      "query_id": "part_nprobe16_v2",
+      "table": "part",
+      "nprobe": 16,
+      "n_total": 2000000,
+      "latency_ms": 1796.4643146842718,
+      "x1_io": 262144,
+      "x2_cpu": 25302816.0
+    },
+    {
+      "query_id": "part_nprobe64_v3",
+      "table": "part",
+      "nprobe": 64,
+      "n_total": 2000000,
+      "latency_ms": 7869.18427888304,
+      "x1_io": 1048576,
+      "x2_cpu": 98802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe32_v4",
+      "table": "part_vector",
+      "nprobe": 32,
+      "n_total": 2000000,
+      "latency_ms": 3001.699903048575,
+      "x1_io": 524288,
+      "x2_cpu": 49802816.0
+    },
+    {
+      "query_id": "part_nprobe8_v2",
+      "table": "part",
+      "nprobe": 8,
+      "n_total": 2000000,
+      "latency_ms": 20.70111408829689,
+      "x1_io": 131072,
+      "x2_cpu": 13052816.0
+    },
+    {
+      "query_id": "part_nprobe128_v0",
+      "table": "part",
+      "nprobe": 128,
+      "n_total": 2000000,
+      "latency_ms": 13343.2528199628,
+      "x1_io": 2097152,
+      "x2_cpu": 196802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe128_v8",
+      "table": "part_vector",
+      "nprobe": 128,
+      "n_total": 2000000,
+      "latency_ms": 2957.7955305576324,
+      "x1_io": 2097152,
+      "x2_cpu": 196802816.0
+    },
+    {
+      "query_id": "part_nprobe16_v4",
+      "table": "part",
+      "nprobe": 16,
+      "n_total": 2000000,
+      "latency_ms": 952.9503444209695,
+      "x1_io": 262144,
+      "x2_cpu": 25302816.0
+    },
+    {
+      "query_id": "part_vector_nprobe4_v9",
+      "table": "part_vector",
+      "nprobe": 4,
+      "n_total": 2000000,
+      "latency_ms": 3032.018861733377,
+      "x1_io": 65536,
+      "x2_cpu": 6927816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe32_v3",
+      "table": "partsupp_vector",
+      "nprobe": 32,
+      "n_total": 8000000,
+      "latency_ms": 419557.2346188128,
+      "x1_io": 524288,
+      "x2_cpu": 196802816.0
+    },
+    {
+      "query_id": "part_nprobe16_v1",
+      "table": "part",
+      "nprobe": 16,
+      "n_total": 2000000,
+      "latency_ms": 2620.766538195312,
+      "x1_io": 262144,
+      "x2_cpu": 25302816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe4_v6",
+      "table": "partsupp_vector",
+      "nprobe": 4,
+      "n_total": 8000000,
+      "latency_ms": 418461.6168132052,
+      "x1_io": 65536,
+      "x2_cpu": 25302816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe64_v5",
+      "table": "partsupp_vector",
+      "nprobe": 64,
+      "n_total": 8000000,
+      "latency_ms": 423252.7187280357,
+      "x1_io": 1048576,
+      "x2_cpu": 392802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe8_v2",
+      "table": "part_vector",
+      "nprobe": 8,
+      "n_total": 2000000,
+      "latency_ms": 104286.11087519675,
+      "x1_io": 131072,
+      "x2_cpu": 13052816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe32_v7",
+      "table": "partsupp_vector",
+      "nprobe": 32,
+      "n_total": 8000000,
+      "latency_ms": 424153.70885655284,
+      "x1_io": 524288,
+      "x2_cpu": 196802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe8_v4",
+      "table": "partsupp_vector",
+      "nprobe": 8,
+      "n_total": 8000000,
+      "latency_ms": 439887.2738517821,
+      "x1_io": 131072,
+      "x2_cpu": 49802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe4_v7",
+      "table": "part_vector",
+      "nprobe": 4,
+      "n_total": 2000000,
+      "latency_ms": 103719.41504534334,
+      "x1_io": 65536,
+      "x2_cpu": 6927816.0
+    },
+    {
+      "query_id": "part_nprobe64_v6",
+      "table": "part",
+      "nprobe": 64,
+      "n_total": 2000000,
+      "latency_ms": 6850.3609811887145,
+      "x1_io": 1048576,
+      "x2_cpu": 98802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe32_v6",
+      "table": "partsupp_vector",
+      "nprobe": 32,
+      "n_total": 8000000,
+      "latency_ms": 420615.16959872097,
+      "x1_io": 524288,
+      "x2_cpu": 196802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe8_v1",
+      "table": "part_vector",
+      "nprobe": 8,
+      "n_total": 2000000,
+      "latency_ms": 102226.94123256952,
+      "x1_io": 131072,
+      "x2_cpu": 13052816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe128_v2",
+      "table": "partsupp_vector",
+      "nprobe": 128,
+      "n_total": 8000000,
+      "latency_ms": 421992.08691809326,
+      "x1_io": 2097152,
+      "x2_cpu": 784802816.0
+    },
+    {
+      "query_id": "part_nprobe8_v4",
+      "table": "part",
+      "nprobe": 8,
+      "n_total": 2000000,
+      "latency_ms": 1307.3166543617845,
+      "x1_io": 131072,
+      "x2_cpu": 13052816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe8_v3",
+      "table": "partsupp_vector",
+      "nprobe": 8,
+      "n_total": 8000000,
+      "latency_ms": 425518.1329064071,
+      "x1_io": 131072,
+      "x2_cpu": 49802816.0
+    },
+    {
+      "query_id": "part_nprobe32_v6",
+      "table": "part",
+      "nprobe": 32,
+      "n_total": 2000000,
+      "latency_ms": 3688.7331828475,
+      "x1_io": 524288,
+      "x2_cpu": 49802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe32_v6",
+      "table": "part_vector",
+      "nprobe": 32,
+      "n_total": 2000000,
+      "latency_ms": 104037.80208248645,
+      "x1_io": 524288,
+      "x2_cpu": 49802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe64_v8",
+      "table": "partsupp_vector",
+      "nprobe": 64,
+      "n_total": 8000000,
+      "latency_ms": 421786.13545838743,
+      "x1_io": 1048576,
+      "x2_cpu": 392802816.0
+    },
+    {
+      "query_id": "part_nprobe64_v0",
+      "table": "part",
+      "nprobe": 64,
+      "n_total": 2000000,
+      "latency_ms": 8682.771272026002,
+      "x1_io": 1048576,
+      "x2_cpu": 98802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe16_v3",
+      "table": "partsupp_vector",
+      "nprobe": 16,
+      "n_total": 8000000,
+      "latency_ms": 416733.37155301124,
+      "x1_io": 262144,
+      "x2_cpu": 98802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe64_v9",
+      "table": "partsupp_vector",
+      "nprobe": 64,
+      "n_total": 8000000,
+      "latency_ms": 467661.7910563946,
+      "x1_io": 1048576,
+      "x2_cpu": 392802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe4_v3",
+      "table": "partsupp_vector",
+      "nprobe": 4,
+      "n_total": 8000000,
+      "latency_ms": 460652.5516239926,
+      "x1_io": 65536,
+      "x2_cpu": 25302816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe16_v2",
+      "table": "partsupp_vector",
+      "nprobe": 16,
+      "n_total": 8000000,
+      "latency_ms": 426110.3873066604,
+      "x1_io": 262144,
+      "x2_cpu": 98802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe8_v8",
+      "table": "part_vector",
+      "nprobe": 8,
+      "n_total": 2000000,
+      "latency_ms": 125845.34159768373,
+      "x1_io": 131072,
+      "x2_cpu": 13052816.0
+    },
+    {
+      "query_id": "part_nprobe32_v1",
+      "table": "part",
+      "nprobe": 32,
+      "n_total": 2000000,
+      "latency_ms": 5287.353076040745,
+      "x1_io": 524288,
+      "x2_cpu": 49802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe8_v4",
+      "table": "part_vector",
+      "nprobe": 8,
+      "n_total": 2000000,
+      "latency_ms": 3160.7213243842125,
+      "x1_io": 131072,
+      "x2_cpu": 13052816.0
+    },
+    {
+      "query_id": "part_nprobe16_v9",
+      "table": "part",
+      "nprobe": 16,
+      "n_total": 2000000,
+      "latency_ms": 1410.208698362112,
+      "x1_io": 262144,
+      "x2_cpu": 25302816.0
+    },
+    {
+      "query_id": "part_nprobe128_v2",
+      "table": "part",
+      "nprobe": 128,
+      "n_total": 2000000,
+      "latency_ms": 14206.879365257919,
+      "x1_io": 2097152,
+      "x2_cpu": 196802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe32_v1",
+      "table": "part_vector",
+      "nprobe": 32,
+      "n_total": 2000000,
+      "latency_ms": 2756.044805981219,
+      "x1_io": 524288,
+      "x2_cpu": 49802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe8_v7",
+      "table": "part_vector",
+      "nprobe": 8,
+      "n_total": 2000000,
+      "latency_ms": 2166.4392249658704,
+      "x1_io": 131072,
+      "x2_cpu": 13052816.0
+    },
+    {
+      "query_id": "part_vector_nprobe32_v8",
+      "table": "part_vector",
+      "nprobe": 32,
+      "n_total": 2000000,
+      "latency_ms": 1958.226041868329,
+      "x1_io": 524288,
+      "x2_cpu": 49802816.0
+    },
+    {
+      "query_id": "part_nprobe64_v7",
+      "table": "part",
+      "nprobe": 64,
+      "n_total": 2000000,
+      "latency_ms": 5419.052696786821,
+      "x1_io": 1048576,
+      "x2_cpu": 98802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe64_v3",
+      "table": "part_vector",
+      "nprobe": 64,
+      "n_total": 2000000,
+      "latency_ms": 1969.2161018028855,
+      "x1_io": 1048576,
+      "x2_cpu": 98802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe16_v8",
+      "table": "partsupp_vector",
+      "nprobe": 16,
+      "n_total": 8000000,
+      "latency_ms": 414279.581990093,
+      "x1_io": 262144,
+      "x2_cpu": 98802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe16_v5",
+      "table": "part_vector",
+      "nprobe": 16,
+      "n_total": 2000000,
+      "latency_ms": 102773.15936796367,
+      "x1_io": 262144,
+      "x2_cpu": 25302816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe64_v6",
+      "table": "partsupp_vector",
+      "nprobe": 64,
+      "n_total": 8000000,
+      "latency_ms": 418914.4653091207,
+      "x1_io": 1048576,
+      "x2_cpu": 392802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe32_v0",
+      "table": "part_vector",
+      "nprobe": 32,
+      "n_total": 2000000,
+      "latency_ms": 105929.134093225,
+      "x1_io": 524288,
+      "x2_cpu": 49802816.0
+    },
+    {
+      "query_id": "part_nprobe16_v7",
+      "table": "part",
+      "nprobe": 16,
+      "n_total": 2000000,
+      "latency_ms": 2032.0619866251945,
+      "x1_io": 262144,
+      "x2_cpu": 25302816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe32_v2",
+      "table": "partsupp_vector",
+      "nprobe": 32,
+      "n_total": 8000000,
+      "latency_ms": 414810.01387163997,
+      "x1_io": 524288,
+      "x2_cpu": 196802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe8_v0",
+      "table": "part_vector",
+      "nprobe": 8,
+      "n_total": 2000000,
+      "latency_ms": 105012.54596095532,
+      "x1_io": 131072,
+      "x2_cpu": 13052816.0
+    },
+    {
+      "query_id": "part_vector_nprobe128_v3",
+      "table": "part_vector",
+      "nprobe": 128,
+      "n_total": 2000000,
+      "latency_ms": 2234.1250283643603,
+      "x1_io": 2097152,
+      "x2_cpu": 196802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe4_v9",
+      "table": "partsupp_vector",
+      "nprobe": 4,
+      "n_total": 8000000,
+      "latency_ms": 436272.17377442867,
+      "x1_io": 65536,
+      "x2_cpu": 25302816.0
+    },
+    {
+      "query_id": "part_vector_nprobe16_v6",
+      "table": "part_vector",
+      "nprobe": 16,
+      "n_total": 2000000,
+      "latency_ms": 104961.97357960045,
+      "x1_io": 262144,
+      "x2_cpu": 25302816.0
+    },
+    {
+      "query_id": "part_nprobe128_v7",
+      "table": "part",
+      "nprobe": 128,
+      "n_total": 2000000,
+      "latency_ms": 17272.486007772386,
+      "x1_io": 2097152,
+      "x2_cpu": 196802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe128_v0",
+      "table": "part_vector",
+      "nprobe": 128,
+      "n_total": 2000000,
+      "latency_ms": 3088.803207501769,
+      "x1_io": 2097152,
+      "x2_cpu": 196802816.0
+    },
+    {
+      "query_id": "part_nprobe16_v8",
+      "table": "part",
+      "nprobe": 16,
+      "n_total": 2000000,
+      "latency_ms": 1484.6040913835168,
+      "x1_io": 262144,
+      "x2_cpu": 25302816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe8_v9",
+      "table": "partsupp_vector",
+      "nprobe": 8,
+      "n_total": 8000000,
+      "latency_ms": 414182.3283061385,
+      "x1_io": 131072,
+      "x2_cpu": 49802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe128_v7",
+      "table": "part_vector",
+      "nprobe": 128,
+      "n_total": 2000000,
+      "latency_ms": 103260.88673435152,
+      "x1_io": 2097152,
+      "x2_cpu": 196802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe128_v9",
+      "table": "partsupp_vector",
+      "nprobe": 128,
+      "n_total": 8000000,
+      "latency_ms": 427888.40884994715,
+      "x1_io": 2097152,
+      "x2_cpu": 784802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe128_v9",
+      "table": "part_vector",
+      "nprobe": 128,
+      "n_total": 2000000,
+      "latency_ms": 105418.96362882107,
+      "x1_io": 2097152,
+      "x2_cpu": 196802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe4_v0",
+      "table": "partsupp_vector",
+      "nprobe": 4,
+      "n_total": 8000000,
+      "latency_ms": 440777.5017404929,
+      "x1_io": 65536,
+      "x2_cpu": 25302816.0
+    },
+    {
+      "query_id": "part_nprobe32_v9",
+      "table": "part",
+      "nprobe": 32,
+      "n_total": 2000000,
+      "latency_ms": 3164.1849679872394,
+      "x1_io": 524288,
+      "x2_cpu": 49802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe32_v2",
+      "table": "part_vector",
+      "nprobe": 32,
+      "n_total": 2000000,
+      "latency_ms": 104982.90992993861,
+      "x1_io": 524288,
+      "x2_cpu": 49802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe4_v2",
+      "table": "partsupp_vector",
+      "nprobe": 4,
+      "n_total": 8000000,
+      "latency_ms": 420528.3146528527,
+      "x1_io": 65536,
+      "x2_cpu": 25302816.0
+    },
+    {
+      "query_id": "part_vector_nprobe64_v1",
+      "table": "part_vector",
+      "nprobe": 64,
+      "n_total": 2000000,
+      "latency_ms": 103542.74590220302,
+      "x1_io": 1048576,
+      "x2_cpu": 98802816.0
+    },
+    {
+      "query_id": "part_nprobe16_v3",
+      "table": "part",
+      "nprobe": 16,
+      "n_total": 2000000,
+      "latency_ms": 2267.690161243081,
+      "x1_io": 262144,
+      "x2_cpu": 25302816.0
+    },
+    {
+      "query_id": "part_vector_nprobe16_v4",
+      "table": "part_vector",
+      "nprobe": 16,
+      "n_total": 2000000,
+      "latency_ms": 2384.494226425886,
+      "x1_io": 262144,
+      "x2_cpu": 25302816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe8_v5",
+      "table": "partsupp_vector",
+      "nprobe": 8,
+      "n_total": 8000000,
+      "latency_ms": 416793.60883962363,
+      "x1_io": 131072,
+      "x2_cpu": 49802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe8_v5",
+      "table": "part_vector",
+      "nprobe": 8,
+      "n_total": 2000000,
+      "latency_ms": 102681.197010912,
+      "x1_io": 131072,
+      "x2_cpu": 13052816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe16_v0",
+      "table": "partsupp_vector",
+      "nprobe": 16,
+      "n_total": 8000000,
+      "latency_ms": 422231.4985617995,
+      "x1_io": 262144,
+      "x2_cpu": 98802816.0
+    },
+    {
+      "query_id": "part_nprobe32_v4",
+      "table": "part",
+      "nprobe": 32,
+      "n_total": 2000000,
+      "latency_ms": 3893.0699098855257,
+      "x1_io": 524288,
+      "x2_cpu": 49802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe64_v7",
+      "table": "partsupp_vector",
+      "nprobe": 64,
+      "n_total": 8000000,
+      "latency_ms": 423712.93783281,
+      "x1_io": 1048576,
+      "x2_cpu": 392802816.0
+    },
+    {
+      "query_id": "part_nprobe8_v3",
+      "table": "part",
+      "nprobe": 8,
+      "n_total": 2000000,
+      "latency_ms": 1315.6597763299942,
+      "x1_io": 131072,
+      "x2_cpu": 13052816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe64_v1",
+      "table": "partsupp_vector",
+      "nprobe": 64,
+      "n_total": 8000000,
+      "latency_ms": 448873.8524671644,
+      "x1_io": 1048576,
+      "x2_cpu": 392802816.0
+    },
+    {
+      "query_id": "part_vector_nprobe16_v1",
+      "table": "part_vector",
+      "nprobe": 16,
+      "n_total": 2000000,
+      "latency_ms": 114860.14711018652,
+      "x1_io": 262144,
+      "x2_cpu": 25302816.0
+    },
+    {
+      "query_id": "part_nprobe8_v7",
+      "table": "part",
+      "nprobe": 8,
+      "n_total": 2000000,
+      "latency_ms": 1671.3714553043246,
+      "x1_io": 131072,
+      "x2_cpu": 13052816.0
+    },
+    {
+      "query_id": "part_nprobe4_v7",
+      "table": "part",
+      "nprobe": 4,
+      "n_total": 2000000,
+      "latency_ms": 131.0813957825303,
+      "x1_io": 65536,
+      "x2_cpu": 6927816.0
+    },
+    {
+      "query_id": "part_nprobe4_v8",
+      "table": "part",
+      "nprobe": 4,
+      "n_total": 2000000,
+      "latency_ms": 759.5067024230957,
+      "x1_io": 65536,
+      "x2_cpu": 6927816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe8_v7",
+      "table": "partsupp_vector",
+      "nprobe": 8,
+      "n_total": 8000000,
+      "latency_ms": 449700.6434360519,
+      "x1_io": 131072,
+      "x2_cpu": 49802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe16_v9",
+      "table": "partsupp_vector",
+      "nprobe": 16,
+      "n_total": 8000000,
+      "latency_ms": 432103.06195914745,
+      "x1_io": 262144,
+      "x2_cpu": 98802816.0
+    },
+    {
+      "query_id": "part_nprobe32_v8",
+      "table": "part",
+      "nprobe": 32,
+      "n_total": 2000000,
+      "latency_ms": 4824.100295081735,
+      "x1_io": 524288,
+      "x2_cpu": 49802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe8_v2",
+      "table": "partsupp_vector",
+      "nprobe": 8,
+      "n_total": 8000000,
+      "latency_ms": 429333.08347314596,
+      "x1_io": 131072,
+      "x2_cpu": 49802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe64_v2",
+      "table": "partsupp_vector",
+      "nprobe": 64,
+      "n_total": 8000000,
+      "latency_ms": 421569.2358100787,
+      "x1_io": 1048576,
+      "x2_cpu": 392802816.0
+    },
+    {
+      "query_id": "part_nprobe128_v8",
+      "table": "part",
+      "nprobe": 128,
+      "n_total": 2000000,
+      "latency_ms": 13957.630380988121,
+      "x1_io": 2097152,
+      "x2_cpu": 196802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe128_v6",
+      "table": "partsupp_vector",
+      "nprobe": 128,
+      "n_total": 8000000,
+      "latency_ms": 420116.09265208244,
+      "x1_io": 2097152,
+      "x2_cpu": 784802816.0
+    },
+    {
+      "query_id": "partsupp_vector_nprobe32_v0",
+      "table": "partsupp_vector",
+      "nprobe": 32,
+      "n_total": 8000000,
+      "latency_ms": 421785.6877045706,
+      "x1_io": 524288,
+      "x2_cpu": 196802816.0
+    },
+    {
+      "query_id": "part_nprobe8_v0",
+      "table": "part",
+      "nprobe": 8,
+      "n_total": 2000000,
+      "latency_ms": 1590.2734380215406,
+      "x1_io": 131072,
+      "x2_cpu": 13052816.0
+    },
+    {
+      "query_id": "part_vector_nprobe64_v2",
+      "table": "part_vector",
+      "nprobe": 64,
+      "n_total": 2000000,
+      "latency_ms": 123087.97319512814,
+      "x1_io": 1048576,
+      "x2_cpu": 98802816.0
+    },
+    {
+      "query_id": "part_nprobe8_v9",
+      "table": "part",
+      "nprobe": 8,
+      "n_total": 2000000,
+      "latency_ms": 1530.7068889960647,
+      "x1_io": 131072,
+      "x2_cpu": 13052816.0
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "formula": {
+    "io": "buildRows * buildRowSize * (ioFactor + writeFactor)",
+    "cpu": "buildRows*buildFilters*cpuFactor + buildRows*nKeys*cpuFactor + buildRows*buildRowSize*memFactor + buildRows*cpuFactor + probeRows*probeFilters*cpuFactor + probeRows*nKeys*cpuFactor + probeRows*probeRowSize*memFactor + probeRows*cpuFactor"
+  },
+  "coefficients": {
+    "ioFactor": 4.38e-05,
+    "cpuFactor": 0.00173,
+    "writeFactor": 0.0,
+    "memFactor": 0.0
+  },
+  "small_join_note": "对于小表 join 仅计算 CPU 部分",
+  "scan_formula": {
+    "expr": "4.38e-05*(rows*rowSize) + 1.51e-04*(rows*log2(rowSize)) + 315.2"
+  },
+  "metrics": {
+    "rmse_ms": 140809.32985537907,
+    "r2": -5.2411491138229245,
+    "n_samples": 2,
+    "n_small": 1,
+    "n_large": 1
+  },
+  "samples": [
+    {
+      "query_id": "orders_lineitem",
+      "build_table": "orders",
+      "probe_table": "lineitem",
+      "build_rows": 15000000.0,
+      "probe_rows": 59986052.0,
+      "build_row_size": 152,
+      "probe_row_size": 155,
+      "n_keys": 1,
+      "build_filters": 0,
+      "probe_filters": 0,
+      "latency_total_ms": 790558.9192099869,
+      "scan_build_ms": 116595.75581794971,
+      "scan_probe_ms": 473466.8695449207,
+      "latency_hashjoin_ms": 200496.29384711653,
+      "is_small_join": false,
+      "build_rows_x_row_size": 2280000000.0,
+      "probe_rows_x_row_size": 9297838060.0,
+      "mem_factor_term": 11577838060.0,
+      "known_cpu": 259451.73992
+    },
+    {
+      "query_id": "supplier_lineitem",
+      "build_table": "supplier",
+      "probe_table": "lineitem",
+      "build_rows": 100000.0,
+      "probe_rows": 59986052.0,
+      "build_row_size": 197,
+      "probe_row_size": 155,
+      "n_keys": 1,
+      "build_filters": 0,
+      "probe_filters": 0,
+      "latency_total_ms": 562529.0052834898,
+      "scan_build_ms": 1293.1529824737913,
+      "scan_probe_ms": 473466.8695449207,
+      "latency_hashjoin_ms": 87768.98275609536,
+      "is_small_join": true,
+      "build_rows_x_row_size": 19700000.0,
+      "probe_rows_x_row_size": 9297838060.0,
+      "mem_factor_term": 9317538060.0,
+      "known_cpu": 207897.73992
+    }
+  ]
+}

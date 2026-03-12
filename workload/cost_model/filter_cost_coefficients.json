@@ -1,0 +1,127 @@
+{
+  "formula": "cost = rows * cpufactor * numFuncs",
+  "coefficients": {
+    "cpufactor": 0.0017343387090062248
+  },
+  "scan_formula": {
+    "expr": "0.00e+00 * (rows * rowSize) + 1.51e-04 * (rows * log2(rowSize)) + 315.2",
+    "io_factor": 0.0,
+    "cpu_factor": 0.000151,
+    "constant": 315.2
+  },
+  "metrics": {
+    "rmse_ms": 132774.81059003205,
+    "r2": 0.3531017968600553,
+    "n_samples": 12
+  },
+  "samples": [
+    {
+      "query_id": "customer_filter_1funcs",
+      "rows": 1500000.0,
+      "num_funcs": 1,
+      "rows_x_num_funcs": 1500000.0,
+      "latency_total_ms": 4261.417377740145,
+      "latency_scan_ms": 2082.103827331949,
+      "latency_filter_ms": 2179.3135504081956
+    },
+    {
+      "query_id": "part_filter_2funcs",
+      "rows": 2000000.0,
+      "num_funcs": 2,
+      "rows_x_num_funcs": 4000000.0,
+      "latency_total_ms": 203685.63697021455,
+      "latency_scan_ms": 3838.8016423264216,
+      "latency_filter_ms": 199846.8353278881
+    },
+    {
+      "query_id": "lineitem_filter_4funcs",
+      "rows": 59986052.0,
+      "num_funcs": 4,
+      "rows_x_num_funcs": 239944208.0,
+      "latency_total_ms": 449985.5473553762,
+      "latency_scan_ms": 66221.56251692068,
+      "latency_filter_ms": 383763.9848384555
+    },
+    {
+      "query_id": "orders_filter_2funcs",
+      "rows": 15000000.0,
+      "num_funcs": 2,
+      "rows_x_num_funcs": 30000000.0,
+      "latency_total_ms": 51585.5152271688,
+      "latency_scan_ms": 16731.75581794972,
+      "latency_filter_ms": 34853.75940921908
+    },
+    {
+      "query_id": "lineitem_filter_1funcs",
+      "rows": 59986052.0,
+      "num_funcs": 1,
+      "rows_x_num_funcs": 59986052.0,
+      "latency_total_ms": 448991.0521004349,
+      "latency_scan_ms": 66221.56251692068,
+      "latency_filter_ms": 382769.4895835142
+    },
+    {
+      "query_id": "lineitem_filter_5funcs",
+      "rows": 59986052.0,
+      "num_funcs": 5,
+      "rows_x_num_funcs": 299930260.0,
+      "latency_total_ms": 447505.8127641678,
+      "latency_scan_ms": 66221.56251692068,
+      "latency_filter_ms": 381284.2502472471
+    },
+    {
+      "query_id": "orders_filter_1funcs",
+      "rows": 15000000.0,
+      "num_funcs": 1,
+      "rows_x_num_funcs": 15000000.0,
+      "latency_total_ms": 51772.49630820006,
+      "latency_scan_ms": 16731.75581794972,
+      "latency_filter_ms": 35040.74049025034
+    },
+    {
+      "query_id": "orders_filter_3funcs",
+      "rows": 15000000.0,
+      "num_funcs": 3,
+      "rows_x_num_funcs": 45000000.0,
+      "latency_total_ms": 52142.956828698516,
+      "latency_scan_ms": 16731.75581794972,
+      "latency_filter_ms": 35411.201010748795
+    },
+    {
+      "query_id": "lineitem_filter_3funcs",
+      "rows": 59986052.0,
+      "num_funcs": 3,
+      "rows_x_num_funcs": 179958156.0,
+      "latency_total_ms": 450111.4702383056,
+      "latency_scan_ms": 66221.56251692068,
+      "latency_filter_ms": 383889.90772138495
+    },
+    {
+      "query_id": "part_filter_1funcs",
+      "rows": 2000000.0,
+      "num_funcs": 1,
+      "rows_x_num_funcs": 2000000.0,
+      "latency_total_ms": 203509.103955701,
+      "latency_scan_ms": 3838.8016423264216,
+      "latency_filter_ms": 199670.30231337456
+    },
+    {
+      "query_id": "customer_filter_2funcs",
+      "rows": 1500000.0,
+      "num_funcs": 2,
+      "rows_x_num_funcs": 3000000.0,
+      "latency_total_ms": 4160.308259539306,
+      "latency_scan_ms": 2082.103827331949,
+      "latency_filter_ms": 2078.204432207357
+    },
+    {
+      "query_id": "lineitem_filter_2funcs",
+      "rows": 59986052.0,
+      "num_funcs": 2,
+      "rows_x_num_funcs": 119972104.0,
+      "latency_total_ms": 448795.92083767056,
+      "latency_scan_ms": 66221.56251692068,
+      "latency_filter_ms": 382574.3583207499
+    }
+  ]
+}
