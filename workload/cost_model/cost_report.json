@@ -1,0 +1,1201 @@
+{
+  "Q1": {
+    "table_scans": [
+      {
+        "cost_ms": 183012.13995539563,
+        "rows": 23162273,
+        "row_size": 155.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "lineitem"
+      }
+    ],
+    "hash_joins": [],
+    "vector_merge_cost_ms": 0.0,
+    "total_scan_cost_ms": 183012.13995539563,
+    "total_hashjoin_cost_ms": 0,
+    "total_cost_ms": 183012.13995539563
+  },
+  "Q2": {
+    "table_scans": [
+      {
+        "cost_ms": 315.20906027672896,
+        "rows": 1,
+        "row_size": 181.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "region"
+      },
+      {
+        "cost_ms": 315.4310059650134,
+        "rows": 25,
+        "row_size": 185.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "nation"
+      },
+      {
+        "cost_ms": 3456.672670684113,
+        "rows": 21779,
+        "row_size": 3253.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "part"
+      },
+      {
+        "cost_ms": 1167596.246855838,
+        "rows": 8000000,
+        "row_size": 3291.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "partsupp"
+      },
+      {
+        "cost_ms": 1293.1529824737913,
+        "rows": 100000,
+        "row_size": 197.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "supplier"
+      }
+    ],
+    "hash_joins": [
+      {
+        "cost_ms": 0.6025178,
+        "build_table": "region",
+        "probe_table": "nation",
+        "build_rows": 1,
+        "probe_rows": 25,
+        "n_keys": 1
+      },
+      {
+        "cost_ms": 2415.2747,
+        "build_table": "nation",
+        "probe_table": "supplier",
+        "build_rows": 25,
+        "probe_rows": 100000,
+        "n_keys": 1
+      },
+      {
+        "cost_ms": 2795397.36,
+        "build_table": "supplier",
+        "probe_table": "partsupp",
+        "build_rows": 100000,
+        "probe_rows": 8000000,
+        "n_keys": 1
+      },
+      {
+        "cost_ms": 2802737.4018856,
+        "build_table": "part",
+        "probe_table": "partsupp",
+        "build_rows": 21779,
+        "probe_rows": 8000000,
+        "n_keys": 1
+      }
+    ],
+    "vector_merge_cost_ms": 0.0,
+    "total_scan_cost_ms": 1172976.7125752377,
+    "total_hashjoin_cost_ms": 5600550.6391034,
+    "total_cost_ms": 6773527.351678638
+  },
+  "Q3": {
+    "table_scans": [
+      {
+        "cost_ms": 3596.0753768310524,
+        "rows": 299751,
+        "row_size": 223.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "customer"
+      },
+      {
+        "cost_ms": 270705.377236533,
+        "rows": 34280000,
+        "row_size": 155.0,
+        "scan_type": "row",
+        "partition_pruned": true,
+        "table": "lineitem"
+      },
+      {
+        "cost_ms": 46827.422327179884,
+        "rows": 6000000,
+        "row_size": 152.0,
+        "scan_type": "row",
+        "partition_pruned": true,
+        "table": "orders"
+      },
+      {
+        "cost_ms": 192786.432,
+        "rows": 8000000,
+        "row_size": 3291.0,
+        "scan_type": "ivf",
+        "partition_pruned": false,
+        "table": "partsupp"
+      }
+    ],
+    "hash_joins": [
+      {
+        "cost_ms": 127503.5960424,
+        "build_table": "customer",
+        "probe_table": "orders",
+        "build_rows": 299751,
+        "probe_rows": 6000000,
+        "n_keys": 1
+      },
+      {
+        "cost_ms": 832981.4,
+        "build_table": "orders",
+        "probe_table": "lineitem",
+        "build_rows": 6000000,
+        "probe_rows": 34280000,
+        "n_keys": 1
+      },
+      {
+        "cost_ms": 4694946.6,
+        "build_table": "partsupp",
+        "probe_table": "lineitem",
+        "build_rows": 8000000,
+        "probe_rows": 34280000,
+        "n_keys": 2
+      }
+    ],
+    "vector_merge_cost_ms": 0.0,
+    "total_scan_cost_ms": 513915.30694054393,
+    "total_hashjoin_cost_ms": 5655431.596042399,
+    "total_cost_ms": 6169346.902982943
+  },
+  "Q4": {
+    "table_scans": [
+      {
+        "cost_ms": 70083.53349076983,
+        "rows": 9000000,
+        "row_size": 152.0,
+        "scan_type": "row",
+        "partition_pruned": true,
+        "table": "orders"
+      },
+      {
+        "cost_ms": 12301.979898862066,
+        "rows": 1519681,
+        "row_size": 155.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "lineitem"
+      }
+    ],
+    "hash_joins": [],
+    "vector_merge_cost_ms": 0.0,
+    "total_scan_cost_ms": 82385.51338963189,
+    "total_hashjoin_cost_ms": 0,
+    "total_cost_ms": 82385.51338963189
+  },
+  "Q5": {
+    "table_scans": [
+      {
+        "cost_ms": 315.20906027672896,
+        "rows": 1,
+        "row_size": 181.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "region"
+      },
+      {
+        "cost_ms": 315.4310059650134,
+        "rows": 25,
+        "row_size": 185.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "nation"
+      },
+      {
+        "cost_ms": 1293.1529824737913,
+        "rows": 100000,
+        "row_size": 197.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "supplier"
+      },
+      {
+        "cost_ms": 473466.8695449207,
+        "rows": 59986052,
+        "row_size": 155.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "lineitem"
+      },
+      {
+        "cost_ms": 70083.53349076983,
+        "rows": 9000000,
+        "row_size": 152.0,
+        "scan_type": "row",
+        "partition_pruned": true,
+        "table": "orders"
+      },
+      {
+        "cost_ms": 16733.20382733195,
+        "rows": 1500000,
+        "row_size": 223.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "customer"
+      },
+      {
+        "cost_ms": 192786.432,
+        "rows": 8000000,
+        "row_size": 3291.0,
+        "scan_type": "ivf",
+        "partition_pruned": false,
+        "table": "partsupp"
+      }
+    ],
+    "hash_joins": [
+      {
+        "cost_ms": 247908.6,
+        "build_table": "customer",
+        "probe_table": "orders",
+        "build_rows": 1500000,
+        "probe_rows": 9000000,
+        "n_keys": 2
+      },
+      {
+        "cost_ms": 0.6025178,
+        "build_table": "region",
+        "probe_table": "nation",
+        "build_rows": 1,
+        "probe_rows": 25,
+        "n_keys": 1
+      }
+    ],
+    "vector_merge_cost_ms": 0.0,
+    "total_scan_cost_ms": 754993.831911738,
+    "total_hashjoin_cost_ms": 247909.2025178,
+    "total_cost_ms": 1002903.0344295381
+  },
+  "Q6": {
+    "table_scans": [
+      {
+        "cost_ms": 29732.176284409954,
+        "rows": 3729477,
+        "row_size": 155.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "lineitem"
+      }
+    ],
+    "hash_joins": [],
+    "vector_merge_cost_ms": 0.0,
+    "total_scan_cost_ms": 29732.176284409954,
+    "total_hashjoin_cost_ms": 0,
+    "total_cost_ms": 29732.176284409954
+  },
+  "Q7": {
+    "table_scans": [
+      {
+        "cost_ms": 315.21848047720107,
+        "rows": 2,
+        "row_size": 185.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "nation"
+      },
+      {
+        "cost_ms": 420.42774091417994,
+        "rows": 10760,
+        "row_size": 197.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "supplier"
+      },
+      {
+        "cost_ms": 135510.2886182665,
+        "rows": 17140000,
+        "row_size": 155.0,
+        "scan_type": "row",
+        "partition_pruned": true,
+        "table": "lineitem"
+      },
+      {
+        "cost_ms": 14320.906122901028,
+        "rows": 1806713,
+        "row_size": 152.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "orders"
+      },
+      {
+        "cost_ms": 9361.377819493402,
+        "rows": 826487,
+        "row_size": 223.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "customer"
+      },
+      {
+        "cost_ms": 315.21848047720107,
+        "rows": 2,
+        "row_size": 185.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "nation"
+      }
+    ],
+    "hash_joins": [
+      {
+        "cost_ms": 65370.83370880001,
+        "build_table": "customer",
+        "probe_table": "orders",
+        "build_rows": 826487,
+        "probe_rows": 1806713,
+        "n_keys": 1
+      },
+      {
+        "cost_ms": 385372.6389288,
+        "build_table": "orders",
+        "probe_table": "lineitem",
+        "build_rows": 1806713,
+        "probe_rows": 17140000,
+        "n_keys": 1
+      }
+    ],
+    "vector_merge_cost_ms": 0.0,
+    "total_scan_cost_ms": 160243.43726252954,
+    "total_hashjoin_cost_ms": 450743.47263760003,
+    "total_cost_ms": 610986.9099001295
+  },
+  "Q8": {
+    "table_scans": [
+      {
+        "cost_ms": 315.4310059650134,
+        "rows": 25,
+        "row_size": 185.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "nation"
+      },
+      {
+        "cost_ms": 315.20906027672896,
+        "rows": 1,
+        "row_size": 181.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "region"
+      },
+      {
+        "cost_ms": 315.4310059650134,
+        "rows": 25,
+        "row_size": 185.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "nation"
+      },
+      {
+        "cost_ms": 2222.9605740607044,
+        "rows": 13226,
+        "row_size": 3253.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "part"
+      },
+      {
+        "cost_ms": 473466.8695449207,
+        "rows": 59986052,
+        "row_size": 155.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "lineitem"
+      },
+      {
+        "cost_ms": 23571.311163589944,
+        "rows": 3000000,
+        "row_size": 152.0,
+        "scan_type": "row",
+        "partition_pruned": true,
+        "table": "orders"
+      },
+      {
+        "cost_ms": 16733.20382733195,
+        "rows": 1500000,
+        "row_size": 223.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "customer"
+      },
+      {
+        "cost_ms": 1293.1529824737913,
+        "rows": 100000,
+        "row_size": 197.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "supplier"
+      },
+      {
+        "cost_ms": 192786.432,
+        "rows": 8000000,
+        "row_size": 3291.0,
+        "scan_type": "ivf",
+        "partition_pruned": false,
+        "table": "partsupp"
+      }
+    ],
+    "hash_joins": [
+      {
+        "cost_ms": 2415.2747,
+        "build_table": "nation",
+        "probe_table": "supplier",
+        "build_rows": 25,
+        "probe_rows": 100000,
+        "n_keys": 1
+      },
+      {
+        "cost_ms": 1187102.09622,
+        "build_table": "supplier",
+        "probe_table": "lineitem",
+        "build_rows": 100000,
+        "probe_rows": 59986052,
+        "n_keys": 1
+      },
+      {
+        "cost_ms": 0.6025178,
+        "build_table": "region",
+        "probe_table": "nation",
+        "build_rows": 1,
+        "probe_rows": 25,
+        "n_keys": 1
+      },
+      {
+        "cost_ms": 113223.6,
+        "build_table": "customer",
+        "probe_table": "orders",
+        "build_rows": 1500000,
+        "probe_rows": 3000000,
+        "n_keys": 1
+      },
+      {
+        "cost_ms": 1190272.4958664,
+        "build_table": "part",
+        "probe_table": "lineitem",
+        "build_rows": 13226,
+        "probe_rows": 59986052,
+        "n_keys": 1
+      }
+    ],
+    "vector_merge_cost_ms": 0.0,
+    "total_scan_cost_ms": 711020.0011645838,
+    "total_hashjoin_cost_ms": 2493014.0693042,
+    "total_cost_ms": 3204034.070468784
+  },
+  "Q9": {
+    "table_scans": [
+      {
+        "cost_ms": 315.4310059650134,
+        "rows": 25,
+        "row_size": 185.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "nation"
+      },
+      {
+        "cost_ms": 1293.1529824737913,
+        "rows": 100000,
+        "row_size": 197.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "supplier"
+      },
+      {
+        "cost_ms": 21020.01328907059,
+        "rows": 143541,
+        "row_size": 3253.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "part"
+      },
+      {
+        "cost_ms": 192786.432,
+        "rows": 2666667,
+        "row_size": 3291.0,
+        "scan_type": "ivf",
+        "partition_pruned": false,
+        "table": "partsupp"
+      },
+      {
+        "cost_ms": 473466.8695449207,
+        "rows": 59986052,
+        "row_size": 155.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "lineitem"
+      },
+      {
+        "cost_ms": 116595.75581794971,
+        "rows": 15000000,
+        "row_size": 152.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "orders"
+      },
+      {
+        "cost_ms": 192786.432,
+        "rows": 8000000,
+        "row_size": 3291.0,
+        "scan_type": "ivf",
+        "partition_pruned": false,
+        "table": "partsupp"
+      }
+    ],
+    "hash_joins": [
+      {
+        "cost_ms": 2415.2747,
+        "build_table": "nation",
+        "probe_table": "supplier",
+        "build_rows": 25,
+        "probe_rows": 100000,
+        "n_keys": 1
+      },
+      {
+        "cost_ms": 1187102.09622,
+        "build_table": "supplier",
+        "probe_table": "lineitem",
+        "build_rows": 100000,
+        "probe_rows": 59986052,
+        "n_keys": 1
+      },
+      {
+        "cost_ms": 2607309.5711436,
+        "build_table": "partsupp",
+        "probe_table": "lineitem",
+        "build_rows": 2666667,
+        "probe_rows": 59986052,
+        "n_keys": 2
+      }
+    ],
+    "vector_merge_cost_ms": 0.0,
+    "total_scan_cost_ms": 998264.0866403799,
+    "total_hashjoin_cost_ms": 3796826.9420636,
+    "total_cost_ms": 4795091.02870398
+  },
+  "Q10": {
+    "table_scans": [
+      {
+        "cost_ms": 315.4310059650134,
+        "rows": 25,
+        "row_size": 185.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "nation"
+      },
+      {
+        "cost_ms": 70083.53349076983,
+        "rows": 9000000,
+        "row_size": 152.0,
+        "scan_type": "row",
+        "partition_pruned": true,
+        "table": "orders"
+      },
+      {
+        "cost_ms": 117117.62782733413,
+        "rows": 14808183,
+        "row_size": 155.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "lineitem"
+      },
+      {
+        "cost_ms": 16733.20382733195,
+        "rows": 1500000,
+        "row_size": 223.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "customer"
+      },
+      {
+        "cost_ms": 192786.432,
+        "rows": 8000000,
+        "row_size": 3291.0,
+        "scan_type": "ivf",
+        "partition_pruned": false,
+        "table": "partsupp"
+      }
+    ],
+    "hash_joins": [
+      {
+        "cost_ms": 40313.2747,
+        "build_table": "nation",
+        "probe_table": "customer",
+        "build_rows": 25,
+        "probe_rows": 1500000,
+        "n_keys": 1
+      },
+      {
+        "cost_ms": 229743.6,
+        "build_table": "customer",
+        "probe_table": "orders",
+        "build_rows": 1500000,
+        "probe_rows": 9000000,
+        "n_keys": 1
+      },
+      {
+        "cost_ms": 526937.8915050001,
+        "build_table": "orders",
+        "probe_table": "lineitem",
+        "build_rows": 9000000,
+        "probe_rows": 14808183,
+        "n_keys": 1
+      }
+    ],
+    "vector_merge_cost_ms": 0.0,
+    "total_scan_cost_ms": 397036.2281514009,
+    "total_hashjoin_cost_ms": 796994.766205,
+    "total_cost_ms": 1194030.9943564008
+  },
+  "Q11": {
+    "table_scans": [
+      {
+        "cost_ms": 315.2092402386005,
+        "rows": 1,
+        "row_size": 185.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "nation"
+      },
+      {
+        "cost_ms": 1293.1529824737913,
+        "rows": 100000,
+        "row_size": 197.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "supplier"
+      },
+      {
+        "cost_ms": 192786.432,
+        "rows": 8000000,
+        "row_size": 3291.0,
+        "scan_type": "ivf",
+        "partition_pruned": false,
+        "table": "partsupp"
+      }
+    ],
+    "hash_joins": [
+      {
+        "cost_ms": 2795397.36,
+        "build_table": "supplier",
+        "probe_table": "partsupp",
+        "build_rows": 100000,
+        "probe_rows": 8000000,
+        "n_keys": 1
+      },
+      {
+        "cost_ms": 2414.530988,
+        "build_table": "nation",
+        "probe_table": "supplier",
+        "build_rows": 1,
+        "probe_rows": 100000,
+        "n_keys": 1
+      }
+    ],
+    "vector_merge_cost_ms": 0.0,
+    "total_scan_cost_ms": 194394.7942227124,
+    "total_hashjoin_cost_ms": 2797811.8909879997,
+    "total_cost_ms": 2992206.6852107123
+  },
+  "Q12": {
+    "table_scans": [
+      {
+        "cost_ms": 338302.92154566624,
+        "rows": 42850000,
+        "row_size": 155.0,
+        "scan_type": "row",
+        "partition_pruned": true,
+        "table": "lineitem"
+      },
+      {
+        "cost_ms": 116595.75581794971,
+        "rows": 15000000,
+        "row_size": 152.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "orders"
+      },
+      {
+        "cost_ms": 192786.432,
+        "rows": 8000000,
+        "row_size": 3291.0,
+        "scan_type": "ivf",
+        "partition_pruned": false,
+        "table": "partsupp"
+      }
+    ],
+    "hash_joins": [
+      {
+        "cost_ms": 1236808.75,
+        "build_table": "orders",
+        "probe_table": "lineitem",
+        "build_rows": 15000000,
+        "probe_rows": 42850000,
+        "n_keys": 1
+      }
+    ],
+    "vector_merge_cost_ms": 0.0,
+    "total_scan_cost_ms": 647685.109363616,
+    "total_hashjoin_cost_ms": 1236808.75,
+    "total_cost_ms": 1884493.859363616
+  },
+  "Q13": {
+    "table_scans": [
+      {
+        "cost_ms": 115919.34407271964,
+        "rows": 14912744,
+        "row_size": 152.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "orders"
+      },
+      {
+        "cost_ms": 16733.20382733195,
+        "rows": 1500000,
+        "row_size": 223.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "customer"
+      }
+    ],
+    "hash_joins": [],
+    "vector_merge_cost_ms": 0.0,
+    "total_scan_cost_ms": 132652.54790005158,
+    "total_hashjoin_cost_ms": 0,
+    "total_cost_ms": 132652.54790005158
+  },
+  "Q14": {
+    "table_scans": [
+      {
+        "cost_ms": 270705.377236533,
+        "rows": 34280000,
+        "row_size": 155.0,
+        "scan_type": "row",
+        "partition_pruned": true,
+        "table": "lineitem"
+      },
+      {
+        "cost_ms": 95589.70930398897,
+        "rows": 660513,
+        "row_size": 3253.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "part"
+      }
+    ],
+    "hash_joins": [
+      {
+        "cost_ms": 998520.1147832001,
+        "build_table": "part",
+        "probe_table": "lineitem",
+        "build_rows": 660513,
+        "probe_rows": 34280000,
+        "n_keys": 1
+      }
+    ],
+    "vector_merge_cost_ms": 0.0,
+    "total_scan_cost_ms": 366295.08654052194,
+    "total_hashjoin_cost_ms": 998520.1147832001,
+    "total_cost_ms": 1364815.201323722
+  },
+  "Q15": {
+    "table_scans": [
+      {
+        "cost_ms": 203107.83292739972,
+        "rows": 25710000,
+        "row_size": 155.0,
+        "scan_type": "row",
+        "partition_pruned": true,
+        "table": "lineitem"
+      },
+      {
+        "cost_ms": 412.9952982473791,
+        "rows": 10000,
+        "row_size": 197.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "supplier"
+      }
+    ],
+    "hash_joins": [
+      {
+        "cost_ms": 241.47007000000002,
+        "build_table": "revenue_s",
+        "probe_table": "supplier",
+        "build_rows": 1,
+        "probe_rows": 10000,
+        "n_keys": 1
+      }
+    ],
+    "vector_merge_cost_ms": 0.0,
+    "total_scan_cost_ms": 203520.8282256471,
+    "total_hashjoin_cost_ms": 241.47007000000002,
+    "total_cost_ms": 203762.2982956471
+  },
+  "Q16": {
+    "table_scans": [
+      {
+        "cost_ms": 45112.08966302455,
+        "rows": 310565,
+        "row_size": 3253.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "part"
+      },
+      {
+        "cost_ms": 349.84887416904644,
+        "rows": 3543,
+        "row_size": 197.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "supplier"
+      },
+      {
+        "cost_ms": 216503.38311463667,
+        "rows": 1481653,
+        "row_size": 3291.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "partsupp"
+      }
+    ],
+    "hash_joins": [
+      {
+        "cost_ms": 668521.546911,
+        "build_table": "part",
+        "probe_table": "partsupp",
+        "build_rows": 310565,
+        "probe_rows": 1481653,
+        "n_keys": 1
+      }
+    ],
+    "vector_merge_cost_ms": 0.0,
+    "total_scan_cost_ms": 261965.32165183028,
+    "total_hashjoin_cost_ms": 668521.546911,
+    "total_cost_ms": 930486.8685628304
+  },
+  "Q17": {
+    "table_scans": [
+      {
+        "cost_ms": 1761.5265746338036,
+        "rows": 10027,
+        "row_size": 3253.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "part"
+      },
+      {
+        "cost_ms": 16886.836583568827,
+        "rows": 2100948,
+        "row_size": 155.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "lineitem"
+      },
+      {
+        "cost_ms": 16886.836583568827,
+        "rows": 2100948,
+        "row_size": 155.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "lineitem"
+      }
+    ],
+    "hash_joins": [
+      {
+        "cost_ms": 46367.7821628,
+        "build_table": "part",
+        "probe_table": "lineitem",
+        "build_rows": 10027,
+        "probe_rows": 2100948,
+        "n_keys": 1
+      },
+      {
+        "cost_ms": 46350.435452800004,
+        "build_table": "part",
+        "probe_table": "lineitem",
+        "build_rows": 10027,
+        "probe_rows": 2100948,
+        "n_keys": 1
+      }
+    ],
+    "vector_merge_cost_ms": 0.0,
+    "total_scan_cost_ms": 35535.19974177146,
+    "total_hashjoin_cost_ms": 92718.2176156,
+    "total_cost_ms": 128253.41735737147
+  },
+  "Q18": {
+    "table_scans": [
+      {
+        "cost_ms": 16733.20382733195,
+        "rows": 1500000,
+        "row_size": 223.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "customer"
+      },
+      {
+        "cost_ms": 473466.8695449207,
+        "rows": 59986052,
+        "row_size": 155.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "lineitem"
+      },
+      {
+        "cost_ms": 116595.75581794971,
+        "rows": 15000000,
+        "row_size": 152.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "orders"
+      },
+      {
+        "cost_ms": 192786.432,
+        "rows": 8000000,
+        "row_size": 3291.0,
+        "scan_type": "ivf",
+        "partition_pruned": false,
+        "table": "partsupp"
+      }
+    ],
+    "hash_joins": [
+      {
+        "cost_ms": 346263.6,
+        "build_table": "customer",
+        "probe_table": "orders",
+        "build_rows": 1500000,
+        "probe_rows": 15000000,
+        "n_keys": 1
+      },
+      {
+        "cost_ms": 1574988.73622,
+        "build_table": "orders",
+        "probe_table": "lineitem",
+        "build_rows": 15000000,
+        "probe_rows": 59986052,
+        "n_keys": 1
+      }
+    ],
+    "vector_merge_cost_ms": 0.0,
+    "total_scan_cost_ms": 799582.2611902023,
+    "total_hashjoin_cost_ms": 1921252.33622,
+    "total_cost_ms": 2720834.597410202
+  },
+  "Q19": {
+    "table_scans": [
+      {
+        "cost_ms": 4733.9462139555135,
+        "rows": 30634,
+        "row_size": 3253.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "part"
+      },
+      {
+        "cost_ms": 1733.9202225393524,
+        "rows": 179865,
+        "row_size": 155.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "lineitem"
+      }
+    ],
+    "hash_joins": [
+      {
+        "cost_ms": 18536.9036526,
+        "build_table": "part",
+        "probe_table": "lineitem",
+        "build_rows": 30634,
+        "probe_rows": 179865,
+        "n_keys": 1
+      }
+    ],
+    "vector_merge_cost_ms": 0.0,
+    "total_scan_cost_ms": 6467.866436494865,
+    "total_hashjoin_cost_ms": 18536.9036526,
+    "total_cost_ms": 25004.77008909487
+  },
+  "Q20": {
+    "table_scans": [
+      {
+        "cost_ms": 315.2092402386005,
+        "rows": 1,
+        "row_size": 185.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "nation"
+      },
+      {
+        "cost_ms": 315.4884864016423,
+        "rows": 2,
+        "row_size": 3253.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "part"
+      },
+      {
+        "cost_ms": 405900.46585479943,
+        "rows": 51420000,
+        "row_size": 155.0,
+        "scan_type": "row",
+        "partition_pruned": true,
+        "table": "lineitem"
+      },
+      {
+        "cost_ms": 192786.432,
+        "rows": 2666667,
+        "row_size": 3291.0,
+        "scan_type": "ivf",
+        "partition_pruned": false,
+        "table": "partsupp"
+      },
+      {
+        "cost_ms": 1293.1529824737913,
+        "rows": 100000,
+        "row_size": 197.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "supplier"
+      },
+      {
+        "cost_ms": 192786.432,
+        "rows": 8000000,
+        "row_size": 3291.0,
+        "scan_type": "ivf",
+        "partition_pruned": false,
+        "table": "partsupp"
+      }
+    ],
+    "hash_joins": [
+      {
+        "cost_ms": 2414.530988,
+        "build_table": "nation",
+        "probe_table": "supplier",
+        "build_rows": 1,
+        "probe_rows": 100000,
+        "n_keys": 1
+      },
+      {
+        "cost_ms": 2423439.2649636003,
+        "build_table": "partsupp",
+        "probe_table": "lineitem",
+        "build_rows": 2666667,
+        "probe_rows": 51420000,
+        "n_keys": 2
+      }
+    ],
+    "vector_merge_cost_ms": 0.0,
+    "total_scan_cost_ms": 793397.1805639135,
+    "total_hashjoin_cost_ms": 2425853.7959516,
+    "total_cost_ms": 3219250.976515514
+  },
+  "Q21": {
+    "table_scans": [
+      {
+        "cost_ms": 315.2092402386005,
+        "rows": 1,
+        "row_size": 185.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "nation"
+      },
+      {
+        "cost_ms": 382.48316519419683,
+        "rows": 6880,
+        "row_size": 197.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "supplier"
+      },
+      {
+        "cost_ms": 11347.639819106367,
+        "rows": 1398690,
+        "row_size": 155.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "lineitem"
+      },
+      {
+        "cost_ms": 8127.664183370042,
+        "rows": 1007795,
+        "row_size": 152.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "orders"
+      },
+      {
+        "cost_ms": 29484.928603673183,
+        "rows": 3698131,
+        "row_size": 155.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "lineitem"
+      }
+    ],
+    "hash_joins": [
+      {
+        "cost_ms": 53884.022042,
+        "build_table": "orders",
+        "probe_table": "lineitem",
+        "build_rows": 1007795,
+        "probe_rows": 1398690,
+        "n_keys": 1
+      },
+      {
+        "cost_ms": 27828.629517999998,
+        "build_table": "supplier",
+        "probe_table": "lineitem",
+        "build_rows": 6880,
+        "probe_rows": 1398690,
+        "n_keys": 1
+      },
+      {
+        "cost_ms": 166.14858800000002,
+        "build_table": "nation",
+        "probe_table": "supplier",
+        "build_rows": 1,
+        "probe_rows": 6880,
+        "n_keys": 1
+      }
+    ],
+    "vector_merge_cost_ms": 0.0,
+    "total_scan_cost_ms": 49657.92501158239,
+    "total_hashjoin_cost_ms": 81878.800148,
+    "total_cost_ms": 131536.7251595824
+  },
+  "Q22": {
+    "table_scans": [
+      {
+        "cost_ms": 15240.675935396857,
+        "rows": 1363638,
+        "row_size": 223.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "customer"
+      },
+      {
+        "cost_ms": 16733.20382733195,
+        "rows": 1500000,
+        "row_size": 223.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "customer"
+      },
+      {
+        "cost_ms": 12679.195219566776,
+        "rows": 1594935,
+        "row_size": 152.0,
+        "scan_type": "row",
+        "partition_pruned": false,
+        "table": "orders"
+      }
+    ],
+    "hash_joins": [],
+    "vector_merge_cost_ms": 0.0,
+    "total_scan_cost_ms": 44653.074982295584,
+    "total_hashjoin_cost_ms": 0,
+    "total_cost_ms": 44653.074982295584
+  }
+}

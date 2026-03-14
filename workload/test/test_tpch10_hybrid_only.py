@@ -20,10 +20,10 @@ CONFIG = {
     'db_host': '127.0.0.1',
     'db_port': 10200,
     'db_user': 'root',
-    'db_name': 'tpch10_1',
+    'db_name': 'tpch10_5',
     'vector_file': '/data/dzh/seekdb/Exqutor/Vector-augmented_SQL_analytics/WIKI/queries.fbin',
     'sql_file': '/data/dzh/seekdb/workload/test/tpch_queries.sql',
-    'vector_limit': 2,    # 测试多少个向量
+    'vector_limit': 1,    # 测试多少个向量
     'result_limit': 10,
     'output_file': None  # 例如: 'hybrid_latency_report.json'
 }

@@ -1,0 +1,39 @@
+| |ID|OPERATOR                                                  |NAME    |EST.ROWS|EST.TIME(us)|
+| ----------------------------------------------------------------------------------------------
+| |0 |TOP-N SORT                                                |        |10      |11097226    |
+| |1 |└─HASH JOIN                                               |        |424371  |11084149    |
+| |2 |  ├─TABLE FULL SCAN                                       |customer|299751  |72305       |
+| |3 |  └─HASH JOIN                                             |        |1347057 |10821114    |
+| |4 |    ├─HASH JOIN                                           |        |2666882 |8567823     |
+| |5 |    │ ├─VECTOR INDEX ADAPTIVE SCAN (POST-ITERATIVE-FILTER)|partsupp|2666667 |459264      |
+| |6 |    │ └─TABLE FULL SCAN                                   |lineitem|32261806|4385723     |
+| |7 |    └─TABLE FULL SCAN                                     |orders  |7284824 |1029821     |
+| ==============================================================================================
+| Outputs & filters:
+| -------------------------------------
+|   0 - output([lineitem.L_ORDERKEY], [orders.O_ORDERDATE], [orders.O_SHIPPRIORITY]), filter(nil), rowset=256
+|       sort_keys([l2_distance(partsupp.ps_text_embedding, cast('{VECTOR}', ARRAY(18, -1))), ASC]), topn(10)
+|   1 - output([l2_distance(partsupp.ps_text_embedding, cast('{VECTOR}', ARRAY(18, -1)))], [lineitem.L_ORDERKEY], [orders.O_ORDERDATE], [orders.O_SHIPPRIORITY]), filter(nil), rowset=256
+|       equal_conds([customer.C_CUSTKEY = orders.O_CUSTKEY]), other_conds(nil)
+|   2 - output([customer.C_CUSTKEY]), filter([customer.C_MKTSEGMENT = cast('HOUSEHOLD', VARCHAR(1048576))]), rowset=256
+|       access([customer.C_MKTSEGMENT], [customer.C_CUSTKEY]), partitions(p0)
+|       is_index_back=false, is_global_index=false, filter_before_indexback[false],
+|       range_key([customer.__pk_increment]), range(MIN ; MAX)always true
+|   3 - output([l2_distance(partsupp.ps_text_embedding, cast('{VECTOR}', ARRAY(18, -1)))], [lineitem.L_ORDERKEY], [orders.O_ORDERDATE], [orders.O_SHIPPRIORITY],
+|        [orders.O_CUSTKEY]), filter(nil), rowset=256
+|       equal_conds([lineitem.L_ORDERKEY = orders.O_ORDERKEY]), other_conds(nil)
+|   4 - output([l2_distance(partsupp.ps_text_embedding, cast('{VECTOR}', ARRAY(18, -1)))], [lineitem.L_ORDERKEY]), filter(nil), rowset=256
+|       equal_conds([partsupp.ps_partkey = lineitem.L_PARTKEY], [partsupp.ps_suppkey = lineitem.L_SUPPKEY]), other_conds(nil)
+|   5 - output([partsupp.ps_partkey], [partsupp.ps_suppkey], [l2_distance(partsupp.ps_text_embedding, cast('{VECTOR}', ARRAY(18, -1)))]), filter([l2_distance(partsupp.ps_text_embedding,
+|        cast('{VECTOR}', ARRAY(18, -1))) < cast(0.925, DOUBLE(-1, -1))]), rowset=256
+|       access([partsupp.__pk_increment], [partsupp.ps_text_embedding], [partsupp.ps_partkey], [partsupp.ps_suppkey]), partitions(p0)
+|       is_index_back=true, is_global_index=false, filter_before_indexback[false],
+|       range_key([partsupp.__pk_increment]), range(MIN ; MAX)always true
+|   6 - output([lineitem.L_ORDERKEY], [lineitem.L_PARTKEY], [lineitem.L_SUPPKEY]), filter([lineitem.L_SHIPDATE > '1995-03-14']), rowset=256
+|       access([lineitem.L_ORDERKEY], [lineitem.L_SHIPDATE], [lineitem.L_PARTKEY], [lineitem.L_SUPPKEY]), partitions(p0)
+|       is_index_back=false, is_global_index=false, filter_before_indexback[false],
+|       range_key([lineitem.__pk_increment]), range(MIN ; MAX)always true
+|   7 - output([orders.O_CUSTKEY], [orders.O_ORDERKEY], [orders.O_ORDERDATE], [orders.O_SHIPPRIORITY]), filter([orders.O_ORDERDATE < '1995-03-14']), rowset=256
+|       access([orders.O_CUSTKEY], [orders.O_ORDERKEY], [orders.O_ORDERDATE], [orders.O_SHIPPRIORITY])
+|       is_index_back=false, is_global_index=false,
+|       range_key([orders.__pk_increment]), range(MIN ; MAX)always true

@@ -1,0 +1,273 @@
+{
+  "Q1": {
+    "table_scans": [
+      {
+        "id": 2,
+        "table": "lineitem",
+        "filter": "[lineitem.L_SHIPDATE <= date_sub('1994-12-01', cast(90, VARCHAR(1048576)), 4)]",
+        "est_rows": 23162273
+      }
+    ],
+    "hash_joins": []
+  },
+  "Q2": {
+    "table_scans": [
+      { "id": 4, "table": "region", "filter": "[region.R_NAME = 'EUROPE']", "est_rows": 1 },
+      { "id": 6, "table": "nation", "filter": null, "est_rows": 25 },
+      { "id": 9, "table": "part", "filter": "[part.p_size = 15], [(T_OP_LIKE, part.p_type, '%BRASS', '\\')]", "est_rows": 21779 },
+      { "id": 10, "table": "partsupp", "filter": null, "est_rows": 8000000 },
+      { "id": 11, "table": "supplier", "filter": null, "est_rows": 100000 }
+    ],
+    "hash_joins": [
+      { "id": 3, "tables": ["nation", "region"], "equal_conds": ["nation.N_REGIONKEY = region.R_REGIONKEY"], "other_conds": [], "est_rows": 18547 },
+      { "id": 5, "tables": ["supplier", "nation"], "equal_conds": ["supplier.S_NATIONKEY = nation.N_NATIONKEY"], "other_conds": [], "est_rows": 92734 },
+      { "id": 7, "tables": ["supplier", "partsupp"], "equal_conds": ["supplier.S_SUPPKEY = partsupp.ps_suppkey"], "other_conds": [], "est_rows": 92734 },
+      { "id": 8, "tables": ["part", "partsupp"], "equal_conds": ["part.p_partkey = partsupp.ps_partkey"], "other_conds": [], "est_rows": 90008 }
+    ]
+  },
+  "Q3": {
+    "table_scans": [
+      { "id": 2, "table": "customer", "filter": "[customer.C_MKTSEGMENT = 'HOUSEHOLD']", "est_rows": 299751 },
+      { "id": 6, "table": "lineitem", "filter": "[lineitem.L_SHIPDATE > '1995-03-14']", "est_rows": 32261806 },
+      { "id": 7, "table": "orders", "filter": "[orders.O_ORDERDATE < '1995-03-14']", "est_rows": 7284824 },
+      { "id": 10, "table": "partsupp", "filter": "vector_filter(partsupp.ps_text_embedding, '{VECTOR}') < 0.925", "est_rows": 8000000}
+    ],
+    "hash_joins": [
+      { "id": 1, "tables": ["customer", "orders"], "equal_conds": ["customer.C_CUSTKEY = orders.O_CUSTKEY"], "other_conds": [], "est_rows": 424371 },
+      { "id": 3, "tables": ["lineitem", "orders"], "equal_conds": ["lineitem.L_ORDERKEY = orders.O_ORDERKEY"], "other_conds": [], "est_rows": 1347057 },
+      { "id": 4, "tables": ["partsupp", "lineitem"], "equal_conds": ["partsupp.ps_partkey = lineitem.L_PARTKEY", "partsupp.ps_suppkey = lineitem.L_SUPPKEY"], "other_conds": [], "est_rows": 2666882 }
+    ]
+  },
+  "Q4": {
+    "table_scans": [
+      { "id": 13, "table": "orders", "filter": "[orders.O_ORDERDATE < date_add('1993-07-01', cast(3, VARCHAR(1048576)), 6)], [orders.O_ORDERDATE >= '1993-07-01']", "est_rows": 573805 },
+      { "id": 19, "table": "lineitem", "filter": "[lineitem.L_COMMITDATE < lineitem.L_RECEIPTDATE], [RF_IN_FILTER(lineitem.L_ORDERKEY)], [RF_RANGE_FILTER(lineitem.L_ORDERKEY)], [RF_BLOOM_FILTER(lineitem.L_ORDERKEY)]", "est_rows": 1519681 }
+    ],
+    "hash_joins": []
+  },
+  "Q5": {
+    "table_scans": [
+      { "id": 7, "table": "region", "filter": "[region.R_NAME = 'MIDDLE EAST']", "est_rows": 1 },
+      { "id": 8, "table": "nation", "filter": null, "est_rows": 25 },
+      { "id": 9, "table": "supplier", "filter": null, "est_rows": 100000 },
+      { "id": 11, "table": "lineitem", "filter": null, "est_rows": 59986052 },
+      { "id": 12, "table": "orders", "filter": "[orders.O_ORDERDATE < date_add('1993-01-01', cast(1, VARCHAR(1048576)), 8)], [orders.O_ORDERDATE >= '1993-01-01']", "est_rows": 2276508 },
+      { "id": 13, "table": "customer", "filter": null, "est_rows": 1500000 },
+      { "id": 10, "table": "partsupp", "filter": "vector_filter(partsupp.ps_text_embedding, '{VECTOR}') < 0.925", "est_rows": 8000000}
+    ],
+    "hash_joins": [
+      { "id": 1, "tables": ["customer", "orders"], "equal_conds": ["customer.C_CUSTKEY = orders.O_CUSTKEY", "customer.C_NATIONKEY = supplier.S_NATIONKEY"], "other_conds": [], "est_rows": 59986052 },
+      { "id": 6, "tables": ["nation", "region"], "equal_conds": ["nation.N_REGIONKEY = region.R_REGIONKEY"], "other_conds": [], "est_rows": 5 }
+    ]
+  },
+  "Q6": {
+    "table_scans": [
+      { "id": 5, "table": "lineitem", "filter": "[lineitem.L_SHIPDATE < date_add('1994-01-01', '1', 8)], [lineitem.L_QUANTITY < 24], [lineitem.L_DISCOUNT >= 0.05], [lineitem.L_SHIPDATE >= '1994-01-01'], [lineitem.L_DISCOUNT <= 0.07]", "est_rows": 3729477 }
+    ],
+    "hash_joins": []
+  },
+  "Q7": {
+    "table_scans": [
+      { "id": 24, "table": "nation", "filter": "[nation.N_NAME = 'FRANCE' OR nation.N_NAME = 'GERMANY']", "est_rows": 2 },
+      { "id": 27, "table": "supplier", "filter": "[RF_IN_FILTER(supplier.S_NATIONKEY)]", "est_rows": 10760 },
+      { "id": 30, "table": "lineitem", "filter": "[lineitem.L_SHIPDATE >= '1995-01-01'], [lineitem.L_SHIPDATE <= '1996-12-31']", "est_rows": 1907630 },
+      { "id": 33, "table": "orders", "filter": "[RF_IN_FILTER(orders.O_ORDERKEY)]", "est_rows": 1806713 },
+      { "id": 38, "table": "customer", "filter": "[RF_IN_FILTER(customer.C_CUSTKEY)]", "est_rows": 826487 },
+      { "id": 42, "table": "nation", "filter": "[nation.N_NAME = 'GERMANY' OR nation.N_NAME = 'FRANCE']", "est_rows": 2 }
+    ],
+    "hash_joins": [
+      { "id": 9, "tables": ["customer", "orders"], "equal_conds": ["customer.C_CUSTKEY = orders.O_CUSTKEY"], "other_conds": [], "est_rows": 1525926 },
+      { "id": 11, "tables": ["orders", "lineitem"], "equal_conds": ["orders.O_ORDERKEY = lineitem.L_ORDERKEY"], "other_conds": [], "est_rows": 1431330 }
+    ]
+  },
+  "Q8": {
+    "table_scans": [
+      { "id": 5, "table": "nation", "filter": null, "est_rows": 25 },
+      { "id": 8, "table": "region", "filter": "[region.R_NAME = 'MIDDLE EAST']", "est_rows": 1 },
+      { "id": 10, "table": "nation", "filter": null, "est_rows": 25 },
+      { "id": 15, "table": "part", "filter": "[part.p_type = 'ECONOMY BRUSHED BRASS']", "est_rows": 13226 },
+      { "id": 16, "table": "lineitem", "filter": null, "est_rows": 59986052 },
+      { "id": 18, "table": "orders", "filter": "[orders.O_ORDERDATE >= '1995-01-01'], [orders.O_ORDERDATE <= '1996-12-31']", "est_rows": 4559123 },
+      { "id": 19, "table": "customer", "filter": null, "est_rows": 1500000 },
+      { "id": 20, "table": "supplier", "filter": null, "est_rows": 100000 },
+      { "id": 10, "table": "partsupp", "filter": "vector_filter(partsupp.ps_text_embedding, '{VECTOR}') < 0.925", "est_rows": 8000000}
+    ],
+    "hash_joins": [
+      { "id": 4, "tables": ["supplier", "nation"], "equal_conds": ["supplier.S_NATIONKEY = nation.N_NATIONKEY"], "other_conds": [], "est_rows": 1484 },
+      { "id": 6, "tables": ["supplier", "lineitem"], "equal_conds": ["supplier.S_SUPPKEY = lineitem.L_SUPPKEY"], "other_conds": [], "est_rows": 1484 },
+      { "id": 7, "tables": ["nation", "region"], "equal_conds": ["nation.N_REGIONKEY = region.R_REGIONKEY"], "other_conds": [], "est_rows": 1441 },
+      { "id": 11, "tables": ["orders", "customer"], "equal_conds": ["orders.O_CUSTKEY = customer.C_CUSTKEY"], "other_conds": [], "est_rows": 7202 },
+      { "id": 14, "tables": ["part", "lineitem"], "equal_conds": ["part.p_partkey = lineitem.L_PARTKEY"], "other_conds": [], "est_rows": 409872 }
+    ]
+  },
+  "Q9": {
+    "table_scans": [
+      { "id": 3, "table": "nation", "filter": null, "est_rows": 25 },
+      { "id": 5, "table": "supplier", "filter": null, "est_rows": 100000 },
+      { "id": 9, "table": "part", "filter": "[(T_OP_LIKE, part.p_name, '%almond%', '\\')]", "est_rows": 143541 },
+      { "id": 10, "table": "partsupp", "filter": "[l2_distance(partsupp.ps_text_embedding, cast('[0.0]', ARRAY(18, -1))) < 0.925]", "est_rows": 2666667 },
+      { "id": 11, "table": "lineitem", "filter": null, "est_rows": 59986052 },
+      { "id": 12, "table": "orders", "filter": null, "est_rows": 15000000 },
+      { "id": 10, "table": "partsupp", "filter": "vector_filter(partsupp.ps_text_embedding, '{VECTOR}') < 0.925", "est_rows": 8000000}
+    ],
+    "hash_joins": [
+      { "id": 2, "tables": ["supplier", "nation"], "equal_conds": ["supplier.S_NATIONKEY = nation.N_NATIONKEY"], "other_conds": [], "est_rows": 248500 },
+      { "id": 4, "tables": ["supplier", "lineitem"], "equal_conds": ["supplier.S_SUPPKEY = lineitem.L_SUPPKEY"], "other_conds": [], "est_rows": 248500 },
+      { "id": 7, "tables": ["partsupp", "lineitem"], "equal_conds": ["partsupp.ps_suppkey = lineitem.L_SUPPKEY", "partsupp.ps_partkey = lineitem.L_PARTKEY"], "other_conds": [], "est_rows": 243320 }
+    ]
+  },
+  "Q10": {
+    "table_scans": [
+      { "id": 2, "table": "nation", "filter": null, "est_rows": 25 },
+      { "id": 6, "table": "orders", "filter": "[orders.O_ORDERDATE < date_add('1993-11-01', 3, 6)], [orders.O_ORDERDATE >= '1993-11-01']", "est_rows": 573805 },
+      { "id": 7, "table": "lineitem", "filter": "[lineitem.L_RETURNFLAG = 'R']", "est_rows": 14808183 },
+      { "id": 9, "table": "customer", "filter": null, "est_rows": 1500000 },
+      { "id": 10, "table": "partsupp", "filter": "vector_filter(partsupp.ps_text_embedding, '{VECTOR}') < 0.925", "est_rows": 8000000}
+    ],
+    "hash_joins": [
+      { "id": 1, "tables": ["customer", "nation"], "equal_conds": ["customer.C_NATIONKEY = nation.N_NATIONKEY"], "other_conds": [], "est_rows": 159718 },
+      { "id": 3, "tables": ["customer", "orders"], "equal_conds": ["customer.C_CUSTKEY = orders.O_CUSTKEY"], "other_conds": [], "est_rows": 159718 },
+      { "id": 5, "tables": ["lineitem", "orders"], "equal_conds": ["lineitem.L_ORDERKEY = orders.O_ORDERKEY"], "other_conds": [], "est_rows": 831910 }
+    ]
+  },
+  "Q11": {
+    "table_scans": [
+      { "id": 3, "table": "nation", "filter": "[nation.N_NAME = 'ARGENTINA']", "est_rows": 1 },
+      { "id": 4, "table": "supplier", "filter": null, "est_rows": 100000 },
+      { "id": 10, "table": "partsupp", "filter": "vector_filter(partsupp.ps_text_embedding, '{VECTOR}') < 0.925", "est_rows": 8000000}
+    ],
+    "hash_joins": [
+      { "id": 1, "tables": ["partsupp", "supplier"], "equal_conds": ["partsupp.ps_suppkey = supplier.S_SUPPKEY"], "other_conds": [], "est_rows": 109898 },
+      { "id": 2, "tables": ["supplier", "nation"], "equal_conds": ["supplier.S_NATIONKEY = nation.N_NATIONKEY"], "other_conds": [], "est_rows": 4000 }
+    ]
+  },
+  "Q12": {
+    "table_scans": [
+      { "id": 4, "table": "lineitem", "filter": "[lineitem.L_RECEIPTDATE < date_add('1994-01-01', 1, 8)], [lineitem.L_SHIPMODE IN ('RAIL', 'SHIP')], [lineitem.L_COMMITDATE < lineitem.L_RECEIPTDATE], [lineitem.L_SHIPDATE < lineitem.L_COMMITDATE], [lineitem.L_RECEIPTDATE >= '1994-01-01']", "est_rows": 3035451 },
+      { "id": 5, "table": "orders", "filter": null, "est_rows": 15000000 },
+      { "id": 10, "table": "partsupp", "filter": "vector_filter(partsupp.ps_text_embedding, '{VECTOR}') < 0.925", "est_rows": 8000000}
+    ],
+    "hash_joins": [
+      { "id": 1, "tables": ["orders", "lineitem"], "equal_conds": ["orders.O_ORDERKEY = lineitem.L_ORDERKEY"], "other_conds": [], "est_rows": 2666680 }
+    ]
+  },
+  "Q13": {
+    "table_scans": [
+      { "id": 14, "table": "orders", "filter": "[(T_OP_NOT, (T_OP_LIKE, orders.O_COMMENT, '%special%requests%', '\\'))]", "est_rows": 14912744 },
+      { "id": 21, "table": "customer", "filter": null, "est_rows": 1500000 }
+    ],
+    "hash_joins": []
+  },
+  "Q14": {
+    "table_scans": [
+      { "id": 9, "table": "lineitem", "filter": "[lineitem.L_SHIPDATE >= '1995-09-01'], [lineitem.L_SHIPDATE < date_add('1995-09-01', '1', 6)]", "est_rows": 712706 },
+      { "id": 12, "table": "part", "filter": "[RF_IN_FILTER(part.p_partkey)]", "est_rows": 660513 }
+    ],
+    "hash_joins": [
+      { "id": 4, "tables": ["lineitem", "part"], "equal_conds": ["lineitem.L_PARTKEY = part.p_partkey"], "other_conds": [], "est_rows": 736393 }
+    ]
+  },
+  "Q15": {
+    "table_scans": [
+      { 
+        "id": 1, 
+        "table": "lineitem", 
+        "filter": "[lineitem.L_SHIPDATE >= '1996-01-01'], [lineitem.L_SHIPDATE < date_add('1996-01-01', '3', 6)]", 
+        "est_rows": 2161874 
+      },
+      { 
+        "id": 2, 
+        "table": "supplier", 
+        "filter": "nil", 
+        "est_rows": 10000 
+      }
+    ],
+    "hash_joins": [
+      { 
+        "id": 1, 
+        "tables": ["supplier", "revenue_s"], 
+        "equal_conds": ["supplier.s_suppkey = revenue_s.supplier_no"], 
+        "other_conds": ["revenue_s.total_revenue = MAX(total_revenue)"], 
+        "est_rows": 1 
+      }
+    ]
+  },
+  "Q16": {
+    "table_scans": [
+      { "id": 15, "table": "part", "filter": "[part.p_size IN (49, 14, 23, 45, 19, 3, 36, 9)], [part.p_brand != 'Brand#45'], [(T_OP_NOT, (T_OP_LIKE, part.p_type, 'MEDIUM POLISHED%', '\\'))]", "est_rows": 310565 },
+      { "id": 21, "table": "supplier", "filter": "[(T_OP_LIKE, supplier.S_COMMENT, '%Customer%Complaints%', '\\')]", "est_rows": 3543 },
+      { "id": 26, "table": "partsupp", "filter": "[RF_IN_FILTER(partsupp.ps_partkey)]", "est_rows": 1481653 }
+    ],
+    "hash_joins": [
+      { "id": 10, "tables": ["part", "partsupp"], "equal_conds": ["part.p_partkey = partsupp.ps_partkey"], "other_conds": [], "est_rows": 1236722 }
+    ]
+  },
+  "Q17": {
+    "table_scans": [
+      { "id": 13, "table": "part", "filter": "[part.p_container = 'MED BOX'], [part.p_brand = 'Brand#23']", "est_rows": 10027 },
+      { "id": 21, "table": "lineitem", "filter": "[RF_IN_FILTER(lineitem.L_PARTKEY)]", "est_rows": 2100948 },
+      { "id": 24, "table": "lineitem", "filter": "[RF_IN_FILTER(lineitem.L_PARTKEY)]", "est_rows": 2100948 }
+    ],
+    "hash_joins": [
+      { "id": 4, "tables": ["part", "lineitem"], "equal_conds": ["part.p_partkey = lineitem.L_PARTKEY"], "other_conds": ["[cast(lineitem.L_QUANTITY, DECIMAL(15, 2)) < 0.2 * AVG(lineitem.l_quantity)]"], "est_rows": 310713 },
+      { "id": 8, "tables": ["lineitem", "part"], "equal_conds": ["lineitem.L_PARTKEY = part.p_partkey"], "other_conds": [], "est_rows": 15712 }
+    ]
+  },
+  "Q18": {
+    "table_scans": [
+      { "id": 3, "table": "customer", "filter": null, "est_rows": 1500000 },
+      { "id": 7, "table": "lineitem", "filter": null, "est_rows": 59986052 },
+      { "id": 8, "table": "orders", "filter": null, "est_rows": 15000000 },
+      { "id": 10, "table": "partsupp", "filter": "vector_filter(partsupp.ps_text_embedding, '{VECTOR}') < 0.925", "est_rows": 8000000}
+    ],
+    "hash_joins": [
+      { "id": 2, "tables": ["customer", "orders"], "equal_conds": ["customer.C_CUSTKEY = orders.O_CUSTKEY"], "other_conds": [], "est_rows": 2818499 },
+      { "id": 4, "tables": ["orders", "lineitem"], "equal_conds": ["orders.O_ORDERKEY = lineitem.L_ORDERKEY"], "other_conds": [], "est_rows": 2643773 }
+    ]
+  },
+  "Q19": {
+    "table_scans": [
+      { "id": 9, "table": "part", "filter": "[(T_OP_OR, (T_OP_AND, part.p_brand = 'Brand#12', part.p_container IN ('SM CASE', 'SM BOX', 'SM PACK', 'SM PKG'), part.p_size <= 5), (T_OP_AND, part.p_brand = 'Brand#23', part.p_container IN ('MED BAG', 'MED BOX', 'MED PKG', 'MED PACK'), part.p_size <= 10), (T_OP_AND, part.p_brand = 'Brand#34', part.p_container IN ('LG CASE', 'LG BOX', 'LG PACK', 'LG PKG'), part.p_size <= 15))], [part.p_size >= 1]", "est_rows": 30634 },
+      { "id": 12, "table": "lineitem", "filter": "[lineitem.L_SHIPINSTRUCT = 'DELIVER IN PERSON'], [lineitem.L_SHIPMODE IN ('AIR', 'AIR REG')], [RF_IN_FILTER(lineitem.L_PARTKEY)]", "est_rows": 179865 }
+    ],
+    "hash_joins": [
+      { "id": 4, "tables": ["part", "lineitem"], "equal_conds": ["part.p_partkey = lineitem.L_PARTKEY"], "other_conds": ["复杂多重 OR 条件已简化合并"], "est_rows": 30634 }
+    ]
+  },
+  "Q20": {
+    "table_scans": [
+      { "id": 2, "table": "nation", "filter": "[nation.N_NAME = 'ALGERIA']", "est_rows": 1 },
+      { "id": 8, "table": "part", "filter": "[(T_OP_LIKE, part.p_name, 'almond%', '\\')]", "est_rows": 2 },
+      { "id": 9, "table": "lineitem", "filter": "[lineitem.L_SHIPDATE < date_add('1993-01-01', '1', 8)], [lineitem.L_SHIPDATE >= '1993-01-01']", "est_rows": 8671252 },
+      { "id": 10, "table": "partsupp", "filter": "[l2_distance(partsupp.ps_text_embedding, cast('[0.0]', ARRAY(18, -1))) < 0.925]", "est_rows": 2666667 },
+      { "id": 11, "table": "supplier", "filter": "[TOPN_FILTER(supplier.S_NAME)]", "est_rows": 100000 },
+      { "id": 10, "table": "partsupp", "filter": "vector_filter(partsupp.ps_text_embedding, '{VECTOR}') < 0.925", "est_rows": 8000000}
+    ],
+    "hash_joins": [
+      { "id": 1, "tables": ["supplier", "nation"], "equal_conds": ["supplier.S_NATIONKEY = nation.N_NATIONKEY"], "other_conds": [], "est_rows": 1 },
+      { "id": 6, "tables": ["lineitem", "partsupp"], "equal_conds": ["lineitem.L_PARTKEY = partsupp.ps_partkey", "lineitem.L_SUPPKEY = partsupp.ps_suppkey"], "other_conds": [], "est_rows": 5 }
+    ]
+  },
+  "Q21": {
+    "table_scans": [
+      { "id": 30, "table": "nation", "filter": "[nation.N_NAME = 'SAUDI ARABIA']", "est_rows": 1 },
+      { "id": 33, "table": "supplier", "filter": "[RF_IN_FILTER(supplier.S_NATIONKEY)]", "est_rows": 6880 },
+      { "id": 36, "table": "lineitem", "filter": "[lineitem.L_RECEIPTDATE > lineitem.L_COMMITDATE]", "est_rows": 1398690 },
+      { "id": 39, "table": "orders", "filter": "[orders.O_ORDERSTATUS = 'F']", "est_rows": 1007795 },
+      { "id": 42, "table": "lineitem", "filter": "[RF_IN_FILTER(lineitem.L_ORDERKEY)]", "est_rows": 3698131 }
+    ],
+    "hash_joins": [
+      { "id": 17, "tables": ["orders", "lineitem"], "equal_conds": ["orders.O_ORDERKEY = lineitem.L_ORDERKEY"], "other_conds": [], "est_rows": 497801 },
+      { "id": 21, "tables": ["supplier", "lineitem"], "equal_conds": ["supplier.S_SUPPKEY = lineitem.L_SUPPKEY"], "other_conds": [], "est_rows": 824041 },
+      { "id": 25, "tables": ["supplier", "nation"], "equal_conds": ["supplier.S_NATIONKEY = nation.N_NATIONKEY"], "other_conds": [], "est_rows": 4000 }
+    ]
+  },
+  "Q22": {
+    "table_scans": [
+      { "id": 22, "table": "customer", "filter": "[customer.C_ACCTBAL > 0.00], [substr(cast(customer.C_PHONE, VARCHAR), 1, 2) IN ('13', '31', '23', '29', '30', '18', '17')]", "est_rows": 1363638 },
+      { "id": 24, "table": "customer", "filter": "[substr(cast(customer.C_PHONE, VARCHAR), 1, 2) IN ('13', '31', '23', '29', '30', '18', '17')]", "est_rows": 1500000 },
+      { "id": 29, "table": "orders", "filter": "[RF_IN_FILTER(orders.O_CUSTKEY)]", "est_rows": 1594935 }
+    ],
+    "hash_joins": []
+  }
+}

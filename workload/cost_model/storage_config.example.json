@@ -1,0 +1,98 @@
+{
+  "_comment": "存储配置示例。vector_storage: together|separated|both。storage_type: row|column",
+  "tables": {
+    "region": {
+      "partition_key": "r_regionkey",
+      "storage_type": "row",
+      "row_size": 181,
+      "column_sizes": { "r_regionkey": 4, "r_name": 64, "r_comment": 112 },
+      "partitions": [
+        { "range": "[0, 5)", "cardinality": 5 }
+      ]
+    },
+    "nation": {
+      "partition_key": "n_nationkey",
+      "storage_type": "row",
+      "row_size": 185,
+      "column_sizes": { "n_nationkey": 4, "n_name": 64, "n_regionkey": 4, "n_comment": 112 },
+      "partitions": [
+        { "range": "[0, 25)", "cardinality": 25 }
+      ]
+    },
+    "supplier": {
+      "partition_key": "s_suppkey",
+      "storage_type": "row",
+      "row_size": 197,
+      "column_sizes": { "s_suppkey": 4, "s_name": 64, "s_address": 80, "s_nationkey": 4, "s_phone": 15, "s_acctbal": 8, "s_comment": 101 },
+      "partitions": [
+        { "range": "[0, 100000)", "cardinality": 100000 }
+      ]
+    },
+    "customer": {
+      "partition_key": "c_custkey",
+      "storage_type": "row",
+      "row_size": 223,
+      "column_sizes": { "c_custkey": 4, "c_name": 64, "c_address": 80, "c_nationkey": 4, "c_phone": 15, "c_acctbal": 8, "c_mktsegment": 10, "c_comment": 117 },
+      "partitions": [
+        { "range": "[0, 1500000)", "cardinality": 1500000 }
+      ]
+    },
+    "part": {
+      "partition_key": "p_partkey",
+      "storage_type": "row",
+      "row_size": 3253,
+      "column_sizes": { "p_partkey": 4, "p_name": 128, "p_mfgr": 64, "p_brand": 16, "p_type": 64, "p_size": 4, "p_container": 16, "p_retailprice": 8, "p_comment": 256, "text_embedding": 3072 },
+      "partitions": [
+        { "range": "[0, 2000000)", "cardinality": 2000000 }
+      ]
+    },
+    "partsupp": {
+      "partition_key": "ps_partkey",
+      "storage_type": "row",
+      "row_size": 3291,
+      "column_sizes": { "ps_partkey": 4, "ps_suppkey": 4, "ps_availqty": 4, "ps_supplycost": 8, "ps_comment": 199, "ps_text_embedding": 3072 },
+      "partitions": [
+        { "range": "[0, 8000000)", "cardinality": 8000000 }
+      ],
+      "vector_column": "ps_text_embedding",
+      "vector_dim": 768
+    },
+    "orders": {
+      "partition_key": "o_orderdate",
+      "storage_type": "row",
+      "row_size": 152,
+      "column_sizes": { "o_orderkey": 4, "o_custkey": 4, "o_orderstatus": 1, "o_totalprice": 8, "o_orderdate": 4, "o_orderpriority": 15, "o_clerk": 15, "o_shippriority": 4, "o_comment": 79 },
+      "partitions": [
+        { "range": "[1992-01-01, 1993-01-01)", "cardinality": 1500000 },
+        { "range": "[1993-01-01, 1994-01-01)", "cardinality": 1500000 },
+        { "range": "[1994-01-01, 1995-01-01)", "cardinality": 1500000 },
+        { "range": "[1995-01-01, 1996-01-01)", "cardinality": 1500000 },
+        { "range": "[1996-01-01, 1997-01-01)", "cardinality": 1500000 },
+        { "range": "[1997-01-01, 1998-01-01)", "cardinality": 1500000 },
+        { "range": "[1998-01-01, 1999-01-01)", "cardinality": 1500000 }
+      ]
+    },
+    "lineitem": {
+      "partition_key": "l_shipdate",
+      "storage_type": "row",
+      "row_size": 155,
+      "column_sizes": { "l_orderkey": 4, "l_partkey": 4, "l_suppkey": 4, "l_linenumber": 4, "l_quantity": 8, "l_extendedprice": 8, "l_discount": 8, "l_tax": 8, "l_returnflag": 1, "l_linestatus": 1, "l_shipdate": 4, "l_commitdate": 4, "l_receiptdate": 4, "l_shipinstruct": 16, "l_shipmode": 10, "l_comment": 44 },
+      "partitions": [
+        { "range": "[1992-01-01, 1993-01-01)", "cardinality": 8570000 },
+        { "range": "[1993-01-01, 1994-01-01)", "cardinality": 8570000 },
+        { "range": "[1994-01-01, 1995-01-01)", "cardinality": 8570000 },
+        { "range": "[1995-01-01, 1996-01-01)", "cardinality": 8570000 },
+        { "range": "[1996-01-01, 1997-01-01)", "cardinality": 8570000 },
+        { "range": "[1997-01-01, 1998-01-01)", "cardinality": 8570000 },
+        { "range": "[1998-01-01, 1999-01-01)", "cardinality": 8570000 }
+      ]
+    }
+  },
+  "vector_storage": "together",
+  "_vector_storage_options": "together: 向量标量同存; separated: 分离存储, 需加 vector-scalar hash join; both: 双份存储, 使用 together 副本无额外代价",
+  "ivf_params": {
+    "nlist": 1024,
+    "nprobe": 32,
+    "dim": 768
+  }
+}

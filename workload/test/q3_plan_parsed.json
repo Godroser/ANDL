@@ -1,0 +1,51 @@
+{
+  "Q3": {
+    "table_scans": [
+      {
+        "id": 2,
+        "table": "customer",
+        "filter": "[customer.C_MKTSEGMENT = cast('HOUSEHOLD', VARCHAR(1048576))]",
+        "est_rows": 299751
+      },
+      {
+        "id": 6,
+        "table": "lineitem",
+        "filter": "[lineitem.L_SHIPDATE > '1995-03-14']",
+        "est_rows": 32261806
+      },
+      {
+        "id": 7,
+        "table": "orders",
+        "filter": "[orders.O_ORDERDATE < '1995-03-14']",
+        "est_rows": 7284824
+      }
+    ],
+    "hash_joins": [
+      {
+        "id": 1,
+        "equal_conds": [
+          "customer.C_CUSTKEY = orders.O_CUSTKEY"
+        ],
+        "other_conds": [],
+        "est_rows": 424371
+      },
+      {
+        "id": 3,
+        "equal_conds": [
+          "lineitem.L_ORDERKEY = orders.O_ORDERKEY"
+        ],
+        "other_conds": [],
+        "est_rows": 1347057
+      },
+      {
+        "id": 4,
+        "equal_conds": [
+          "partsupp.ps_partkey = lineitem.L_PARTKEY",
+          "partsupp.ps_suppkey = lineitem.L_SUPPKEY"
+        ],
+        "other_conds": [],
+        "est_rows": 2666882
+      }
+    ]
+  }
+}

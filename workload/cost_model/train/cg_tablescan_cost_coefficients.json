@@ -1,0 +1,205 @@
+{
+  "formula": {
+    "io": "ioFactor * rows * rowSize + c_io",
+    "cpu": "rows * log2(rowSize) * scanFactor + c_cpu",
+    "total": "ioFactor * (rows * rowSize) + scanFactor * (rows * log2(rowSize)) + c"
+  },
+  "coefficients": {
+    "ioFactor": -5.231441006166471e-06,
+    "scanFactor": 0.0006573674746128778,
+    "c": -6609.804347379189
+  },
+  "table": "orders_cg",
+  "metrics": {
+    "rmse_ms": 3839.1947952232294,
+    "r2": 0.923873216916113,
+    "n_samples": 12
+  },
+  "column_sizes": {
+    "o_orderkey": 4,
+    "o_custkey": 4,
+    "o_orderstatus": 1,
+    "o_totalprice": 8,
+    "o_orderdate": 4,
+    "o_orderpriority": 15,
+    "o_clerk": 15,
+    "o_shippriority": 4,
+    "o_comment": 79,
+    "O_ORDERKEY": 4,
+    "O_CUSTKEY": 4,
+    "O_ORDERSTATUS": 1,
+    "O_TOTALPRICE": 8,
+    "O_ORDERDATE": 4,
+    "O_ORDERPRIORITY": 15,
+    "O_CLERK": 15,
+    "O_SHIPPRIORITY": 4,
+    "O_COMMENT": 79
+  },
+  "samples": [
+    {
+      "query_id": "o_orderkey_custkey_date_totalprice_priority_clerk_shippriority",
+      "columns": [
+        "o_orderkey",
+        "o_custkey",
+        "o_orderdate",
+        "o_totalprice",
+        "o_orderpriority",
+        "o_clerk",
+        "o_shippriority"
+      ],
+      "rows": 15000000.0,
+      "row_size": 54,
+      "rows_x_row_size": 810000000.0,
+      "rows_x_log2_row_size": 86323312.53245202,
+      "latency_ms": 47761.23280450702
+    },
+    {
+      "query_id": "o_orderkey",
+      "columns": [
+        "o_orderkey"
+      ],
+      "rows": 15000000.0,
+      "row_size": 4,
+      "rows_x_row_size": 60000000.0,
+      "rows_x_log2_row_size": 30000000.0,
+      "latency_ms": 11108.521352522075
+    },
+    {
+      "query_id": "o_orderkey_custkey_status_date",
+      "columns": [
+        "o_orderkey",
+        "o_custkey",
+        "o_orderstatus",
+        "o_orderdate"
+      ],
+      "rows": 15000000.0,
+      "row_size": 13,
+      "rows_x_row_size": 195000000.0,
+      "rows_x_log2_row_size": 55506595.772116385,
+      "latency_ms": 28545.743642374873
+    },
+    {
+      "query_id": "o_orderkey_custkey",
+      "columns": [
+        "o_orderkey",
+        "o_custkey"
+      ],
+      "rows": 15000000.0,
+      "row_size": 8,
+      "rows_x_row_size": 120000000.0,
+      "rows_x_log2_row_size": 45000000.0,
+      "latency_ms": 13634.814617224038
+    },
+    {
+      "query_id": "full",
+      "columns": [
+        "o_orderkey",
+        "o_custkey",
+        "o_orderstatus",
+        "o_totalprice",
+        "o_orderdate",
+        "o_orderpriority",
+        "o_clerk",
+        "o_shippriority",
+        "o_comment"
+      ],
+      "rows": 15000000.0,
+      "row_size": 134,
+      "rows_x_row_size": 2010000000.0,
+      "rows_x_log2_row_size": 105991337.85686658,
+      "latency_ms": 51907.810599543154
+    },
+    {
+      "query_id": "o_orderdate",
+      "columns": [
+        "o_orderdate"
+      ],
+      "rows": 15000000.0,
+      "row_size": 4,
+      "rows_x_row_size": 60000000.0,
+      "rows_x_log2_row_size": 30000000.0,
+      "latency_ms": 21107.925090938807
+    },
+    {
+      "query_id": "o_orderkey_date",
+      "columns": [
+        "o_orderkey",
+        "o_orderdate"
+      ],
+      "rows": 15000000.0,
+      "row_size": 8,
+      "rows_x_row_size": 120000000.0,
+      "rows_x_log2_row_size": 45000000.0,
+      "latency_ms": 23678.54448221624
+    },
+    {
+      "query_id": "o_orderkey_custkey_date_totalprice_priority",
+      "columns": [
+        "o_orderkey",
+        "o_custkey",
+        "o_orderdate",
+        "o_totalprice",
+        "o_orderpriority"
+      ],
+      "rows": 15000000.0,
+      "row_size": 35,
+      "rows_x_row_size": 525000000.0,
+      "rows_x_log2_row_size": 76939245.2541745,
+      "latency_ms": 41594.17232591659
+    },
+    {
+      "query_id": "o_orderkey_custkey_date_totalprice_priority_clerk",
+      "columns": [
+        "o_orderkey",
+        "o_custkey",
+        "o_orderdate",
+        "o_totalprice",
+        "o_orderpriority",
+        "o_clerk"
+      ],
+      "rows": 15000000.0,
+      "row_size": 50,
+      "rows_x_row_size": 750000000.0,
+      "rows_x_log2_row_size": 84657842.84662087,
+      "latency_ms": 44361.47778481245
+    },
+    {
+      "query_id": "o_orderkey_custkey_date_totalprice",
+      "columns": [
+        "o_orderkey",
+        "o_custkey",
+        "o_orderdate",
+        "o_totalprice"
+      ],
+      "rows": 15000000.0,
+      "row_size": 20,
+      "rows_x_row_size": 300000000.0,
+      "rows_x_log2_row_size": 64828921.42331044,
+      "latency_ms": 38382.089669816196
+    },
+    {
+      "query_id": "o_custkey",
+      "columns": [
+        "o_custkey"
+      ],
+      "rows": 15000000.0,
+      "row_size": 4,
+      "rows_x_row_size": 60000000.0,
+      "rows_x_log2_row_size": 30000000.0,
+      "latency_ms": 11228.379244916141
+    },
+    {
+      "query_id": "o_orderkey_custkey_date",
+      "columns": [
+        "o_orderkey",
+        "o_custkey",
+        "o_orderdate"
+      ],
+      "rows": 15000000.0,
+      "row_size": 12,
+      "rows_x_row_size": 180000000.0,
+      "rows_x_log2_row_size": 53774437.51081734,
+      "latency_ms": 25650.889822281897
+    }
+  ]
+}
