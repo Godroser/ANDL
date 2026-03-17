@@ -106,6 +106,12 @@ def main():
     with open(queries_path, "r", encoding="utf-8") as f:
         queries = json.load(f)
 
+    partition_cardinalities = None
+    pc_path = ESTIMATE_DIR / "partition_cardinalities.json"
+    if pc_path.exists():
+        with open(pc_path, "r", encoding="utf-8") as f:
+            partition_cardinalities = json.load(f)
+
     schemes = candidates_data.get("candidate_schemes", [])
     if not schemes:
         print("错误: 无候选方案")
@@ -118,7 +124,10 @@ def main():
         scheme = scheme_wrapper.get("tables", scheme_wrapper)
         storage_config = build_storage_config(base_config, scheme)
 
-        est_results = run_estimation(queries, storage_config)
+        est_results = run_estimation(
+            queries, storage_config,
+            partition_cardinalities=partition_cardinalities,
+        )
         total_cost = sum(
             r.get("total_cost_ms", 0) for r in est_results.values() if "error" not in r
         )

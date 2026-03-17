@@ -2,7 +2,7 @@
   "_comment": "存储配置示例。vector_storage: together|separated|both。storage_type: row|column",
   "tables": {
     "region": {
-      "partition_key": "r_regionkey",
+      "partition_key": "r_name",
       "storage_type": "row",
       "row_size": 181,
       "column_sizes": { "r_regionkey": 4, "r_name": 64, "r_comment": 112 },
@@ -11,7 +11,7 @@
       ]
     },
     "nation": {
-      "partition_key": "n_nationkey",
+      "partition_key": "N_NAME",
       "storage_type": "row",
       "row_size": 185,
       "column_sizes": { "n_nationkey": 4, "n_name": 64, "n_regionkey": 4, "n_comment": 112 },
@@ -29,7 +29,7 @@
       ]
     },
     "customer": {
-      "partition_key": "c_custkey",
+      "partition_key": "c_mktsegment",
       "storage_type": "row",
       "row_size": 223,
       "column_sizes": { "c_custkey": 4, "c_name": 64, "c_address": 80, "c_nationkey": 4, "c_phone": 15, "c_acctbal": 8, "c_mktsegment": 10, "c_comment": 117 },
@@ -38,7 +38,7 @@
       ]
     },
     "part": {
-      "partition_key": "p_partkey",
+      "partition_key": "p_type",
       "storage_type": "row",
       "row_size": 3253,
       "column_sizes": { "p_partkey": 4, "p_name": 128, "p_mfgr": 64, "p_brand": 16, "p_type": 64, "p_size": 4, "p_container": 16, "p_retailprice": 8, "p_comment": 256, "text_embedding": 3072 },
@@ -73,7 +73,7 @@
       ]
     },
     "lineitem": {
-      "partition_key": "l_shipdate",
+      "partition_key": "L_RECEIPTDATE",
       "storage_type": "row",
       "row_size": 155,
       "column_sizes": { "l_orderkey": 4, "l_partkey": 4, "l_suppkey": 4, "l_linenumber": 4, "l_quantity": 8, "l_extendedprice": 8, "l_discount": 8, "l_tax": 8, "l_returnflag": 1, "l_linestatus": 1, "l_shipdate": 4, "l_commitdate": 4, "l_receiptdate": 4, "l_shipinstruct": 16, "l_shipmode": 10, "l_comment": 44 },

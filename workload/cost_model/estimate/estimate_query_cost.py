@@ -172,22 +172,94 @@ def partition_pruning(
     if key_col not in filter_lower:
         return None
 
+    def _parse_scalar(v: Any):
+        s = str(v).strip().strip("'\"")
+        if re.match(r"^\d{4}-\d{2}-\d{2}$", s):
+            return ("date", s)
+        if re.match(r"^-?\d+(?:\.\d+)?$", s):
+            return ("num", float(s))
+        return ("str", s.lower())
+
+    def _cmp(a: Any, b: Any) -> int:
+        ta, va = _parse_scalar(a)
+        tb, vb = _parse_scalar(b)
+        if ta == tb:
+            return (va > vb) - (va < vb)
+        sa, sb = str(a).strip(), str(b).strip()
+        return (sa > sb) - (sa < sb)
+
+    # 先只抽取分区键对应条件，避免混入同表其他列条件
+    key_predicates: List[Tuple[str, str]] = []
+    in_values: List[str] = []
+
+    value_pat = r"(?:'([^']*)'|(-?\d+(?:\.\d+)?))"
+    col_pat = rf"(?:\b\w+\.)?{re.escape(key_col)}"
+    direct_pat = re.compile(rf"{col_pat}\s*(<=|>=|=|<|>)\s*{value_pat}", re.I)
+    reverse_pat = re.compile(rf"{value_pat}\s*(<=|>=|<|>)\s*{col_pat}", re.I)
+    in_pat = re.compile(rf"{col_pat}\s+in\s*\(([^)]*)\)", re.I)
+
+    for m in direct_pat.finditer(normalized_filter or ""):
+        op = m.group(1)
+        val = m.group(2) if m.group(2) is not None else m.group(3)
+        key_predicates.append((op, val.strip()))
+
+    # 反向比较: value < key  等价于 key > value
+    reverse_op = {"<": ">", "<=": ">=", ">": "<", ">=": "<="}
+    for m in reverse_pat.finditer(normalized_filter or ""):
+        val = m.group(1) if m.group(1) is not None else m.group(2)
+        op = reverse_op[m.group(3)]
+        key_predicates.append((op, val.strip()))
+
+    for m in in_pat.finditer(normalized_filter or ""):
+        inside = m.group(1) or ""
+        for q in re.findall(r"'([^']*)'", inside):
+            in_values.append(q.strip())
+
+    # 1) list 分区裁剪
+    has_list_partitions = any(isinstance(p, dict) and "list" in p for p in partitions)
+    if has_list_partitions:
+        target_vals = set()
+        for op, val in key_predicates:
+            if op == "=":
+                target_vals.add(str(val).strip().lower())
+        for v in in_values:
+            target_vals.add(str(v).strip().lower())
+
+        if target_vals:
+            total = 0
+            for p in partitions:
+                vals = p.get("list", [])
+                norm_vals = {str(v).strip().lower() for v in vals}
+                if norm_vals & target_vals:
+                    total += p.get("cardinality", 0)
+            return total
+        return None
+
+    # 2) range 分区裁剪
+    eq_values = [val for op, val in key_predicates if op == "="]
+    if eq_values:
+        total = 0
+        for p in partitions:
+            r = p.get("range", "")
+            mm = re.match(r"\[([^,]+),\s*([^)\]]+)\)", r)
+            if not mm:
+                continue
+            p_lo, p_hi = mm.group(1).strip(), mm.group(2).strip()
+            for eq_value in eq_values:
+                if _cmp(p_lo, eq_value) <= 0 and _cmp(eq_value, p_hi) < 0:
+                    total += p.get("cardinality", 0)
+                    break
+        return total if total > 0 else None
+
     lower_bound = None
     upper_bound = None
-    # 匹配 'YYYY-MM-DD' 或 数字
-    val_pat = r"['\"]?([\d\-][\d\-\.]*)['\"]?"
-    for m in re.finditer(rf"([<>]=?)\s*{val_pat}", normalized_filter or ""):
-        op, val = m.group(1), m.group(2)
-        if "<" in op:
-            upper_bound = val
-        if ">" in op:
-            lower_bound = val
-    for m in re.finditer(rf"{val_pat}\s*([<>]=?)", normalized_filter or ""):
-        val, op = m.group(1), m.group(2)
-        if "<" in op:
-            upper_bound = val
-        if ">" in op:
-            lower_bound = val
+    for op, val in key_predicates:
+        if op in (">", ">="):
+            if lower_bound is None or _cmp(val, lower_bound) > 0:
+                lower_bound = val
+        elif op in ("<", "<="):
+            if upper_bound is None or _cmp(val, upper_bound) < 0:
+                upper_bound = val
 
     if lower_bound is None and upper_bound is None:
         return None
@@ -199,9 +271,9 @@ def partition_pruning(
         if not mm:
             continue
         p_lo, p_hi = mm.group(1).strip(), mm.group(2).strip()
-        if lower_bound and p_hi <= lower_bound:
+        if lower_bound is not None and _cmp(p_hi, lower_bound) <= 0:
             continue
-        if upper_bound and p_lo >= upper_bound:
+        if upper_bound is not None and _cmp(p_lo, upper_bound) >= 0:
             continue
         total += p.get("cardinality", 0)
     return total if total > 0 else None
@@ -254,10 +326,12 @@ def estimate_table_scan(
     table_config: Dict,
     query_data: Dict,
     storage_config: Dict,
+    partition_cardinalities: Optional[Dict] = None,
 ) -> Dict[str, Any]:
     """
     估算单个 table_scan 的代价。
     返回: { cost_ms, rows, row_size, scan_type, partition_pruned, ... }
+    partition_cardinalities: 可选，从 partition_cardinalities.json 加载，用于分区裁剪时获取 rows
     """
     table = scan.get("table", "")
     filter_str = scan.get("filter")
@@ -268,18 +342,30 @@ def estimate_table_scan(
 
     cfg = table_config[table]
     storage_type = cfg.get("storage_type", "row")
-    partition_key = cfg.get("partition_key")
-    partitions = cfg.get("partitions", [])
+    partition_key = cfg.get("partition_key") or ""
+    # 优先从 partition_cardinalities.json 获取分区基数
+    if partition_cardinalities and table in partition_cardinalities:
+        pk = partition_key.strip().lower() if partition_key else ""
+        partitions = partition_cardinalities[table].get(pk, cfg.get("partitions", []))
+    else:
+        partitions = cfg.get("partitions", [])
 
-    # 分区裁剪
+    # 分区裁剪：rows 优先从 partition_cardinalities 获取
     rows = est_rows
     partition_pruned = False
-    pruned = partition_pruning(filter_str, partition_key, partitions)
-    print(f"partition_pruning: {pruned}")
-    if pruned is not None:
-        rows = pruned
-        partition_pruned = True
+    if partition_key:
+        pruned = partition_pruning(filter_str, partition_key, partitions)
+        print(f"partition pruned: {pruned}")
+        if pruned is not None:
+            rows = pruned
+            partition_pruned = True
+    elif partitions:
+        # 无分区键但有 partition_cardinalities 时，用其总基数
+        total = sum(p.get("cardinality", 0) for p in partitions)
+        if total > 0:
+            rows = total
 
+    
     # 列存: 根据 filter 和 hash_join 涉及的列计算 rowSize
     columns = extract_columns_from_filter(filter_str)
     for hj in query_data.get("hash_joins", []):
@@ -409,6 +495,7 @@ def estimate_vector_merge_cost(
 def run_estimation(
     queries: Dict,
     storage_config: Dict,
+    partition_cardinalities: Optional[Dict] = None,
 ) -> Dict[str, Any]:
     """对每条 query 估算 table_scan 和 hash_join 代价"""
     table_config = storage_config.get("tables", {})
@@ -428,7 +515,10 @@ def run_estimation(
 
         for scan in qdata.get("table_scans", []):
             print(f"scan: {scan}")
-            est = estimate_table_scan(scan, table_config, qdata, storage_config)
+            est = estimate_table_scan(
+                scan, table_config, qdata, storage_config,
+                partition_cardinalities=partition_cardinalities,
+            )
             scan_costs.append(est)
             t = scan.get("table", "")
             r = est.get("rows", scan.get("est_rows", 0))
@@ -464,10 +554,16 @@ def run_estimation(
 
 
 def main():
+    script_dir = Path(__file__).resolve().parent
     parser = argparse.ArgumentParser(description="估算 TPC-H 查询的 table_scan 和 hash_join 代价")
-    parser.add_argument("--queries", "-q", default="tpch_queries.json", help="解析后的查询 JSON")
+    parser.add_argument("--queries", "-q", default=str(script_dir / "tpch_queries.json"), help="解析后的查询 JSON")
     parser.add_argument("--config", "-c", required=True, help="存储配置 JSON")
     parser.add_argument("--output", "-o", default=None, help="输出 JSON 路径")
+    parser.add_argument(
+        "--partition-cardinalities", "-p",
+        default=str(script_dir / "partition_cardinalities.json"),
+        help="分区基数 JSON，用于分区裁剪时获取 rows",
+    )
     args = parser.parse_args()
 
     with open(args.queries, "r", encoding="utf-8") as f:
@@ -476,7 +572,15 @@ def main():
     with open(args.config, "r", encoding="utf-8") as f:
         storage_config = json.load(f)
 
-    results = run_estimation(queries, storage_config)
+    partition_cardinalities = None
+    pc_path = Path(args.partition_cardinalities)
+    if pc_path.exists():
+        with open(pc_path, "r", encoding="utf-8") as f:
+            partition_cardinalities = json.load(f)
+    else:
+        print(f"提示: 未找到 {pc_path}，分区裁剪将使用 storage_config 中的 partitions")
+
+    results = run_estimation(queries, storage_config, partition_cardinalities=partition_cardinalities)
 
     for qid, r in results.items():
         if "error" in r:
