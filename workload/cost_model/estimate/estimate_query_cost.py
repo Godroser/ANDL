@@ -21,6 +21,7 @@ import math
 import argparse
 from typing import Dict, List, Any, Optional, Tuple
 from pathlib import Path
+from datetime import datetime, timedelta
 
 
 # --- 代价公式系数 (operator_cost.md) ---
@@ -87,6 +88,71 @@ def compute_column_row_size(
     return max(1, total)
 
 
+def _add_months(base_date, delta_months: int):
+    """按自然月加减，超出月末时截断到该月最后一天。"""
+    month_index = (base_date.month - 1) + delta_months
+    year = base_date.year + month_index // 12
+    month = month_index % 12 + 1
+    if month == 12:
+        next_month_first = datetime(year + 1, 1, 1).date()
+    else:
+        next_month_first = datetime(year, month + 1, 1).date()
+    month_last_day = (next_month_first - timedelta(days=1)).day
+    day = min(base_date.day, month_last_day)
+    return datetime(year, month, day).date()
+
+
+def normalize_date_functions(filter_str: Optional[str]) -> Optional[str]:
+    """
+    将 filter 中常见 date_add/date_sub 表达式归一化为日期字面量，便于分区裁剪提取边界。
+    支持形态:
+      - date_sub('1994-12-01', cast(90, VARCHAR(1048576)), 4)
+      - date_add('1993-07-01', 3, 6)
+      - date_add('1994-01-01', '1', 8)
+    unit code:
+      - 4: day
+      - 6: month
+      - 8: year
+    """
+    if not filter_str:
+        return filter_str
+
+    unit_to_kind = {4: "day", 6: "month", 8: "year"}
+    func_pat = re.compile(
+        r"date_(add|sub)\(\s*'(\d{4}-\d{2}-\d{2})'\s*,\s*(.*?)\s*,\s*(\d+)\s*\)",
+        re.I,
+    )
+
+    def _repl(m: re.Match) -> str:
+        op = m.group(1).lower()
+        date_text = m.group(2)
+        interval_expr = m.group(3)
+        unit_code = int(m.group(4))
+        kind = unit_to_kind.get(unit_code)
+        if kind is None:
+            return m.group(0)
+        interval_num_m = re.search(r"-?\d+", interval_expr or "")
+        if not interval_num_m:
+            return m.group(0)
+        delta = int(interval_num_m.group(0))
+        if op == "sub":
+            delta = -delta
+
+        try:
+            base_date = datetime.strptime(date_text, "%Y-%m-%d").date()
+            if kind == "day":
+                out = base_date + timedelta(days=delta)
+            elif kind == "month":
+                out = _add_months(base_date, delta)
+            else:  # year
+                out = _add_months(base_date, delta * 12)
+            return f"'{out.isoformat()}'"
+        except Exception:
+            return m.group(0)
+
+    return func_pat.sub(_repl, filter_str)
+
+
 def partition_pruning(
     filter_str: Optional[str],
     partition_key: str,
@@ -100,8 +166,9 @@ def partition_pruning(
     if not filter_str or not partition_key or not partitions:
         return None
 
+    normalized_filter = normalize_date_functions(filter_str)
     key_col = partition_key.split(".")[-1].lower()
-    filter_lower = (filter_str or "").lower()
+    filter_lower = (normalized_filter or "").lower()
     if key_col not in filter_lower:
         return None
 
@@ -109,13 +176,13 @@ def partition_pruning(
     upper_bound = None
     # 匹配 'YYYY-MM-DD' 或 数字
     val_pat = r"['\"]?([\d\-][\d\-\.]*)['\"]?"
-    for m in re.finditer(rf"([<>]=?)\s*{val_pat}", filter_str or ""):
+    for m in re.finditer(rf"([<>]=?)\s*{val_pat}", normalized_filter or ""):
         op, val = m.group(1), m.group(2)
         if "<" in op:
             upper_bound = val
         if ">" in op:
             lower_bound = val
-    for m in re.finditer(rf"{val_pat}\s*([<>]=?)", filter_str or ""):
+    for m in re.finditer(rf"{val_pat}\s*([<>]=?)", normalized_filter or ""):
         val, op = m.group(1), m.group(2)
         if "<" in op:
             upper_bound = val
@@ -208,6 +275,7 @@ def estimate_table_scan(
     rows = est_rows
     partition_pruned = False
     pruned = partition_pruning(filter_str, partition_key, partitions)
+    print(f"partition_pruning: {pruned}")
     if pruned is not None:
         rows = pruned
         partition_pruned = True
@@ -247,6 +315,7 @@ def estimate_table_scan(
     else:
         cost_ms = scan_cost_row(rows, row_size)
 
+    print(f"rows: {rows}, row_size: {row_size}, cost_ms: {cost_ms}")
     return {
         "cost_ms": max(0, cost_ms),
         "rows": rows,
@@ -347,6 +416,7 @@ def run_estimation(
     results = {}
 
     for qid, qdata in queries.items():
+        print(f"qid: {qid}")
         if "error" in qdata:
             results[qid] = {"error": qdata["error"]}
             continue
@@ -357,6 +427,7 @@ def run_estimation(
         vector_scan_tables = []
 
         for scan in qdata.get("table_scans", []):
+            print(f"scan: {scan}")
             est = estimate_table_scan(scan, table_config, qdata, storage_config)
             scan_costs.append(est)
             t = scan.get("table", "")

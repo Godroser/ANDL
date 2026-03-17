@@ -2,19 +2,19 @@
   "Q1": {
     "table_scans": [
       {
-        "cost_ms": 183012.13995539563,
-        "rows": 23162273,
+        "cost_ms": 203107.83292739972,
+        "rows": 25710000,
         "row_size": 155.0,
         "scan_type": "row",
-        "partition_pruned": false,
+        "partition_pruned": true,
         "table": "lineitem"
       }
     ],
     "hash_joins": [],
     "vector_merge_cost_ms": 0.0,
-    "total_scan_cost_ms": 183012.13995539563,
+    "total_scan_cost_ms": 203107.83292739972,
     "total_hashjoin_cost_ms": 0,
-    "total_cost_ms": 183012.13995539563
+    "total_cost_ms": 203107.83292739972
   },
   "Q2": {
     "table_scans": [
@@ -167,8 +167,8 @@
   "Q4": {
     "table_scans": [
       {
-        "cost_ms": 70083.53349076983,
-        "rows": 9000000,
+        "cost_ms": 11943.255581794972,
+        "rows": 1500000,
         "row_size": 152.0,
         "scan_type": "row",
         "partition_pruned": true,
@@ -185,9 +185,9 @@
     ],
     "hash_joins": [],
     "vector_merge_cost_ms": 0.0,
-    "total_scan_cost_ms": 82385.51338963189,
+    "total_scan_cost_ms": 24245.235480657037,
     "total_hashjoin_cost_ms": 0,
-    "total_cost_ms": 82385.51338963189
+    "total_cost_ms": 24245.235480657037
   },
   "Q5": {
     "table_scans": [
@@ -224,8 +224,8 @@
         "table": "lineitem"
       },
       {
-        "cost_ms": 70083.53349076983,
-        "rows": 9000000,
+        "cost_ms": 11943.255581794972,
+        "rows": 1500000,
         "row_size": 152.0,
         "scan_type": "row",
         "partition_pruned": true,
@@ -250,11 +250,11 @@
     ],
     "hash_joins": [
       {
-        "cost_ms": 247908.6,
+        "cost_ms": 89283.6,
         "build_table": "customer",
         "probe_table": "orders",
         "build_rows": 1500000,
-        "probe_rows": 9000000,
+        "probe_rows": 1500000,
         "n_keys": 2
       },
       {
@@ -267,9 +267,9 @@
       }
     ],
     "vector_merge_cost_ms": 0.0,
-    "total_scan_cost_ms": 754993.831911738,
-    "total_hashjoin_cost_ms": 247909.2025178,
-    "total_cost_ms": 1002903.0344295381
+    "total_scan_cost_ms": 696853.5540027631,
+    "total_hashjoin_cost_ms": 89284.2025178,
+    "total_cost_ms": 786137.7565205632
   },
   "Q6": {
     "table_scans": [
@@ -585,8 +585,8 @@
         "table": "nation"
       },
       {
-        "cost_ms": 70083.53349076983,
-        "rows": 9000000,
+        "cost_ms": 23571.311163589944,
+        "rows": 3000000,
         "row_size": 152.0,
         "scan_type": "row",
         "partition_pruned": true,
@@ -627,26 +627,26 @@
         "n_keys": 1
       },
       {
-        "cost_ms": 229743.6,
+        "cost_ms": 113223.6,
         "build_table": "customer",
         "probe_table": "orders",
         "build_rows": 1500000,
-        "probe_rows": 9000000,
+        "probe_rows": 3000000,
         "n_keys": 1
       },
       {
-        "cost_ms": 526937.8915050001,
+        "cost_ms": 370472.291505,
         "build_table": "orders",
         "probe_table": "lineitem",
-        "build_rows": 9000000,
+        "build_rows": 3000000,
         "probe_rows": 14808183,
         "n_keys": 1
       }
     ],
     "vector_merge_cost_ms": 0.0,
-    "total_scan_cost_ms": 397036.2281514009,
-    "total_hashjoin_cost_ms": 796994.766205,
-    "total_cost_ms": 1194030.9943564008
+    "total_scan_cost_ms": 350524.00582422107,
+    "total_hashjoin_cost_ms": 524009.166205,
+    "total_cost_ms": 874533.1720292211
   },
   "Q11": {
     "table_scans": [
@@ -701,8 +701,8 @@
   "Q12": {
     "table_scans": [
       {
-        "cost_ms": 338302.92154566624,
-        "rows": 42850000,
+        "cost_ms": 67912.74430913324,
+        "rows": 8570000,
         "row_size": 155.0,
         "scan_type": "row",
         "partition_pruned": true,
@@ -727,18 +727,18 @@
     ],
     "hash_joins": [
       {
-        "cost_ms": 1236808.75,
-        "build_table": "orders",
-        "probe_table": "lineitem",
-        "build_rows": 15000000,
-        "probe_rows": 42850000,
+        "cost_ms": 518610.68000000005,
+        "build_table": "lineitem",
+        "probe_table": "orders",
+        "build_rows": 8570000,
+        "probe_rows": 15000000,
         "n_keys": 1
       }
     ],
     "vector_merge_cost_ms": 0.0,
-    "total_scan_cost_ms": 647685.109363616,
-    "total_hashjoin_cost_ms": 1236808.75,
-    "total_cost_ms": 1884493.859363616
+    "total_scan_cost_ms": 377294.93212708295,
+    "total_hashjoin_cost_ms": 518610.68000000005,
+    "total_cost_ms": 895905.612127083
   },
   "Q13": {
     "table_scans": [
@@ -768,8 +768,8 @@
   "Q14": {
     "table_scans": [
       {
-        "cost_ms": 270705.377236533,
-        "rows": 34280000,
+        "cost_ms": 67912.74430913324,
+        "rows": 8570000,
         "row_size": 155.0,
         "scan_type": "row",
         "partition_pruned": true,
@@ -786,24 +786,24 @@
     ],
     "hash_joins": [
       {
-        "cost_ms": 998520.1147832001,
+        "cost_ms": 491133.26478319993,
         "build_table": "part",
         "probe_table": "lineitem",
         "build_rows": 660513,
-        "probe_rows": 34280000,
+        "probe_rows": 8570000,
         "n_keys": 1
       }
     ],
     "vector_merge_cost_ms": 0.0,
-    "total_scan_cost_ms": 366295.08654052194,
-    "total_hashjoin_cost_ms": 998520.1147832001,
-    "total_cost_ms": 1364815.201323722
+    "total_scan_cost_ms": 163502.45361312223,
+    "total_hashjoin_cost_ms": 491133.26478319993,
+    "total_cost_ms": 654635.7183963221
   },
   "Q15": {
     "table_scans": [
       {
-        "cost_ms": 203107.83292739972,
-        "rows": 25710000,
+        "cost_ms": 67912.74430913324,
+        "rows": 8570000,
         "row_size": 155.0,
         "scan_type": "row",
         "partition_pruned": true,
@@ -829,9 +829,9 @@
       }
     ],
     "vector_merge_cost_ms": 0.0,
-    "total_scan_cost_ms": 203520.8282256471,
+    "total_scan_cost_ms": 68325.73960738062,
     "total_hashjoin_cost_ms": 241.47007000000002,
-    "total_cost_ms": 203762.2982956471
+    "total_cost_ms": 68567.20967738061
   },
   "Q16": {
     "table_scans": [
@@ -1036,8 +1036,8 @@
         "table": "part"
       },
       {
-        "cost_ms": 405900.46585479943,
-        "rows": 51420000,
+        "cost_ms": 67912.74430913324,
+        "rows": 8570000,
         "row_size": 155.0,
         "scan_type": "row",
         "partition_pruned": true,
@@ -1078,18 +1078,18 @@
         "n_keys": 1
       },
       {
-        "cost_ms": 2423439.2649636003,
+        "cost_ms": 1503664.0149636,
         "build_table": "partsupp",
         "probe_table": "lineitem",
         "build_rows": 2666667,
-        "probe_rows": 51420000,
+        "probe_rows": 8570000,
         "n_keys": 2
       }
     ],
     "vector_merge_cost_ms": 0.0,
-    "total_scan_cost_ms": 793397.1805639135,
-    "total_hashjoin_cost_ms": 2425853.7959516,
-    "total_cost_ms": 3219250.976515514
+    "total_scan_cost_ms": 455409.4590182473,
+    "total_hashjoin_cost_ms": 1506078.5459516002,
+    "total_cost_ms": 1961488.0049698474
   },
   "Q21": {
     "table_scans": [

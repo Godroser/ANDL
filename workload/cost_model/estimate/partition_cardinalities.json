@@ -1,0 +1,1784 @@
+{
+  "lineitem": {
+    "": [
+      {
+        "range": "[0, 1)",
+        "cardinality": 59986052
+      }
+    ],
+    "l_commitdate": [
+      {
+        "range": "[1992-01-31, 1992-12-04)",
+        "cardinality": 6923155
+      },
+      {
+        "range": "[1992-12-04, 1993-10-08)",
+        "cardinality": 7686892
+      },
+      {
+        "range": "[1993-10-08, 1994-08-12)",
+        "cardinality": 7679784
+      },
+      {
+        "range": "[1994-08-12, 1995-06-16)",
+        "cardinality": 7684783
+      },
+      {
+        "range": "[1995-06-16, 1996-04-19)",
+        "cardinality": 7674148
+      },
+      {
+        "range": "[1996-04-19, 1997-02-21)",
+        "cardinality": 7680619
+      },
+      {
+        "range": "[1997-02-21, 1997-12-26)",
+        "cardinality": 7683736
+      },
+      {
+        "range": "[1997-12-26, 1998-10-31)",
+        "cardinality": 6972528
+      }
+    ],
+    "l_orderkey": [
+      {
+        "range": "[1, 7500000.875)",
+        "cardinality": 7498949
+      },
+      {
+        "range": "[7500000.875, 15000000.75)",
+        "cardinality": 7497644
+      },
+      {
+        "range": "[15000000.75, 22500000.625)",
+        "cardinality": 7498959
+      },
+      {
+        "range": "[22500000.625, 30000000.5)",
+        "cardinality": 7504243
+      },
+      {
+        "range": "[30000000.5, 37500000.375)",
+        "cardinality": 7498012
+      },
+      {
+        "range": "[37500000.375, 45000000.25)",
+        "cardinality": 7493918
+      },
+      {
+        "range": "[45000000.25, 52500000.125)",
+        "cardinality": 7496192
+      },
+      {
+        "range": "[52500000.125, 60000000)",
+        "cardinality": 7498128
+      }
+    ],
+    "l_partkey": [
+      {
+        "range": "[1, 250000.875)",
+        "cardinality": 7495538
+      },
+      {
+        "range": "[250000.875, 500000.75)",
+        "cardinality": 7495157
+      },
+      {
+        "range": "[500000.75, 750000.625)",
+        "cardinality": 7496441
+      },
+      {
+        "range": "[750000.625, 1000000.5)",
+        "cardinality": 7498066
+      },
+      {
+        "range": "[1000000.5, 1250000.375)",
+        "cardinality": 7498699
+      },
+      {
+        "range": "[1250000.375, 1500000.25)",
+        "cardinality": 7500177
+      },
+      {
+        "range": "[1500000.25, 1750000.125)",
+        "cardinality": 7500134
+      },
+      {
+        "range": "[1750000.125, 2000000)",
+        "cardinality": 7501808
+      }
+    ],
+    "l_receiptdate": [
+      {
+        "range": "[1992-01-03, 1992-11-17)",
+        "cardinality": 6087962
+      },
+      {
+        "range": "[1992-11-17, 1993-10-02)",
+        "cardinality": 7961453
+      },
+      {
+        "range": "[1993-10-02, 1994-08-17)",
+        "cardinality": 7952067
+      },
+      {
+        "range": "[1994-08-17, 1995-07-03)",
+        "cardinality": 7984817
+      },
+      {
+        "range": "[1995-07-03, 1996-05-17)",
+        "cardinality": 7950695
+      },
+      {
+        "range": "[1996-05-17, 1997-04-01)",
+        "cardinality": 7955137
+      },
+      {
+        "range": "[1997-04-01, 1998-02-14)",
+        "cardinality": 7954619
+      },
+      {
+        "range": "[1998-02-14, 1998-12-31)",
+        "cardinality": 6139298
+      }
+    ],
+    "l_shipdate": [
+      {
+        "range": "[1992-01-02, 1992-11-12)",
+        "cardinality": 6350187
+      },
+      {
+        "range": "[1992-11-12, 1993-09-24)",
+        "cardinality": 7886944
+      },
+      {
+        "range": "[1993-09-24, 1994-08-05)",
+        "cardinality": 7851773
+      },
+      {
+        "range": "[1994-08-05, 1995-06-17)",
+        "cardinality": 7884462
+      },
+      {
+        "range": "[1995-06-17, 1996-04-28)",
+        "cardinality": 7876038
+      },
+      {
+        "range": "[1996-04-28, 1997-03-09)",
+        "cardinality": 7855990
+      },
+      {
+        "range": "[1997-03-09, 1998-01-19)",
+        "cardinality": 7878768
+      },
+      {
+        "range": "[1998-01-19, 1998-12-01)",
+        "cardinality": 6401671
+      }
+    ]
+  },
+  "region": {
+    "": [
+      {
+        "range": "[0, 1)",
+        "cardinality": 5
+      }
+    ],
+    "r_name": [
+      {
+        "list": [
+          "AFRICA"
+        ],
+        "cardinality": 1
+      },
+      {
+        "list": [
+          "AMERICA"
+        ],
+        "cardinality": 1
+      },
+      {
+        "list": [
+          "ASIA"
+        ],
+        "cardinality": 1
+      },
+      {
+        "list": [
+          "EUROPE"
+        ],
+        "cardinality": 1
+      },
+      {
+        "list": [
+          "MIDDLE EAST"
+        ],
+        "cardinality": 1
+      }
+    ]
+  },
+  "part": {
+    "": [
+      {
+        "range": "[0, 1)",
+        "cardinality": 2000000
+      }
+    ],
+    "p_brand": [
+      {
+        "list": [
+          "Brand#11"
+        ],
+        "cardinality": 79150
+      },
+      {
+        "list": [
+          "Brand#12"
+        ],
+        "cardinality": 79980
+      },
+      {
+        "list": [
+          "Brand#13"
+        ],
+        "cardinality": 80013
+      },
+      {
+        "list": [
+          "Brand#14"
+        ],
+        "cardinality": 80404
+      },
+      {
+        "list": [
+          "Brand#15"
+        ],
+        "cardinality": 79959
+      },
+      {
+        "list": [
+          "Brand#21"
+        ],
+        "cardinality": 80094
+      },
+      {
+        "list": [
+          "Brand#22"
+        ],
+        "cardinality": 79669
+      },
+      {
+        "list": [
+          "Brand#23"
+        ],
+        "cardinality": 79826
+      },
+      {
+        "list": [
+          "Brand#24"
+        ],
+        "cardinality": 79781
+      },
+      {
+        "list": [
+          "Brand#25"
+        ],
+        "cardinality": 79721
+      },
+      {
+        "list": [
+          "Brand#31"
+        ],
+        "cardinality": 80015
+      },
+      {
+        "list": [
+          "Brand#32"
+        ],
+        "cardinality": 79812
+      },
+      {
+        "list": [
+          "Brand#33"
+        ],
+        "cardinality": 80508
+      },
+      {
+        "list": [
+          "Brand#34"
+        ],
+        "cardinality": 80043
+      },
+      {
+        "list": [
+          "Brand#35"
+        ],
+        "cardinality": 80586
+      },
+      {
+        "list": [
+          "Brand#41"
+        ],
+        "cardinality": 79918
+      },
+      {
+        "list": [
+          "Brand#42"
+        ],
+        "cardinality": 79652
+      },
+      {
+        "list": [
+          "Brand#43"
+        ],
+        "cardinality": 80170
+      },
+      {
+        "list": [
+          "Brand#44"
+        ],
+        "cardinality": 80288
+      },
+      {
+        "list": [
+          "Brand#45"
+        ],
+        "cardinality": 80126
+      },
+      {
+        "list": [
+          "Brand#51"
+        ],
+        "cardinality": 80123
+      },
+      {
+        "list": [
+          "Brand#52"
+        ],
+        "cardinality": 80260
+      },
+      {
+        "list": [
+          "Brand#53"
+        ],
+        "cardinality": 80106
+      },
+      {
+        "list": [
+          "Brand#54"
+        ],
+        "cardinality": 79878
+      },
+      {
+        "list": [
+          "Brand#55"
+        ],
+        "cardinality": 79918
+      }
+    ],
+    "p_container": [
+      {
+        "list": [
+          "JUMBO BAG"
+        ],
+        "cardinality": 50025
+      },
+      {
+        "list": [
+          "JUMBO BOX"
+        ],
+        "cardinality": 50111
+      },
+      {
+        "list": [
+          "JUMBO CAN"
+        ],
+        "cardinality": 50104
+      },
+      {
+        "list": [
+          "JUMBO CASE"
+        ],
+        "cardinality": 49742
+      },
+      {
+        "list": [
+          "JUMBO DRUM"
+        ],
+        "cardinality": 49735
+      },
+      {
+        "list": [
+          "JUMBO JAR"
+        ],
+        "cardinality": 50464
+      },
+      {
+        "list": [
+          "JUMBO PACK"
+        ],
+        "cardinality": 50292
+      },
+      {
+        "list": [
+          "JUMBO PKG"
+        ],
+        "cardinality": 49964
+      },
+      {
+        "list": [
+          "LG BAG"
+        ],
+        "cardinality": 49648
+      },
+      {
+        "list": [
+          "LG BOX"
+        ],
+        "cardinality": 50169
+      },
+      {
+        "list": [
+          "LG CAN"
+        ],
+        "cardinality": 49748
+      },
+      {
+        "list": [
+          "LG CASE"
+        ],
+        "cardinality": 49516
+      },
+      {
+        "list": [
+          "LG DRUM"
+        ],
+        "cardinality": 49949
+      },
+      {
+        "list": [
+          "LG JAR"
+        ],
+        "cardinality": 49706
+      },
+      {
+        "list": [
+          "LG PACK"
+        ],
+        "cardinality": 50168
+      },
+      {
+        "list": [
+          "LG PKG"
+        ],
+        "cardinality": 50263
+      },
+      {
+        "list": [
+          "MED BAG"
+        ],
+        "cardinality": 50265
+      },
+      {
+        "list": [
+          "MED BOX"
+        ],
+        "cardinality": 50186
+      },
+      {
+        "list": [
+          "MED CAN"
+        ],
+        "cardinality": 49986
+      },
+      {
+        "list": [
+          "MED CASE"
+        ],
+        "cardinality": 49879
+      },
+      {
+        "list": [
+          "MED DRUM"
+        ],
+        "cardinality": 49858
+      },
+      {
+        "list": [
+          "MED JAR"
+        ],
+        "cardinality": 50253
+      },
+      {
+        "list": [
+          "MED PACK"
+        ],
+        "cardinality": 49918
+      },
+      {
+        "list": [
+          "MED PKG"
+        ],
+        "cardinality": 50524
+      },
+      {
+        "list": [
+          "SM BAG"
+        ],
+        "cardinality": 49959
+      },
+      {
+        "list": [
+          "SM BOX"
+        ],
+        "cardinality": 49851
+      },
+      {
+        "list": [
+          "SM CAN"
+        ],
+        "cardinality": 49636
+      },
+      {
+        "list": [
+          "SM CASE"
+        ],
+        "cardinality": 49754
+      },
+      {
+        "list": [
+          "SM DRUM"
+        ],
+        "cardinality": 50098
+      },
+      {
+        "list": [
+          "SM JAR"
+        ],
+        "cardinality": 49745
+      },
+      {
+        "list": [
+          "SM PACK"
+        ],
+        "cardinality": 49877
+      },
+      {
+        "list": [
+          "SM PKG"
+        ],
+        "cardinality": 49993
+      },
+      {
+        "list": [
+          "WRAP BAG"
+        ],
+        "cardinality": 50026
+      },
+      {
+        "list": [
+          "WRAP BOX"
+        ],
+        "cardinality": 50364
+      },
+      {
+        "list": [
+          "WRAP CAN"
+        ],
+        "cardinality": 50036
+      },
+      {
+        "list": [
+          "WRAP CASE"
+        ],
+        "cardinality": 50276
+      },
+      {
+        "list": [
+          "WRAP DRUM"
+        ],
+        "cardinality": 49953
+      },
+      {
+        "list": [
+          "WRAP JAR"
+        ],
+        "cardinality": 49643
+      },
+      {
+        "list": [
+          "WRAP PACK"
+        ],
+        "cardinality": 50003
+      },
+      {
+        "list": [
+          "WRAP PKG"
+        ],
+        "cardinality": 50313
+      }
+    ],
+    "p_size": [
+      {
+        "range": "[1, 7.125)",
+        "cardinality": 279500
+      },
+      {
+        "range": "[7.125, 13.25)",
+        "cardinality": 239673
+      },
+      {
+        "range": "[13.25, 19.375)",
+        "cardinality": 239437
+      },
+      {
+        "range": "[19.375, 25.5)",
+        "cardinality": 240498
+      },
+      {
+        "range": "[25.5, 31.625)",
+        "cardinality": 239932
+      },
+      {
+        "range": "[31.625, 37.75)",
+        "cardinality": 240618
+      },
+      {
+        "range": "[37.75, 43.875)",
+        "cardinality": 240502
+      },
+      {
+        "range": "[43.875, 50)",
+        "cardinality": 240075
+      }
+    ],
+    "p_type": [
+      {
+        "list": [
+          "ECONOMY ANODIZED BRASS"
+        ],
+        "cardinality": 13399
+      },
+      {
+        "list": [
+          "ECONOMY ANODIZED COPPER"
+        ],
+        "cardinality": 13678
+      },
+      {
+        "list": [
+          "ECONOMY ANODIZED NICKEL"
+        ],
+        "cardinality": 13423
+      },
+      {
+        "list": [
+          "ECONOMY ANODIZED STEEL"
+        ],
+        "cardinality": 13452
+      },
+      {
+        "list": [
+          "ECONOMY ANODIZED TIN"
+        ],
+        "cardinality": 13417
+      },
+      {
+        "list": [
+          "ECONOMY BRUSHED BRASS"
+        ],
+        "cardinality": 13226
+      },
+      {
+        "list": [
+          "ECONOMY BRUSHED COPPER"
+        ],
+        "cardinality": 13700
+      },
+      {
+        "list": [
+          "ECONOMY BRUSHED NICKEL"
+        ],
+        "cardinality": 13425
+      },
+      {
+        "list": [
+          "ECONOMY BRUSHED STEEL"
+        ],
+        "cardinality": 13411
+      },
+      {
+        "list": [
+          "ECONOMY BRUSHED TIN"
+        ],
+        "cardinality": 13396
+      },
+      {
+        "list": [
+          "ECONOMY BURNISHED BRASS"
+        ],
+        "cardinality": 13476
+      },
+      {
+        "list": [
+          "ECONOMY BURNISHED COPPER"
+        ],
+        "cardinality": 13337
+      },
+      {
+        "list": [
+          "ECONOMY BURNISHED NICKEL"
+        ],
+        "cardinality": 13219
+      },
+      {
+        "list": [
+          "ECONOMY BURNISHED STEEL"
+        ],
+        "cardinality": 13296
+      },
+      {
+        "list": [
+          "ECONOMY BURNISHED TIN"
+        ],
+        "cardinality": 13474
+      },
+      {
+        "list": [
+          "ECONOMY PLATED BRASS"
+        ],
+        "cardinality": 13383
+      },
+      {
+        "list": [
+          "ECONOMY PLATED COPPER"
+        ],
+        "cardinality": 13246
+      },
+      {
+        "list": [
+          "ECONOMY PLATED NICKEL"
+        ],
+        "cardinality": 13362
+      },
+      {
+        "list": [
+          "ECONOMY PLATED STEEL"
+        ],
+        "cardinality": 13689
+      },
+      {
+        "list": [
+          "ECONOMY PLATED TIN"
+        ],
+        "cardinality": 13364
+      },
+      {
+        "list": [
+          "ECONOMY POLISHED BRASS"
+        ],
+        "cardinality": 13188
+      },
+      {
+        "list": [
+          "ECONOMY POLISHED COPPER"
+        ],
+        "cardinality": 13281
+      },
+      {
+        "list": [
+          "ECONOMY POLISHED NICKEL"
+        ],
+        "cardinality": 13440
+      },
+      {
+        "list": [
+          "ECONOMY POLISHED STEEL"
+        ],
+        "cardinality": 13206
+      },
+      {
+        "list": [
+          "ECONOMY POLISHED TIN"
+        ],
+        "cardinality": 13259
+      },
+      {
+        "list": [
+          "LARGE ANODIZED BRASS"
+        ],
+        "cardinality": 13378
+      },
+      {
+        "list": [
+          "LARGE ANODIZED COPPER"
+        ],
+        "cardinality": 13589
+      },
+      {
+        "list": [
+          "LARGE ANODIZED NICKEL"
+        ],
+        "cardinality": 13245
+      },
+      {
+        "list": [
+          "LARGE ANODIZED STEEL"
+        ],
+        "cardinality": 13292
+      },
+      {
+        "list": [
+          "LARGE ANODIZED TIN"
+        ],
+        "cardinality": 13407
+      },
+      {
+        "list": [
+          "LARGE BRUSHED BRASS"
+        ],
+        "cardinality": 13184
+      },
+      {
+        "list": [
+          "LARGE BRUSHED COPPER"
+        ],
+        "cardinality": 13205
+      },
+      {
+        "list": [
+          "LARGE BRUSHED NICKEL"
+        ],
+        "cardinality": 13299
+      },
+      {
+        "list": [
+          "LARGE BRUSHED STEEL"
+        ],
+        "cardinality": 13374
+      },
+      {
+        "list": [
+          "LARGE BRUSHED TIN"
+        ],
+        "cardinality": 13197
+      },
+      {
+        "list": [
+          "LARGE BURNISHED BRASS"
+        ],
+        "cardinality": 13468
+      },
+      {
+        "list": [
+          "LARGE BURNISHED COPPER"
+        ],
+        "cardinality": 13317
+      },
+      {
+        "list": [
+          "LARGE BURNISHED NICKEL"
+        ],
+        "cardinality": 13566
+      },
+      {
+        "list": [
+          "LARGE BURNISHED STEEL"
+        ],
+        "cardinality": 13191
+      },
+      {
+        "list": [
+          "LARGE BURNISHED TIN"
+        ],
+        "cardinality": 13075
+      },
+      {
+        "list": [
+          "LARGE PLATED BRASS"
+        ],
+        "cardinality": 13404
+      },
+      {
+        "list": [
+          "LARGE PLATED COPPER"
+        ],
+        "cardinality": 13106
+      },
+      {
+        "list": [
+          "LARGE PLATED NICKEL"
+        ],
+        "cardinality": 13466
+      },
+      {
+        "list": [
+          "LARGE PLATED STEEL"
+        ],
+        "cardinality": 13470
+      },
+      {
+        "list": [
+          "LARGE PLATED TIN"
+        ],
+        "cardinality": 13240
+      },
+      {
+        "list": [
+          "LARGE POLISHED BRASS"
+        ],
+        "cardinality": 13011
+      },
+      {
+        "list": [
+          "LARGE POLISHED COPPER"
+        ],
+        "cardinality": 13512
+      },
+      {
+        "list": [
+          "LARGE POLISHED NICKEL"
+        ],
+        "cardinality": 13451
+      },
+      {
+        "list": [
+          "LARGE POLISHED STEEL"
+        ],
+        "cardinality": 13309
+      },
+      {
+        "list": [
+          "LARGE POLISHED TIN"
+        ],
+        "cardinality": 13252
+      },
+      {
+        "list": [
+          "MEDIUM ANODIZED BRASS"
+        ],
+        "cardinality": 13288
+      },
+      {
+        "list": [
+          "MEDIUM ANODIZED COPPER"
+        ],
+        "cardinality": 13196
+      },
+      {
+        "list": [
+          "MEDIUM ANODIZED NICKEL"
+        ],
+        "cardinality": 13184
+      },
+      {
+        "list": [
+          "MEDIUM ANODIZED STEEL"
+        ],
+        "cardinality": 13333
+      },
+      {
+        "list": [
+          "MEDIUM ANODIZED TIN"
+        ],
+        "cardinality": 13702
+      },
+      {
+        "list": [
+          "MEDIUM BRUSHED BRASS"
+        ],
+        "cardinality": 13458
+      },
+      {
+        "list": [
+          "MEDIUM BRUSHED COPPER"
+        ],
+        "cardinality": 13305
+      },
+      {
+        "list": [
+          "MEDIUM BRUSHED NICKEL"
+        ],
+        "cardinality": 13420
+      },
+      {
+        "list": [
+          "MEDIUM BRUSHED STEEL"
+        ],
+        "cardinality": 13295
+      },
+      {
+        "list": [
+          "MEDIUM BRUSHED TIN"
+        ],
+        "cardinality": 13597
+      },
+      {
+        "list": [
+          "MEDIUM BURNISHED BRASS"
+        ],
+        "cardinality": 13110
+      },
+      {
+        "list": [
+          "MEDIUM BURNISHED COPPER"
+        ],
+        "cardinality": 13437
+      },
+      {
+        "list": [
+          "MEDIUM BURNISHED NICKEL"
+        ],
+        "cardinality": 13361
+      },
+      {
+        "list": [
+          "MEDIUM BURNISHED STEEL"
+        ],
+        "cardinality": 13527
+      },
+      {
+        "list": [
+          "MEDIUM BURNISHED TIN"
+        ],
+        "cardinality": 13268
+      },
+      {
+        "list": [
+          "MEDIUM PLATED BRASS"
+        ],
+        "cardinality": 13402
+      },
+      {
+        "list": [
+          "MEDIUM PLATED COPPER"
+        ],
+        "cardinality": 13291
+      },
+      {
+        "list": [
+          "MEDIUM PLATED NICKEL"
+        ],
+        "cardinality": 13254
+      },
+      {
+        "list": [
+          "MEDIUM PLATED STEEL"
+        ],
+        "cardinality": 13312
+      },
+      {
+        "list": [
+          "MEDIUM PLATED TIN"
+        ],
+        "cardinality": 13258
+      },
+      {
+        "list": [
+          "MEDIUM POLISHED BRASS"
+        ],
+        "cardinality": 13406
+      },
+      {
+        "list": [
+          "MEDIUM POLISHED COPPER"
+        ],
+        "cardinality": 13402
+      },
+      {
+        "list": [
+          "MEDIUM POLISHED NICKEL"
+        ],
+        "cardinality": 13497
+      },
+      {
+        "list": [
+          "MEDIUM POLISHED STEEL"
+        ],
+        "cardinality": 13278
+      },
+      {
+        "list": [
+          "MEDIUM POLISHED TIN"
+        ],
+        "cardinality": 13296
+      },
+      {
+        "list": [
+          "PROMO ANODIZED BRASS"
+        ],
+        "cardinality": 13249
+      },
+      {
+        "list": [
+          "PROMO ANODIZED COPPER"
+        ],
+        "cardinality": 13225
+      },
+      {
+        "list": [
+          "PROMO ANODIZED NICKEL"
+        ],
+        "cardinality": 13278
+      },
+      {
+        "list": [
+          "PROMO ANODIZED STEEL"
+        ],
+        "cardinality": 13236
+      },
+      {
+        "list": [
+          "PROMO ANODIZED TIN"
+        ],
+        "cardinality": 13430
+      },
+      {
+        "list": [
+          "PROMO BRUSHED BRASS"
+        ],
+        "cardinality": 13257
+      },
+      {
+        "list": [
+          "PROMO BRUSHED COPPER"
+        ],
+        "cardinality": 13235
+      },
+      {
+        "list": [
+          "PROMO BRUSHED NICKEL"
+        ],
+        "cardinality": 13430
+      },
+      {
+        "list": [
+          "PROMO BRUSHED STEEL"
+        ],
+        "cardinality": 13351
+      },
+      {
+        "list": [
+          "PROMO BRUSHED TIN"
+        ],
+        "cardinality": 13283
+      },
+      {
+        "list": [
+          "PROMO BURNISHED BRASS"
+        ],
+        "cardinality": 13073
+      },
+      {
+        "list": [
+          "PROMO BURNISHED COPPER"
+        ],
+        "cardinality": 13309
+      },
+      {
+        "list": [
+          "PROMO BURNISHED NICKEL"
+        ],
+        "cardinality": 13343
+      },
+      {
+        "list": [
+          "PROMO BURNISHED STEEL"
+        ],
+        "cardinality": 13188
+      },
+      {
+        "list": [
+          "PROMO BURNISHED TIN"
+        ],
+        "cardinality": 13428
+      },
+      {
+        "list": [
+          "PROMO PLATED BRASS"
+        ],
+        "cardinality": 13406
+      },
+      {
+        "list": [
+          "PROMO PLATED COPPER"
+        ],
+        "cardinality": 13349
+      },
+      {
+        "list": [
+          "PROMO PLATED NICKEL"
+        ],
+        "cardinality": 13247
+      },
+      {
+        "list": [
+          "PROMO PLATED STEEL"
+        ],
+        "cardinality": 13251
+      },
+      {
+        "list": [
+          "PROMO PLATED TIN"
+        ],
+        "cardinality": 13449
+      },
+      {
+        "list": [
+          "PROMO POLISHED BRASS"
+        ],
+        "cardinality": 13596
+      },
+      {
+        "list": [
+          "PROMO POLISHED COPPER"
+        ],
+        "cardinality": 13296
+      },
+      {
+        "list": [
+          "PROMO POLISHED NICKEL"
+        ],
+        "cardinality": 13313
+      },
+      {
+        "list": [
+          "PROMO POLISHED STEEL"
+        ],
+        "cardinality": 13376
+      },
+      {
+        "list": [
+          "PROMO POLISHED TIN"
+        ],
+        "cardinality": 13377
+      },
+      {
+        "list": [
+          "SMALL ANODIZED BRASS"
+        ],
+        "cardinality": 13245
+      },
+      {
+        "list": [
+          "SMALL ANODIZED COPPER"
+        ],
+        "cardinality": 13526
+      },
+      {
+        "list": [
+          "SMALL ANODIZED NICKEL"
+        ],
+        "cardinality": 13289
+      },
+      {
+        "list": [
+          "SMALL ANODIZED STEEL"
+        ],
+        "cardinality": 13338
+      },
+      {
+        "list": [
+          "SMALL ANODIZED TIN"
+        ],
+        "cardinality": 13380
+      },
+      {
+        "list": [
+          "SMALL BRUSHED BRASS"
+        ],
+        "cardinality": 13456
+      },
+      {
+        "list": [
+          "SMALL BRUSHED COPPER"
+        ],
+        "cardinality": 13250
+      },
+      {
+        "list": [
+          "SMALL BRUSHED NICKEL"
+        ],
+        "cardinality": 13487
+      },
+      {
+        "list": [
+          "SMALL BRUSHED STEEL"
+        ],
+        "cardinality": 13244
+      },
+      {
+        "list": [
+          "SMALL BRUSHED TIN"
+        ],
+        "cardinality": 13459
+      },
+      {
+        "list": [
+          "SMALL BURNISHED BRASS"
+        ],
+        "cardinality": 13399
+      },
+      {
+        "list": [
+          "SMALL BURNISHED COPPER"
+        ],
+        "cardinality": 13149
+      },
+      {
+        "list": [
+          "SMALL BURNISHED NICKEL"
+        ],
+        "cardinality": 13332
+      },
+      {
+        "list": [
+          "SMALL BURNISHED STEEL"
+        ],
+        "cardinality": 13354
+      },
+      {
+        "list": [
+          "SMALL BURNISHED TIN"
+        ],
+        "cardinality": 13119
+      },
+      {
+        "list": [
+          "SMALL PLATED BRASS"
+        ],
+        "cardinality": 13276
+      },
+      {
+        "list": [
+          "SMALL PLATED COPPER"
+        ],
+        "cardinality": 13163
+      },
+      {
+        "list": [
+          "SMALL PLATED NICKEL"
+        ],
+        "cardinality": 13442
+      },
+      {
+        "list": [
+          "SMALL PLATED STEEL"
+        ],
+        "cardinality": 13335
+      },
+      {
+        "list": [
+          "SMALL PLATED TIN"
+        ],
+        "cardinality": 13365
+      },
+      {
+        "list": [
+          "SMALL POLISHED BRASS"
+        ],
+        "cardinality": 13229
+      },
+      {
+        "list": [
+          "SMALL POLISHED COPPER"
+        ],
+        "cardinality": 13153
+      },
+      {
+        "list": [
+          "SMALL POLISHED NICKEL"
+        ],
+        "cardinality": 13501
+      },
+      {
+        "list": [
+          "SMALL POLISHED STEEL"
+        ],
+        "cardinality": 13207
+      },
+      {
+        "list": [
+          "SMALL POLISHED TIN"
+        ],
+        "cardinality": 13290
+      },
+      {
+        "list": [
+          "STANDARD ANODIZED BRASS"
+        ],
+        "cardinality": 13198
+      },
+      {
+        "list": [
+          "STANDARD ANODIZED COPPER"
+        ],
+        "cardinality": 13301
+      },
+      {
+        "list": [
+          "STANDARD ANODIZED NICKEL"
+        ],
+        "cardinality": 13303
+      },
+      {
+        "list": [
+          "STANDARD ANODIZED STEEL"
+        ],
+        "cardinality": 13234
+      },
+      {
+        "list": [
+          "STANDARD ANODIZED TIN"
+        ],
+        "cardinality": 13387
+      },
+      {
+        "list": [
+          "STANDARD BRUSHED BRASS"
+        ],
+        "cardinality": 13225
+      },
+      {
+        "list": [
+          "STANDARD BRUSHED COPPER"
+        ],
+        "cardinality": 13179
+      },
+      {
+        "list": [
+          "STANDARD BRUSHED NICKEL"
+        ],
+        "cardinality": 13297
+      },
+      {
+        "list": [
+          "STANDARD BRUSHED STEEL"
+        ],
+        "cardinality": 13305
+      },
+      {
+        "list": [
+          "STANDARD BRUSHED TIN"
+        ],
+        "cardinality": 13421
+      },
+      {
+        "list": [
+          "STANDARD BURNISHED BRASS"
+        ],
+        "cardinality": 13330
+      },
+      {
+        "list": [
+          "STANDARD BURNISHED COPPER"
+        ],
+        "cardinality": 13375
+      },
+      {
+        "list": [
+          "STANDARD BURNISHED NICKEL"
+        ],
+        "cardinality": 13366
+      },
+      {
+        "list": [
+          "STANDARD BURNISHED STEEL"
+        ],
+        "cardinality": 13259
+      },
+      {
+        "list": [
+          "STANDARD BURNISHED TIN"
+        ],
+        "cardinality": 13210
+      },
+      {
+        "list": [
+          "STANDARD PLATED BRASS"
+        ],
+        "cardinality": 13533
+      },
+      {
+        "list": [
+          "STANDARD PLATED COPPER"
+        ],
+        "cardinality": 13284
+      },
+      {
+        "list": [
+          "STANDARD PLATED NICKEL"
+        ],
+        "cardinality": 13192
+      },
+      {
+        "list": [
+          "STANDARD PLATED STEEL"
+        ],
+        "cardinality": 13251
+      },
+      {
+        "list": [
+          "STANDARD PLATED TIN"
+        ],
+        "cardinality": 13457
+      },
+      {
+        "list": [
+          "STANDARD POLISHED BRASS"
+        ],
+        "cardinality": 13334
+      },
+      {
+        "list": [
+          "STANDARD POLISHED COPPER"
+        ],
+        "cardinality": 13205
+      },
+      {
+        "list": [
+          "STANDARD POLISHED NICKEL"
+        ],
+        "cardinality": 13387
+      },
+      {
+        "list": [
+          "STANDARD POLISHED STEEL"
+        ],
+        "cardinality": 13257
+      },
+      {
+        "list": [
+          "STANDARD POLISHED TIN"
+        ],
+        "cardinality": 13115
+      }
+    ]
+  },
+  "customer": {
+    "": [
+      {
+        "range": "[0, 1)",
+        "cardinality": 1500000
+      }
+    ]
+  },
+  "orders": {
+    "": [
+      {
+        "range": "[0, 1)",
+        "cardinality": 15000000
+      }
+    ],
+    "o_orderdate": [
+      {
+        "range": "[1992-01-01, 1992-10-27)",
+        "cardinality": 1869039
+      },
+      {
+        "range": "[1992-10-27, 1993-08-24)",
+        "cardinality": 1878490
+      },
+      {
+        "range": "[1993-08-24, 1994-06-20)",
+        "cardinality": 1870053
+      },
+      {
+        "range": "[1994-06-20, 1995-04-17)",
+        "cardinality": 1877666
+      },
+      {
+        "range": "[1995-04-17, 1996-02-12)",
+        "cardinality": 1875152
+      },
+      {
+        "range": "[1996-02-12, 1996-12-08)",
+        "cardinality": 1870782
+      },
+      {
+        "range": "[1996-12-08, 1997-10-05)",
+        "cardinality": 1878274
+      },
+      {
+        "range": "[1997-10-05, 1998-08-02)",
+        "cardinality": 1874340
+      }
+    ]
+  },
+  "partsupp": {
+    "": [
+      {
+        "range": "[0, 1)",
+        "cardinality": 8000000
+      }
+    ]
+  },
+  "nation": {
+    "": [
+      {
+        "range": "[0, 1)",
+        "cardinality": 25
+      }
+    ],
+    "n_name": [
+      {
+        "list": [
+          "ALGERIA"
+        ],
+        "cardinality": 1
+      },
+      {
+        "list": [
+          "ARGENTINA"
+        ],
+        "cardinality": 1
+      },
+      {
+        "list": [
+          "BRAZIL"
+        ],
+        "cardinality": 1
+      },
+      {
+        "list": [
+          "CANADA"
+        ],
+        "cardinality": 1
+      },
+      {
+        "list": [
+          "CHINA"
+        ],
+        "cardinality": 1
+      },
+      {
+        "list": [
+          "EGYPT"
+        ],
+        "cardinality": 1
+      },
+      {
+        "list": [
+          "ETHIOPIA"
+        ],
+        "cardinality": 1
+      },
+      {
+        "list": [
+          "FRANCE"
+        ],
+        "cardinality": 1
+      },
+      {
+        "list": [
+          "GERMANY"
+        ],
+        "cardinality": 1
+      },
+      {
+        "list": [
+          "INDIA"
+        ],
+        "cardinality": 1
+      },
+      {
+        "list": [
+          "INDONESIA"
+        ],
+        "cardinality": 1
+      },
+      {
+        "list": [
+          "IRAN"
+        ],
+        "cardinality": 1
+      },
+      {
+        "list": [
+          "IRAQ"
+        ],
+        "cardinality": 1
+      },
+      {
+        "list": [
+          "JAPAN"
+        ],
+        "cardinality": 1
+      },
+      {
+        "list": [
+          "JORDAN"
+        ],
+        "cardinality": 1
+      },
+      {
+        "list": [
+          "KENYA"
+        ],
+        "cardinality": 1
+      },
+      {
+        "list": [
+          "MOROCCO"
+        ],
+        "cardinality": 1
+      },
+      {
+        "list": [
+          "MOZAMBIQUE"
+        ],
+        "cardinality": 1
+      },
+      {
+        "list": [
+          "PERU"
+        ],
+        "cardinality": 1
+      },
+      {
+        "list": [
+          "ROMANIA"
+        ],
+        "cardinality": 1
+      },
+      {
+        "list": [
+          "RUSSIA"
+        ],
+        "cardinality": 1
+      },
+      {
+        "list": [
+          "SAUDI ARABIA"
+        ],
+        "cardinality": 1
+      },
+      {
+        "list": [
+          "UNITED KINGDOM"
+        ],
+        "cardinality": 1
+      },
+      {
+        "list": [
+          "UNITED STATES"
+        ],
+        "cardinality": 1
+      },
+      {
+        "list": [
+          "VIETNAM"
+        ],
+        "cardinality": 1
+      }
+    ]
+  },
+  "supplier": {
+    "": [
+      {
+        "range": "[0, 1)",
+        "cardinality": 100000
+      }
+    ]
+  }
+}

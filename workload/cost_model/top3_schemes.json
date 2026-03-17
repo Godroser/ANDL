@@ -1,0 +1,345 @@
+{
+  "top3": [
+    {
+      "rank": 1,
+      "total_cost_ms": 32891997.011082463,
+      "scheme": {
+        "customer": {
+          "partition_key": ""
+        },
+        "lineitem": {
+          "partition_key": ""
+        },
+        "nation": {
+          "partition_key": ""
+        },
+        "orders": {
+          "partition_key": ""
+        },
+        "part": {
+          "partition_key": ""
+        },
+        "partsupp": {
+          "partition_key": "",
+          "vector_storage": "both"
+        },
+        "region": {
+          "partition_key": ""
+        },
+        "revenue_s": {
+          "partition_key": ""
+        },
+        "supplier": {
+          "partition_key": ""
+        }
+      }
+    },
+    {
+      "rank": 2,
+      "total_cost_ms": 32891997.011082463,
+      "scheme": {
+        "customer": {
+          "partition_key": ""
+        },
+        "lineitem": {
+          "partition_key": ""
+        },
+        "nation": {
+          "partition_key": ""
+        },
+        "orders": {
+          "partition_key": ""
+        },
+        "part": {
+          "partition_key": ""
+        },
+        "partsupp": {
+          "partition_key": "",
+          "vector_storage": "together"
+        },
+        "region": {
+          "partition_key": ""
+        },
+        "revenue_s": {
+          "partition_key": ""
+        },
+        "supplier": {
+          "partition_key": ""
+        }
+      }
+    },
+    {
+      "rank": 3,
+      "total_cost_ms": 32891997.011082463,
+      "scheme": {
+        "customer": {
+          "partition_key": ""
+        },
+        "lineitem": {
+          "partition_key": ""
+        },
+        "nation": {
+          "partition_key": ""
+        },
+        "orders": {
+          "partition_key": ""
+        },
+        "part": {
+          "partition_key": "p_brand"
+        },
+        "partsupp": {
+          "partition_key": "",
+          "vector_storage": "both"
+        },
+        "region": {
+          "partition_key": ""
+        },
+        "revenue_s": {
+          "partition_key": ""
+        },
+        "supplier": {
+          "partition_key": ""
+        }
+      }
+    },
+    {
+      "rank": 4,
+      "total_cost_ms": 32891997.011082463,
+      "scheme": {
+        "customer": {
+          "partition_key": ""
+        },
+        "lineitem": {
+          "partition_key": ""
+        },
+        "nation": {
+          "partition_key": ""
+        },
+        "orders": {
+          "partition_key": ""
+        },
+        "part": {
+          "partition_key": "p_brand"
+        },
+        "partsupp": {
+          "partition_key": "",
+          "vector_storage": "together"
+        },
+        "region": {
+          "partition_key": ""
+        },
+        "revenue_s": {
+          "partition_key": ""
+        },
+        "supplier": {
+          "partition_key": ""
+        }
+      }
+    },
+    {
+      "rank": 5,
+      "total_cost_ms": 32891997.011082463,
+      "scheme": {
+        "customer": {
+          "partition_key": ""
+        },
+        "lineitem": {
+          "partition_key": ""
+        },
+        "nation": {
+          "partition_key": ""
+        },
+        "orders": {
+          "partition_key": ""
+        },
+        "part": {
+          "partition_key": "p_container"
+        },
+        "partsupp": {
+          "partition_key": "",
+          "vector_storage": "both"
+        },
+        "region": {
+          "partition_key": ""
+        },
+        "revenue_s": {
+          "partition_key": ""
+        },
+        "supplier": {
+          "partition_key": ""
+        }
+      }
+    },
+    {
+      "rank": 6,
+      "total_cost_ms": 32891997.011082463,
+      "scheme": {
+        "customer": {
+          "partition_key": ""
+        },
+        "lineitem": {
+          "partition_key": ""
+        },
+        "nation": {
+          "partition_key": ""
+        },
+        "orders": {
+          "partition_key": ""
+        },
+        "part": {
+          "partition_key": "p_container"
+        },
+        "partsupp": {
+          "partition_key": "",
+          "vector_storage": "together"
+        },
+        "region": {
+          "partition_key": ""
+        },
+        "revenue_s": {
+          "partition_key": ""
+        },
+        "supplier": {
+          "partition_key": ""
+        }
+      }
+    },
+    {
+      "rank": 7,
+      "total_cost_ms": 32891997.011082463,
+      "scheme": {
+        "customer": {
+          "partition_key": ""
+        },
+        "lineitem": {
+          "partition_key": ""
+        },
+        "nation": {
+          "partition_key": ""
+        },
+        "orders": {
+          "partition_key": ""
+        },
+        "part": {
+          "partition_key": "p_size"
+        },
+        "partsupp": {
+          "partition_key": "",
+          "vector_storage": "both"
+        },
+        "region": {
+          "partition_key": ""
+        },
+        "revenue_s": {
+          "partition_key": ""
+        },
+        "supplier": {
+          "partition_key": ""
+        }
+      }
+    },
+    {
+      "rank": 8,
+      "total_cost_ms": 32891997.011082463,
+      "scheme": {
+        "customer": {
+          "partition_key": ""
+        },
+        "lineitem": {
+          "partition_key": ""
+        },
+        "nation": {
+          "partition_key": ""
+        },
+        "orders": {
+          "partition_key": ""
+        },
+        "part": {
+          "partition_key": "p_size"
+        },
+        "partsupp": {
+          "partition_key": "",
+          "vector_storage": "together"
+        },
+        "region": {
+          "partition_key": ""
+        },
+        "revenue_s": {
+          "partition_key": ""
+        },
+        "supplier": {
+          "partition_key": ""
+        }
+      }
+    },
+    {
+      "rank": 9,
+      "total_cost_ms": 32891997.011082463,
+      "scheme": {
+        "customer": {
+          "partition_key": ""
+        },
+        "lineitem": {
+          "partition_key": ""
+        },
+        "nation": {
+          "partition_key": ""
+        },
+        "orders": {
+          "partition_key": ""
+        },
+        "part": {
+          "partition_key": "p_type"
+        },
+        "partsupp": {
+          "partition_key": "",
+          "vector_storage": "both"
+        },
+        "region": {
+          "partition_key": ""
+        },
+        "revenue_s": {
+          "partition_key": ""
+        },
+        "supplier": {
+          "partition_key": ""
+        }
+      }
+    },
+    {
+      "rank": 10,
+      "total_cost_ms": 32891997.011082463,
+      "scheme": {
+        "customer": {
+          "partition_key": ""
+        },
+        "lineitem": {
+          "partition_key": ""
+        },
+        "nation": {
+          "partition_key": ""
+        },
+        "orders": {
+          "partition_key": ""
+        },
+        "part": {
+          "partition_key": "p_type"
+        },
+        "partsupp": {
+          "partition_key": "",
+          "vector_storage": "together"
+        },
+        "region": {
+          "partition_key": ""
+        },
+        "revenue_s": {
+          "partition_key": ""
+        },
+        "supplier": {
+          "partition_key": ""
+        }
+      }
+    }
+  ],
+  "all_schemes_count": 720
+}
